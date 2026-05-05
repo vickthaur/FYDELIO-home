@@ -489,4 +489,21 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     .topbar-search { display: none; } /* Cache la barre de recherche complexe sur petit mobile */
     .kpi-grid { grid-template-columns: 1fr; gap: 24px; }
     .dashboard-content { padding: 24px; }
+
+    /* 🚨 LE CORRECTIF DU TABLEAU QUI SLIDE ICI 🚨 */
+    .table-container { 
+        overflow-x: auto !important; /* Active le défilement horizontal */
+        -webkit-overflow-scrolling: touch; /* Rendu fluide et natif sur iPhone */
+        border-radius: 20px; /* On réduit un peu l'arrondi massif pour le mobile */
+        margin-bottom: 30px;
+    }
+    .pro-table { 
+        min-width: 700px; /* Force le tableau à être plus large que l'écran pour autoriser le slide */
+    }
+    .table-header-row { 
+        padding: 20px 24px; 
+    }
+    .pro-table th, .pro-table td { 
+        padding: 16px 24px; /* On resserre un peu les cellules pour le mobile */
+    }
 }
