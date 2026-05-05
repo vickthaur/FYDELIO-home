@@ -14,7 +14,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <title>FYDELIO | Carte de fidélité digitale pour Restaurants (Vaucluse)</title>
     
     <meta name="description" content="FYDELIO est la carte de fidélité digitale simple et automatisée pour les restaurateurs du Vaucluse. Transformez vos clients de passage en habitués sans application à télécharger. Augmentez votre CA.">
-    
     <meta name="keywords" content="carte de fidélité digitale, fidélisation restaurant, application fidélité sans téléchargement, marketing restaurant vaucluse, fydelio, qr code fidélité">
     
     <meta property="og:title" content="FYDELIO | Carte de fidélité digitale pour Restaurants">
@@ -34,7 +33,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="apple-mobile-web-app-title" content="FYDELIO">
     <meta name="theme-color" content="#0F766E">
     
-    <!-- Pré-connexion ultra-rapide des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -47,23 +45,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Formes d'arrière-plan pour l'effet parallaxe -->
     <div class="bg-shape-1"></div>
     <div class="bg-shape-2"></div>
 
+    <!-- =============================================
+         HEADER — identique à services.html
+         "Logiciel" est le lien actif (nav-link-active)
+         ============================================= -->
     <header id="main-header">
         <div class="container nav-inner">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="flavicon.jpg" alt="Logo FYDELIO">
                 <span>FYDELIO</span>
             </a>
-           <nav class="nav-links">
-    <a href="#concept" class="link-text">Logiciel</a>
-    <!-- LE NOUVEAU LIEN VERS TES SERVICES 👇 -->
-    <a href="services.html" class="link-text">Agence Digitale</a>
-    <a href="#tarifs" class="link-text">Tarifs</a>
-    <button id="btnOpenModal" class="btn btn-outline btn-nav">🔑 Espace Restaurateur</button>
-</nav>
+            <nav class="nav-links">
+                <!-- Lien actif sur cette page -->
+                <a href="#concept" class="link-text nav-link-active">Logiciel</a>
+                <a href="services.html" class="link-text">Agence Digitale</a>
+                <a href="#tarifs" class="link-text">Tarifs</a>
+                <button id="btnOpenModal" class="btn btn-outline btn-nav">🔑 Espace Restaurateur</button>
+            </nav>
             <button class="menu-toggle" aria-label="Ouvrir le menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -71,6 +72,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </button>
         </div>
     </header>
+
+    <!-- Le reste de la page est identique -->
 
     <section class="hero container">
         <div class="badge-hero">Conçu pour les établissements du Vaucluse</div>
@@ -210,6 +213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a href="#concept">Concept</a></li>
                     <li><a href="#fonctionnement">Notre Méthode</a></li>
                     <li><a href="#tarifs">Tarifs & Offres</a></li>
+                    <li><a href="services.html">L'Agence Marketing</a></li>
                 </ul>
             </div>
 
@@ -234,13 +238,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="loginModal" class="modal-overlay">
         <div class="modal-content">
             <button id="btnCloseModal" class="modal-close" aria-label="Fermer">&times;</button>
-            
             <div class="modal-header">
                 <div class="modal-icon">🔐</div>
                 <h2>Espace Pro</h2>
                 <p>Accédez au pilotage de votre base clients.</p>
             </div>
-            
             <form id="loginForm" class="auth-form">
                 <div class="form-group">
                     <label for="restoEmail">Email Professionnel</label>
@@ -250,14 +252,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <label for="restoPwd">Mot de passe</label>
                     <input type="password" id="restoPwd" placeholder="••••••••" required autocomplete="current-password">
                 </div>
-                
                 <div id="loginError" class="alert-error">Identifiants incorrects. Veuillez réessayer.</div>
-                
                 <button type="submit" id="btnSubmitLogin" class="btn btn-primary btn-full mt-4">
                     <span class="btn-text">Se connecter au Dashboard</span>
                 </button>
             </form>
-            
             <p class="modal-footer">
                 Un problème de connexion ? <br>
                 <a href="mailto:victordetroux2@gmail.com">Contactez le support FYDELIO</a>
@@ -265,21 +264,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <!-- 🚨 CORRECTION DU BUG ET OPTIMISATION MAXIMALE ICI 🚨 -->
-    <!-- Tous les scripts sont chargés TOUT EN BAS de la page, dans l'ordre strict -->
-    
-    <!-- 1. Supabase (La base de données doit être prête en premier) -->
+    <!-- SCRIPTS — ordre strict -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <!-- 2. GSAP (Les moteurs d'animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- 3. Tes scripts personnalisés (Ils ont besoin de Supabase et GSAP pour fonctionner) -->
     <script src="fiddle-pro.js"></script>
     <script src="animations.js"></script>
     
-    <!-- Script Menu Mobile -->
     <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
