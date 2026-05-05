@@ -4,165 +4,368 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Pro | FYDELIO</title>
-    
     <link rel="icon" type="image/jpeg" href="flavicon.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
-<body class="dashboard-body">
+<body class="dash-body">
 
-    <div id="loader" class="loader-overlay">
-        <div class="spinner"></div>
-        <p class="loader-text">Sécurisation de votre espace...</p>
+    <!-- LOADER -->
+    <div id="loader" class="dash-loader">
+        <div class="dash-loader-inner">
+            <div class="dash-loader-logo">
+                <img src="flavicon.jpg" alt="FYDELIO">
+            </div>
+            <div class="dash-loader-bar">
+                <div class="dash-loader-progress"></div>
+            </div>
+            <p class="dash-loader-text">Sécurisation de votre espace…</p>
+        </div>
     </div>
 
-    <div class="dashboard-layout">
-        
+    <div class="dash-layout">
+
+        <!-- =============================================
+             SIDEBAR
+             ============================================= -->
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <img src="flavicon.jpg" alt="Logo FYDELIO" class="sidebar-logo-img">
-                <span class="sidebar-logo-text">FYDELIO</span>
+
+            <!-- Logo -->
+            <div class="sidebar-brand">
+                <div class="sidebar-brand-logo">
+                    <img src="flavicon.jpg" alt="FYDELIO">
+                </div>
+                <div class="sidebar-brand-text">
+                    <span class="sidebar-brand-name">FYDELIO</span>
+                    <span class="sidebar-brand-sub">Dashboard Pro</span>
+                </div>
             </div>
-            
+
+            <!-- Navigation -->
             <nav class="sidebar-nav">
-                <p class="sidebar-title">Menu Principal</p>
-                <a href="#" class="nav-item active" id="nav-clients">
-                    <span class="nav-icon">📊</span>
-                    Base Clients
-                </a>
-                <a href="#" class="nav-item" id="nav-qrcodes">
-                    <span class="nav-icon">📱</span>
-                    Mes QR Codes
-                </a>
-                <a href="#" class="nav-item disabled" title="Bientôt disponible">
-                    <span class="nav-icon">✉️</span>
-                    Campagnes SMS <span class="badge-soon">Bientôt</span>
-                </a>
+                <div class="sidebar-nav-group">
+                    <span class="sidebar-nav-label">Tableau de bord</span>
+                    <a href="#" class="sidebar-nav-item active" id="nav-clients">
+                        <div class="sidebar-nav-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <span>Base Clients</span>
+                        <div class="sidebar-nav-badge live-dot"></div>
+                    </a>
+                    <a href="#" class="sidebar-nav-item" id="nav-qrcodes">
+                        <div class="sidebar-nav-icon">
+                            <i data-lucide="qr-code"></i>
+                        </div>
+                        <span>Mes QR Codes</span>
+                    </a>
+                </div>
+
+                <div class="sidebar-nav-group">
+                    <span class="sidebar-nav-label">Bientôt disponible</span>
+                    <a href="#" class="sidebar-nav-item sidebar-nav-item--soon">
+                        <div class="sidebar-nav-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <span>Campagnes SMS</span>
+                        <span class="soon-pill">Bientôt</span>
+                    </a>
+                    <a href="#" class="sidebar-nav-item sidebar-nav-item--soon">
+                        <div class="sidebar-nav-icon">
+                            <i data-lucide="bar-chart-2"></i>
+                        </div>
+                        <span>Analytics</span>
+                        <span class="soon-pill">Bientôt</span>
+                    </a>
+                </div>
             </nav>
 
+            <!-- Footer sidebar -->
             <div class="sidebar-footer">
-                <div class="user-profile">
-                    <div class="avatar">👤</div>
-                    <div class="user-info">
-                        <p class="user-role">Administrateur</p>
-                        <p class="user-email-text" id="displayEmail">chargement...</p>
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar">
+                        <i data-lucide="user-circle-2" style="width:22px;height:22px;color:#94a3b8;"></i>
+                    </div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-role">Administrateur</span>
+                        <span class="sidebar-user-email" id="displayEmail">chargement…</span>
                     </div>
                 </div>
-                <button class="btn-logout-sidebar" id="btnLogout">
-                    <span>🚪 Déconnexion</span>
+                <button class="sidebar-logout-btn" id="btnLogout" title="Déconnexion">
+                    <i data-lucide="log-out" style="width:16px;height:16px;"></i>
                 </button>
             </div>
+
         </aside>
 
-        <main class="dashboard-main">
-            
-            <header class="topbar">
-                <button id="mobileMenuBtn" style="background: none; border: none; font-size: 24px; cursor: pointer; margin-right: 15px; display: none;" class="mobile-only">☰</button>
-                
-                <div class="topbar-search">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchClient" class="search-input-top" placeholder="Rechercher un client (Nom, Email, Téléphone)...">
+        <!-- =============================================
+             MAIN
+             ============================================= -->
+        <main class="dash-main">
+
+            <!-- TOPBAR -->
+            <header class="dash-topbar">
+                <!-- Burger mobile -->
+                <button id="mobileMenuBtn" class="dash-burger mobile-only">
+                    <i data-lucide="menu" style="width:20px;height:20px;"></i>
+                </button>
+
+                <!-- Search -->
+                <div class="dash-search">
+                    <i data-lucide="search" class="dash-search-icon"></i>
+                    <input 
+                        type="text" 
+                        id="searchClient" 
+                        class="dash-search-input" 
+                        placeholder="Rechercher un client (nom, email…)">
+                    <kbd class="dash-search-kbd">⌘K</kbd>
                 </div>
-                <div class="topbar-actions">
-                    <button class="btn btn-primary" id="btnExport">
-                        📥 Exporter la base (CSV)
+
+                <!-- Actions topbar -->
+                <div class="dash-topbar-actions">
+                    <div class="dash-status-pill">
+                        <span class="dash-status-dot"></span>
+                        Données en direct
+                    </div>
+                    <button class="btn-export-top" id="btnExport">
+                        <i data-lucide="download" style="width:15px;height:15px;"></i>
+                        Exporter CSV
                     </button>
                 </div>
             </header>
 
-            <div class="dashboard-content">
-                
+            <!-- CONTENT -->
+            <div class="dash-content">
+
+                <!-- VUE CLIENTS -->
                 <div id="view-clients">
-                    <div class="page-title-group animate-on-scroll">
-                        <h1>Vue d'ensemble</h1>
-                        <p>Suivez l'évolution de votre programme de fidélité en temps réel.</p>
-                    </div>
 
-                    <div class="kpi-grid">
-                        <div class="kpi-card animate-on-scroll">
-                            <div class="kpi-header">
-                                <h3>Total Inscrits</h3>
-                                <div class="kpi-icon blue">👥</div>
-                            </div>
-                            <div class="kpi-value" id="statTotalClients">-</div>
-                            <p class="kpi-trend positive">La base de données s'agrandit</p>
+                    <!-- Titre page -->
+                    <div class="dash-page-header animate-on-scroll">
+                        <div>
+                            <h1 class="dash-page-title">Vue d'ensemble</h1>
+                            <p class="dash-page-sub">Suivez l'évolution de votre programme de fidélité en temps réel.</p>
                         </div>
-                        
-                        <div class="kpi-card animate-on-scroll">
-                            <div class="kpi-header">
-                                <h3>Points Distribués</h3>
-                                <div class="kpi-icon orange">⭐</div>
-                            </div>
-                            <div class="kpi-value" id="statTotalPoints">-</div>
-                            <p class="kpi-trend">Points en circulation</p>
-                        </div>
-
-                        <div class="kpi-card animate-on-scroll">
-                            <div class="kpi-header">
-                                <h3>Taux de capture</h3>
-                                <div class="kpi-icon green">📈</div>
-                            </div>
-                            <div class="kpi-value">Optimisé</div>
-                            <p class="kpi-trend">Fidélisation automatique active</p>
+                        <div class="dash-page-date">
+                            <i data-lucide="calendar" style="width:14px;height:14px;"></i>
+                            <span id="dashDate"></span>
                         </div>
                     </div>
 
-                    <div class="table-container animate-on-scroll">
-                        <div class="table-header-row">
-                            <h2>Répertoire Clients</h2>
-                            <span class="badge-live">🟢 Live</span>
+                    <!-- KPI CARDS -->
+                    <div class="dash-kpi-grid">
+
+                        <div class="dash-kpi-card dash-kpi-card--teal animate-on-scroll">
+                            <div class="dash-kpi-top">
+                                <div class="dash-kpi-icon">
+                                    <i data-lucide="users"></i>
+                                </div>
+                                <div class="dash-kpi-trend">
+                                    <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                    Actif
+                                </div>
+                            </div>
+                            <div class="dash-kpi-value" id="statTotalClients">—</div>
+                            <div class="dash-kpi-label">Total inscrits</div>
+                            <div class="dash-kpi-bar">
+                                <div class="dash-kpi-bar-fill" style="width:72%"></div>
+                            </div>
                         </div>
-                        
-                        <div class="table-responsive">
-                            <table class="pro-table">
+
+                        <div class="dash-kpi-card dash-kpi-card--amber animate-on-scroll">
+                            <div class="dash-kpi-top">
+                                <div class="dash-kpi-icon">
+                                    <i data-lucide="star"></i>
+                                </div>
+                                <div class="dash-kpi-trend">
+                                    <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                    En hausse
+                                </div>
+                            </div>
+                            <div class="dash-kpi-value" id="statTotalPoints">—</div>
+                            <div class="dash-kpi-label">Points distribués</div>
+                            <div class="dash-kpi-bar">
+                                <div class="dash-kpi-bar-fill" style="width:58%"></div>
+                            </div>
+                        </div>
+
+                        <div class="dash-kpi-card dash-kpi-card--purple animate-on-scroll">
+                            <div class="dash-kpi-top">
+                                <div class="dash-kpi-icon">
+                                    <i data-lucide="activity"></i>
+                                </div>
+                                <div class="dash-kpi-trend dash-kpi-trend--green">
+                                    <i data-lucide="check-circle" style="width:13px;height:13px;"></i>
+                                    Optimal
+                                </div>
+                            </div>
+                            <div class="dash-kpi-value">Auto</div>
+                            <div class="dash-kpi-label">Fidélisation automatique</div>
+                            <div class="dash-kpi-bar">
+                                <div class="dash-kpi-bar-fill" style="width:100%"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- TABLE CLIENTS -->
+                    <div class="dash-table-card animate-on-scroll">
+                        <div class="dash-table-header">
+                            <div class="dash-table-title-group">
+                                <h2 class="dash-table-title">Répertoire Clients</h2>
+                                <div class="dash-live-badge">
+                                    <span class="dash-live-dot"></span>
+                                    Live
+                                </div>
+                            </div>
+                            <div class="dash-table-actions">
+                                <span class="dash-table-count" id="tableCount">— clients</span>
+                            </div>
+                        </div>
+
+                        <div class="dash-table-wrapper">
+                            <table class="dash-table">
                                 <thead>
                                     <tr>
-                                        <th>CLIENT</th>
-                                        <th>CONTACT</th>
-                                        <th>ANNIVERSAIRE</th>
-                                        <th>FIDÉLITÉ</th>
-                                        <th>INSCRIPTION</th>
+                                        <th>
+                                            <div class="th-inner">
+                                                <i data-lucide="user" style="width:13px;height:13px;"></i>
+                                                Client
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-inner">
+                                                <i data-lucide="mail" style="width:13px;height:13px;"></i>
+                                                Contact
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-inner">
+                                                <i data-lucide="cake" style="width:13px;height:13px;"></i>
+                                                Anniversaire
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-inner">
+                                                <i data-lucide="star" style="width:13px;height:13px;"></i>
+                                                Fidélité
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-inner">
+                                                <i data-lucide="calendar" style="width:13px;height:13px;"></i>
+                                                Inscription
+                                            </div>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody id="tableBody">
                                     <tr>
-                                        <td colspan="5" class="empty-state">Chargement de votre base de données...</td>
+                                        <td colspan="5" class="dash-table-loading">
+                                            <div class="dash-table-loading-inner">
+                                                <div class="dash-spinner"></div>
+                                                <span>Chargement de votre base de données…</span>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
 
-               <div id="view-qrcodes" style="display: none;">
-    <div class="page-title-group animate-on-scroll">
-        <h1>Matériel de communication</h1>
-        <p>Générez et téléchargez le QR Code officiel de votre établissement.</p>
-    </div>
+                </div><!-- /view-clients -->
 
-    <!-- 🚨 HTML NETTOYÉ : Zéro style en ligne ! 🚨 -->
-    <div class="qr-section animate-on-scroll">
-        <div id="qr-code-container" class="qr-code-box">
-            <span class="spinner" style="border-color: var(--primary); border-top-color: transparent;"></span>
-        </div>
-        <div class="qr-text-content">
-            <h3>QR Code de votre établissement</h3>
-            <p>Imprimez ce QR Code et placez-le sur vos tables, votre comptoir ou vos menus. Vos clients le flashent avec leur smartphone pour s'inscrire à votre programme de fidélité. Le point de bienvenue sera crédité automatiquement !</p>
-            <button id="btnDownloadQR" class="btn btn-primary">
-                📥 Télécharger l'image HD
-            </button>
-        </div>
-    </div>
-</div>
+                <!-- VUE QR CODES -->
+                <div id="view-qrcodes" style="display:none;">
 
-            </div>
+                    <div class="dash-page-header animate-on-scroll">
+                        <div>
+                            <h1 class="dash-page-title">Matériel de communication</h1>
+                            <p class="dash-page-sub">Votre QR Code officiel, prêt à imprimer et déployer en salle.</p>
+                        </div>
+                    </div>
+
+                    <div class="qr-modern-card animate-on-scroll">
+
+                        <div class="qr-modern-left">
+                            <div class="qr-code-box" id="qr-code-container">
+                                <div class="dash-spinner"></div>
+                            </div>
+                            <button id="btnDownloadQR" class="btn-qr-download">
+                                <i data-lucide="download" style="width:16px;height:16px;"></i>
+                                Télécharger HD
+                            </button>
+                        </div>
+
+                        <div class="qr-modern-right">
+                            <div class="qr-modern-badge">
+                                <i data-lucide="zap" style="width:13px;height:13px;"></i>
+                                Prêt à l'emploi
+                            </div>
+                            <h2>Votre QR Code d'établissement</h2>
+                            <p>Imprimez ce QR Code et placez-le sur vos tables, votre comptoir ou vos menus. Vos clients le flashent pour s'inscrire en 20 secondes. Le point de bienvenue est crédité automatiquement.</p>
+
+                            <div class="qr-steps">
+                                <div class="qr-step">
+                                    <div class="qr-step-num">1</div>
+                                    <div class="qr-step-text">Téléchargez le QR Code en HD</div>
+                                </div>
+                                <div class="qr-step">
+                                    <div class="qr-step-num">2</div>
+                                    <div class="qr-step-text">Imprimez-le ou intégrez-le à vos menus</div>
+                                </div>
+                                <div class="qr-step">
+                                    <div class="qr-step-num">3</div>
+                                    <div class="qr-step-text">Regardez votre base clients grandir</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- /view-qrcodes -->
+
+            </div><!-- /dash-content -->
         </main>
     </div>
 
-    <!-- MOTEURS JAVASCRIPT -->
     <script src="fiddle-pro.js"></script>
-    <script src="animations.js"></script> <!-- Le moteur d'animations est branché ici -->
+    <script src="animations.js"></script>
+    <script>
+    // Init Lucide
+    lucide.createIcons();
+
+    // Date du jour
+    const dateEl = document.getElementById('dashDate');
+    if (dateEl) {
+        dateEl.textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+    }
+
+    // Compteur de lignes dans le tableau
+    const origAfficher = window.afficherTableau;
+    const tableCountEl = document.getElementById('tableCount');
+    const origBodySet = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'innerHTML');
+
+    // Observer le tbody pour mettre à jour le compteur
+    const tbody = document.getElementById('tableBody');
+    if (tbody && tableCountEl) {
+        const rowObs = new MutationObserver(() => {
+            const rows = tbody.querySelectorAll('tr:not(.dash-table-loading)');
+            const count = rows.length;
+            if (count > 0 && !tbody.querySelector('.empty-state') && !tbody.querySelector('.dash-table-loading')) {
+                tableCountEl.textContent = count + ' client' + (count > 1 ? 's' : '');
+            }
+        });
+        rowObs.observe(tbody, { childList: true });
+    }
+
+    // Mobile sidebar
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const sidebar   = document.querySelector('.sidebar');
+    if (mobileBtn && sidebar) {
+        mobileBtn.addEventListener('click', () => sidebar.classList.toggle('mobile-open'));
+    }
+    </script>
 </body>
 </html>
