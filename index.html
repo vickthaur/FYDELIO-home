@@ -34,13 +34,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="apple-mobile-web-app-title" content="FYDELIO">
     <meta name="theme-color" content="#0F766E">
     
-    <!-- OPTIMISATION 1 : Pré-connexion des polices pour un chargement instantané -->
+    <!-- Pré-connexion ultra-rapide des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- OPTIMISATION 2 : Ajout de l'attribut "defer" pour ne pas bloquer le rendu visuel -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -74,7 +72,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <section class="hero container">
-        <!-- OPTIMISATION 3 : Suppression des classes "animate-on-scroll" sur le Hero. Le texte principal doit être visible à la milliseconde 0 pour le score LCP -->
         <div class="badge-hero">Conçu pour les établissements du Vaucluse</div>
         <h1>Ne perdez plus jamais un client<br><span class="text-gradient">après l'addition.</span></h1>
         <p>Transformez vos visiteurs de passage en contacts réactivables et fidèles. Une solution claire, élégante et automatisée, pensée par et pour les restaurateurs.</p>
@@ -115,12 +112,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <div class="method-split-layout">
             
-            <!-- COLONNE GAUCHE : Le texte qui défile (et cartes sur mobile) -->
             <div class="method-text-column">
                 <div class="method-step" id="step-1">
                     <div class="step-number mobile-only-show">1</div>
                     <div class="step-image-container mobile-only-show">
-                        <!-- OPTIMISATION 4 : Ajout de loading="lazy" sur toutes les images sous la ligne de flottaison -->
                         <img src="etape-1.png" alt="Scan Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 1</div>
@@ -149,12 +144,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
 
-            <!-- COLONNE DROITE : Le Téléphone fixe (PC Uniquement) -->
             <div class="method-phone-column mobile-only-hide">
                 <div class="phone-mockup">
                     <div class="phone-notch"></div>
                     <div class="phone-screen">
-                        <!-- Captures d'écran de l'app -->
                         <img src="screen-1.png" alt="Interface Scan" class="phone-img active" id="phone-img-1" loading="lazy">
                         <img src="screen-2.png" alt="Interface Validation" class="phone-img" id="phone-img-2" loading="lazy">
                         <img src="screen-3.png" alt="Interface Espace Pro" class="phone-img" id="phone-img-3" loading="lazy">
@@ -271,11 +264,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <!-- Librairies GSAP pour les animations "Apple Style" -->
+    <!-- 🚨 CORRECTION DU BUG ET OPTIMISATION MAXIMALE ICI 🚨 -->
+    <!-- Tous les scripts sont chargés TOUT EN BAS de la page, dans l'ordre strict -->
+    
+    <!-- 1. Supabase (La base de données doit être prête en premier) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- 2. GSAP (Les moteurs d'animation) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
-    <!-- Tes moteurs -->
+    <!-- 3. Tes scripts personnalisés (Ils ont besoin de Supabase et GSAP pour fonctionner) -->
     <script src="fiddle-pro.js"></script>
     <script src="animations.js"></script>
     
