@@ -535,4 +535,11 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     /* Fix Sidebar Mobile */
     .sidebar { position: fixed; left: -100%; top: 0; bottom: 0; z-index: 9999; width: 300px; box-shadow: 10px 0 50px rgba(0,0,0,0.2); transition: left 0.4s ease; }
     .sidebar.mobile-open { left: 0; }
+   /* 🚨 CORRECTIF QR CODE DASHBOARD MOBILE 🚨 */
+    .qr-section {
+        flex-direction: column !important; /* Passe l'image et le texte l'un sous l'autre */
+        text-align: center !important; /* Centre le texte pour faire plus propre */
+        padding: 24px !important; /* Réduit l'énorme marge blanche autour */
+        gap: 24px !important; /* Réduit l'espace entre le QR code et le texte */
+    }
 }
