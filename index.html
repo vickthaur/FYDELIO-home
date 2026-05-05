@@ -34,8 +34,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="apple-mobile-web-app-title" content="FYDELIO">
     <meta name="theme-color" content="#0F766E">
     
+    <!-- OPTIMISATION 1 : Pré-connexion des polices pour un chargement instantané -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- OPTIMISATION 2 : Ajout de l'attribut "defer" pour ne pas bloquer le rendu visuel -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -69,10 +74,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <section class="hero container">
-        <div class="badge-hero animate-on-scroll">Conçu pour les établissements du Vaucluse</div>
-        <h1 class="animate-on-scroll">Ne perdez plus jamais un client<br><span class="text-gradient">après l'addition.</span></h1>
-        <p class="animate-on-scroll">Transformez vos visiteurs de passage en contacts réactivables et fidèles. Une solution claire, élégante et automatisée, pensée par et pour les restaurateurs.</p>
-        <div class="hero-actions animate-on-scroll">
+        <!-- OPTIMISATION 3 : Suppression des classes "animate-on-scroll" sur le Hero. Le texte principal doit être visible à la milliseconde 0 pour le score LCP -->
+        <div class="badge-hero">Conçu pour les établissements du Vaucluse</div>
+        <h1>Ne perdez plus jamais un client<br><span class="text-gradient">après l'addition.</span></h1>
+        <p>Transformez vos visiteurs de passage en contacts réactivables et fidèles. Une solution claire, élégante et automatisée, pensée par et pour les restaurateurs.</p>
+        <div class="hero-actions">
             <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Réserver une démo (30 min)</a>
         </div>
     </section>
@@ -112,10 +118,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <!-- COLONNE GAUCHE : Le texte qui défile (et cartes sur mobile) -->
             <div class="method-text-column">
                 <div class="method-step" id="step-1">
-                    <!-- Ces 2 éléments n'apparaissent QUE sur Mobile avec l'icône 3D -->
                     <div class="step-number mobile-only-show">1</div>
                     <div class="step-image-container mobile-only-show">
-                        <img src="etape-1.png" alt="Scan Mobile" class="app-icon-image">
+                        <!-- OPTIMISATION 4 : Ajout de loading="lazy" sur toutes les images sous la ligne de flottaison -->
+                        <img src="etape-1.png" alt="Scan Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 1</div>
                     <h3>Scan à table</h3>
@@ -125,7 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="method-step" id="step-2">
                     <div class="step-number mobile-only-show">2</div>
                     <div class="step-image-container mobile-only-show">
-                        <img src="etape-2.png" alt="Validation Mobile" class="app-icon-image">
+                        <img src="etape-2.png" alt="Validation Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 2</div>
                     <h3>Validation Pro</h3>
@@ -135,7 +141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="method-step" id="step-3">
                     <div class="step-number mobile-only-show">3</div>
                     <div class="step-image-container mobile-only-show">
-                        <img src="etape-3.png" alt="Espace Mobile" class="app-icon-image">
+                        <img src="etape-3.png" alt="Espace Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 3</div>
                     <h3>Votre Espace</h3>
@@ -148,10 +154,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="phone-mockup">
                     <div class="phone-notch"></div>
                     <div class="phone-screen">
-                        <!-- ICI, on utilise les captures d'écran de l'app -->
-                        <img src="screen-1.png" alt="Interface Scan" class="phone-img active" id="phone-img-1">
-                        <img src="screen-2.png" alt="Interface Validation" class="phone-img" id="phone-img-2">
-                        <img src="screen-3.png" alt="Interface Espace Pro" class="phone-img" id="phone-img-3">
+                        <!-- Captures d'écran de l'app -->
+                        <img src="screen-1.png" alt="Interface Scan" class="phone-img active" id="phone-img-1" loading="lazy">
+                        <img src="screen-2.png" alt="Interface Validation" class="phone-img" id="phone-img-2" loading="lazy">
+                        <img src="screen-3.png" alt="Interface Espace Pro" class="phone-img" id="phone-img-3" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -198,7 +204,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container footer-content animate-on-scroll">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <img src="flavicon.jpg" alt="Logo FYDELIO">
+                    <img src="flavicon.jpg" alt="Logo FYDELIO" loading="lazy">
                     <span>FYDELIO</span>
                 </div>
                 <p class="footer-bio">Le partenaire technologique des restaurateurs qui veulent fidéliser sans friction et augmenter leur chiffre d'affaires.</p>
