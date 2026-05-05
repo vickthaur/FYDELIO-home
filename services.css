@@ -717,22 +717,7 @@
     .hero-text-col h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
     .hero-text-col p { font-size: 1rem; margin-bottom: 28px; }
 
-    /* Sticky scroll — suppression totale des visuels sur mobile */
-    .scroll-visual-column,
-    .visual-sticky-frame,
-    .visual-layer,
-    .visual-layer.active,
-    .visual-layer:first-child,
-    .visual-placeholder {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        position: absolute !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-    }
+    /* Sticky scroll — la colonne visuelle est masquée via .mobile-hidden dans le HTML */
     .sticky-scroll-wrapper { flex-direction: column; gap: 16px; padding: 0 16px; }
     .scroll-text-column { padding: 0; width: 100%; }
 
