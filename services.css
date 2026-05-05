@@ -710,15 +710,12 @@
    ============================================================ */
 @media (max-width: 767px) {
 
-    /* Hero */
+    /* Hero — on supprime TOUT le visuel photo sur mobile */
     .hero-modern { padding-top: 100px; }
+    .hero-visual-col { display: none !important; }
+    .hero-text-col { max-width: 100%; }
     .hero-text-col h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
     .hero-text-col p { font-size: 1rem; margin-bottom: 28px; }
-
-    .hero-photo-stack { height: 240px; }
-    .hero-photo-main { width: 100%; border-radius: 20px; }
-    .hero-photo-secondary { display: none; }
-    .hero-floating-badge { font-size: 0.78rem; padding: 8px 14px; bottom: 16px; left: 16px; }
 
     /* Stats */
     .hero-stats {
