@@ -31,10 +31,9 @@ const FYDELIO_CONFIG = {
     }
 };
 
-const supabaseApp = window.supabase.createClient(
-    FYDELIO_CONFIG.supabase.url,
-    FYDELIO_CONFIG.supabase.key
-);
+const supabaseApp = (typeof window.supabase !== 'undefined')
+    ? window.supabase.createClient(FYDELIO_CONFIG.supabase.url, FYDELIO_CONFIG.supabase.key)
+    : null;
 
 // État global
 let dataClientsGlobal  = [];
@@ -169,6 +168,14 @@ function initialiserPageAccueil() {
             btn.innerHTML = `<span class="btn-text">Vérification…</span>`;
             btn.disabled  = true;
 
+            if (!supabaseApp) {
+                errorMsg.style.display = 'block';
+                errorMsg.innerText     = "Erreur de connexion au serveur. Rechargez la page.";
+                btn.innerHTML          = `<span class="btn-text">Se connecter au Dashboard</span>`;
+                btn.disabled           = false;
+                return;
+            }
+
             try {
                 const { error: authError } = await supabaseApp.auth.signInWithPassword({ email, password: pwd });
                 if (authError) throw authError;
@@ -209,13 +216,28 @@ async function initialiserDashboard() {
     const restoID   = urlParams.get('resto') || "villa_saint_antoine";
     currentRestoConfig = FYDELIO_CONFIG.restos[restoID] || FYDELIO_CONFIG.restos["villa_saint_antoine"];
 
+    // 🔒 Timeout de secours — si le loader reste > 10s, on force la fermeture
+    const loaderTimeout = setTimeout(() => {
+        if (loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 300); }
+        showToast("Connexion lente — certaines données peuvent manquer.", 'warning');
+    }, 10000);
+
     // Skeleton immédiat
     afficherSkeleton();
+
+    // Guard : Supabase non disponible
+    if (!supabaseApp) {
+        clearTimeout(loaderTimeout);
+        if (loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 300); }
+        const tbody = document.getElementById('tableBody');
+        if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px;color:#EF4444;font-weight:700;">Erreur : Supabase non chargé. Rechargez la page.</td></tr>`;
+        return;
+    }
 
     try {
         // Vérification session
         const { data: { session } } = await supabaseApp.auth.getSession();
-        if (!session) { window.location.href = "index.html"; return; }
+        if (!session) { clearTimeout(loaderTimeout); window.location.href = "index.html"; return; }
 
         // Affichage email
         const emailEl = document.getElementById('displayEmail');
@@ -249,6 +271,7 @@ async function initialiserDashboard() {
         `;
         showToast("Erreur lors du chargement des données", 'error');
     } finally {
+        clearTimeout(loaderTimeout);
         if (loader) {
             loader.style.opacity = '0';
             setTimeout(() => { loader.style.display = 'none'; }, 300);
