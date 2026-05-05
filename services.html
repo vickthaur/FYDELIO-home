@@ -10,26 +10,26 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agence Digitale 360° | FYDELIO</title>
-    <meta name="description" content="Création de site web premium, SEO, Réseaux Sociaux et contenu pour les restaurants.">
+    <title>Agence Marketing Digital Restauration | FYDELIO</title>
+    <meta name="description" content="Découvrez le pôle Agence de FYDELIO : Création de site web premium, SEO local, Réseaux Sociaux et création de contenu pour remplir votre restaurant dans le Vaucluse.">
     
     <link rel="icon" type="image/jpeg" href="flavicon.jpg">
-    <meta name="theme-color" content="#0F172A"> <!-- Theme sombre pour cette page -->
+    <meta name="theme-color" content="#0F172A">
     
+    <!-- Pré-connexion des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Base CSS -->
+    <!-- Bases du Design System -->
     <link rel="stylesheet" href="style.css">
-    <!-- LE NOUVEAU CSS SPÉCIFIQUE (La magie opère ici) -->
+    <!-- Design spécifique à la page Agence (Bento Grid, Apple Style) -->
     <link rel="stylesheet" href="services.css">
 </head>
 <body class="agency-body">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTJPD5BL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- NAVIGATION (Identique) -->
     <header id="main-header">
         <div class="container nav-inner">
             <a href="index.html" class="logo">
@@ -37,10 +37,12 @@
                 <span>FYDELIO</span>
             </a>
             <nav class="nav-links">
-                <a href="index.html" class="link-text">Logiciel</a>
-                <a href="services.html" class="link-text" style="color: var(--primary);">Agence Digitale</a>
+                <!-- Lien retour vers la présentation du logiciel -->
+                <a href="index.html" class="link-text">Le Logiciel</a>
+                <!-- Lien actif avec la couleur primaire -->
+                <a href="services.html" class="link-text" style="color: var(--primary);">L'Agence 360°</a>
                 <a href="index.html#tarifs" class="link-text">Tarifs</a>
-                <a href="https://calendly.com/victordetroux2/30min" target="_blank" class="btn btn-outline btn-nav">Prendre RDV</a>
+                <a href="https://calendly.com/victordetroux2/30min" target="_blank" class="btn btn-outline btn-nav">Réserver un Audit</a>
             </nav>
             <button class="menu-toggle" aria-label="Ouvrir le menu">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -48,115 +50,129 @@
         </div>
     </header>
 
-    <!-- HERO SECTION APPLE-LIKE -->
-    <section class="hero-agency container">
-        <div class="badge-hero animate-on-scroll">Design & Performance</div>
-        <h1 class="hero-agency-title animate-on-scroll">
-            On ne crée pas que des sites.<br>
-            On crée des <span class="text-gradient">évidences.</span>
-        </h1>
-        <p class="hero-agency-subtitle animate-on-scroll">
-            Web design premium, SEO local redoutable, contenu viral. L'écosystème complet pour faire de votre restaurant la référence incontournable de la région.
-        </p>
-    </section>
+    <main>
+        <!-- HERO SECTION : Accroche psychologique forte -->
+        <section class="hero-agency container">
+            <div class="badge-hero animate-on-scroll">Pôle Agence & Croissance</div>
+            <h1 class="hero-agency-title animate-on-scroll">
+                On ne crée pas que des sites.<br>
+                On <span class="text-gradient">remplit votre salle.</span>
+            </h1>
+            <p class="hero-agency-subtitle animate-on-scroll">
+                Avoir une belle carte ne suffit plus. Notre agence déploie un écosystème digital complet (Web, SEO, Social Media) pour faire de votre établissement le choix numéro un de votre ville.
+            </p>
+            <div class="hero-actions animate-on-scroll" style="margin-top: 40px;">
+                <a href="#expertises" class="btn btn-primary btn-large">Découvrir nos expertises</a>
+            </div>
+        </section>
 
-    <!-- BANDEAU DÉFILANT INFINI -->
-    <div class="marquee-wrapper animate-on-scroll">
-        <div class="marquee">
-            <div class="marquee-content">
-                <span>WEB DESIGN PREMIUM</span> ✦ <span>SEO LOCAL</span> ✦ <span>RÉSEAUX SOCIAUX</span> ✦ <span>CRÉATION CONTENU</span> ✦ <span>EMAILING</span> ✦ 
-                <span>WEB DESIGN PREMIUM</span> ✦ <span>SEO LOCAL</span> ✦ <span>RÉSEAUX SOCIAUX</span> ✦ <span>CRÉATION CONTENU</span> ✦ <span>EMAILING</span> ✦
+        <!-- BANDEAU DÉFILANT INFINI : Preuve d'autorité -->
+        <div class="marquee-wrapper animate-on-scroll">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span>WEB DESIGN PREMIUM</span> ✦ <span>SEO LOCAL</span> ✦ <span>RÉSEAUX SOCIAUX</span> ✦ <span>CRÉATION CONTENU</span> ✦ <span>EMAILING</span> ✦ 
+                    <span>WEB DESIGN PREMIUM</span> ✦ <span>SEO LOCAL</span> ✦ <span>RÉSEAUX SOCIAUX</span> ✦ <span>CRÉATION CONTENU</span> ✦ <span>EMAILING</span> ✦
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- LE BENTO GRID (La structure hyper moderne) -->
-    <section class="bento-section container">
-        <div class="bento-header animate-on-scroll">
-            <h2>Nos Expertises</h2>
-            <p>Une synergie d'outils pour dominer votre marché digital.</p>
-        </div>
+        <!-- BENTO GRID : Présentation moderne des services -->
+        <section id="expertises" class="bento-section container">
+            <div class="bento-header animate-on-scroll">
+                <h2>L'écosystème de la réussite</h2>
+                <p>Arrêtez de jongler entre plusieurs prestataires. Nous gérons toute votre image.</p>
+            </div>
 
-        <div class="bento-grid">
-            
-            <!-- Carte 1 : Web Design (Très large, fond sombre) -->
-            <div class="bento-card bento-large bento-dark animate-on-scroll">
-                <div class="bento-text">
-                    <h3>Création de Sites Web</h3>
-                    <p>Votre vitrine mérite l'excellence. Nous développons des sites ultra-rapides, esthétiques et optimisés pour transformer chaque visiteur en client attablé.</p>
-                </div>
-                <div class="bento-visual mockup-laptop">
-                    <!-- Un faux navigateur stylisé -->
-                    <div class="browser-mockup">
-                        <div class="browser-dots"><span></span><span></span><span></span></div>
-                        <div class="browser-body"></div>
+            <div class="bento-grid">
+                
+                <!-- 1. Web Design (Focus Réservation) -->
+                <div class="bento-card bento-large bento-dark animate-on-scroll">
+                    <div class="bento-text">
+                        <h3>Vitrines Digitales Haute Couture</h3>
+                        <p>Votre restaurant mérite une présence en ligne aussi raffinée que votre cuisine. Nous concevons des sites web premium, ultra-rapides sur mobile et pensés avec un seul objectif : convertir vos visiteurs en réservations immédiates.</p>
+                    </div>
+                    <div class="bento-visual mockup-laptop">
+                        <div class="browser-mockup">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <div class="browser-body"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Carte 2 : SEO (Carrée) -->
-            <div class="bento-card animate-on-scroll">
-                <div class="bento-icon">🔎</div>
-                <div class="bento-text">
-                    <h3>SEO & Local</h3>
-                    <p>Soyez le premier choix sur Google quand un client cherche à manger dans votre ville. Fiche MyBusiness et mots-clés stratégiques.</p>
+                <!-- 2. SEO Local (Focus Visibilité) -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-icon">📍</div>
+                    <div class="bento-text">
+                        <h3>Dominez Google</h3>
+                        <p>Quand on cherche "restaurant + votre ville", c'est vous qu'on doit trouver. Optimisation de votre fiche MyBusiness et de votre référencement local.</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Carte 3 : Réseaux sociaux (Verticale) -->
-            <div class="bento-card bento-tall animate-on-scroll">
-                <div class="bento-text">
-                    <h3>Social Media</h3>
-                    <p>Calendrier éditorial, engagement communautaire et stratégies algorithmiques pour Instagram et Facebook.</p>
+                <!-- 3. Social Media (Focus Communauté) -->
+                <div class="bento-card bento-tall animate-on-scroll">
+                    <div class="bento-text">
+                        <h3>Une communauté qui a faim</h3>
+                        <p>Déléguez la gestion de votre Instagram et Facebook. Calendrier éditorial sur-mesure, direction artistique et stratégies algorithmiques pour exploser votre visibilité locale.</p>
+                    </div>
+                    <div class="bento-visual mockup-social">
+                        <div class="floating-like">❤️ 1.2k</div>
+                        <div class="floating-like delay">🍽️ Réservation</div>
+                    </div>
                 </div>
-                <div class="bento-visual mockup-social">
-                    <div class="floating-like">❤️ 1.2k</div>
-                    <div class="floating-like delay">👍 850</div>
+
+                <!-- 4. Emailing (Focus Rétention) -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-icon">💌</div>
+                    <div class="bento-text">
+                        <h3>Réveillez vos clients</h3>
+                        <p>Création de newsletters irrésistibles et campagnes automatisées pour annoncer votre nouveau menu ou remplir votre salle lors de soirées spéciales.</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Carte 4 : Emailing (Carrée) -->
-            <div class="bento-card animate-on-scroll">
-                <div class="bento-icon">💌</div>
-                <div class="bento-text">
-                    <h3>Emailing Auto</h3>
-                    <p>On exploite votre base FYDELIO avec des newsletters irrésistibles pour faire revenir vos clients à chaque événement.</p>
+                <!-- 5. Contenu Visuel (Focus Désirabilité) -->
+                <div class="bento-card bento-wide bento-gradient animate-on-scroll">
+                    <div class="bento-text">
+                        <h3>On mange d'abord avec les yeux</h3>
+                        <p>Fini les photos prises à la va-vite au smartphone. Nous réalisons des shootings culinaires professionnels et des vidéos Reels/TikTok virales pour rendre votre carte désirable.</p>
+                    </div>
+                    <div class="bento-icon-huge">📸</div>
                 </div>
-            </div>
 
-            <!-- Carte 5 : Contenu (Large avec dégradé chaud) -->
-            <div class="bento-card bento-wide bento-gradient animate-on-scroll">
-                <div class="bento-text">
-                    <h3>Création de Contenu Visuel</h3>
-                    <p>On mange d'abord avec les yeux. Shootings photo culinaires professionnels, vidéos immersives et Reels TikTok tendances.</p>
+                <!-- 6. Audit & Stratégie (Focus Conseil) -->
+                <div class="bento-card bento-dark-subtle animate-on-scroll">
+                    <div class="bento-icon">♟️</div>
+                    <div class="bento-text">
+                        <h3>Stratégie & Conseil</h3>
+                        <p>Un œil expert sur vos process. Analyse de la concurrence, identification des points de fuite et plan d'action d'acquisition complet.</p>
+                    </div>
                 </div>
-                <div class="bento-icon-huge">📸</div>
+
             </div>
+        </section>
 
-            <!-- Carte 6 : Audit (Carrée sombre) -->
-            <div class="bento-card bento-dark-subtle animate-on-scroll">
-                <div class="bento-icon">🎯</div>
-                <div class="bento-text">
-                    <h3>Audit & Conseil</h3>
-                    <p>Analyse de la concurrence et plan d'action clair pour doubler votre visibilité.</p>
-                </div>
+        <!-- SECTION DIFFÉRENCIATION : Logiciel + Agence -->
+        <section class="section container">
+            <div class="synergy-block animate-on-scroll" style="background: var(--surface); border-radius: 32px; padding: 60px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: center; margin-bottom: 80px;">
+                <div style="font-size: 40px; margin-bottom: 20px;">⚙️ + 🎨</div>
+                <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Le pouvoir de la synergie FYDELIO</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                    La plupart des agences vous amènent des clients qui ne reviennent jamais. La plupart des logiciels fidélisent des clients que vous avez déjà. <strong style="color: var(--text-main);">Nous faisons les deux.</strong> En couplant la puissance d'acquisition de notre agence à la force de rétention de notre carte de fidélité digitale, nous créons une machine de croissance inarrêtable.
+                </p>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- CALL TO ACTION FINAL -->
+        <section class="section container cta-agency-section">
+            <div class="cta-agency-card animate-on-scroll">
+                <h2>Prêt à changer de dimension ?</h2>
+                <p>Réservez un audit stratégique de 30 minutes totalement offert. Nous analyserons votre présence web actuelle et vous livrerons une feuille de route claire pour augmenter votre chiffre d'affaires.</p>
+                <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large btn-white">
+                    Réserver mon audit offert
+                </a>
+            </div>
+        </section>
+    </main>
 
-    <!-- CALL TO ACTION FINAL (Style Apple) -->
-    <section class="section container cta-agency-section">
-        <div class="cta-agency-card animate-on-scroll">
-            <h2>Prêt à changer de dimension ?</h2>
-            <p>Réservez un audit de 30 minutes offert. Nous analyserons votre présence web actuelle et définirons une stratégie de croissance sur-mesure.</p>
-            <a href="https://calendly.com/victordetroux2/30min" target="_blank" class="btn btn-primary btn-large btn-white">
-                Réserver mon audit gratuit
-            </a>
-        </div>
-    </section>
-
-    <!-- FOOTER (Identique) -->
     <footer class="site-footer">
         <div class="container footer-content animate-on-scroll">
             <div class="footer-brand">
@@ -164,7 +180,7 @@
                     <img src="flavicon.jpg" alt="Logo FYDELIO" loading="lazy">
                     <span>FYDELIO</span>
                 </div>
-                <p class="footer-bio">Le partenaire technologique des restaurateurs qui veulent fidéliser sans friction et augmenter leur chiffre d'affaires.</p>
+                <p class="footer-bio">Le partenaire technologique des restaurateurs qui veulent fidéliser sans friction et dominer leur marché local.</p>
             </div>
             
             <div class="footer-links">
@@ -186,7 +202,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="container"><p>© 2026 FYDELIO. Tous droits réservés.</p></div>
+            <div class="container"><p>© 2026 FYDELIO. Tous droits réservés. | Conformité RGPD stricte.</p></div>
         </div>
     </footer>
 
@@ -194,12 +210,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="animations.js"></script>
+    
     <script>
+    // Menu burger
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+
     menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.link-text, .btn-nav').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
     });
     </script>
 </body>
