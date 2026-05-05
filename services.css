@@ -1,0 +1,258 @@
+/* ==========================================================================
+   🚀 FYDELIO AGENCE - STYLES SPÉCIFIQUES (APPLE-LIKE)
+   ========================================================================== */
+
+/* Modification du fond global pour la page agence (un gris ultra ultra clair) */
+.agency-body {
+    background-color: #F8FAFC; 
+}
+
+/* --- 1. HERO SECTION MASSIF --- */
+.hero-agency {
+    padding: 240px 0 100px;
+    text-align: center;
+    max-width: 1000px;
+}
+
+.hero-agency-title {
+    font-size: 5.5rem;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em; /* Le secret d'Apple : des lettres très serrées */
+    margin-bottom: 30px;
+    color: #0F172A;
+}
+
+.hero-agency-subtitle {
+    font-size: 1.4rem;
+    color: #475569;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* --- 2. LE BANDEAU DÉFILANT (MARQUEE) --- */
+.marquee-wrapper {
+    width: 100%;
+    background: #0F172A;
+    color: white;
+    padding: 20px 0;
+    overflow: hidden;
+    position: relative;
+    transform: rotate(-2deg) scale(1.05); /* Effet d'inclinaison très moderne */
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+    margin: 80px 0 120px 0;
+}
+
+.marquee-content {
+    display: flex;
+    width: max-content;
+    animation: scroll-marquee 20s linear infinite;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+}
+
+.marquee-content span {
+    margin: 0 30px;
+    color: #FFFFFF;
+}
+
+@keyframes scroll-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- 3. LE BENTO GRID (LA GRILLE MAGIQUE) --- */
+.bento-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.bento-header h2 { font-size: 3.5rem; letter-spacing: -0.03em; margin-bottom: 10px; }
+.bento-header p { font-size: 1.2rem; color: var(--text-muted); }
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(280px, auto);
+    gap: 24px;
+    margin-bottom: 120px;
+}
+
+.bento-card {
+    background: var(--surface);
+    border-radius: 40px; /* Bords très arrondis Apple */
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+}
+
+.bento-text h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.bento-text p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.bento-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Tailles spécifiques du Bento */
+.bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento-wide {
+    grid-column: span 2;
+}
+
+.bento-tall {
+    grid-row: span 2;
+}
+
+/* Thèmes de cartes (Noir, Dégradé) */
+.bento-dark {
+    background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.bento-dark .bento-text p { color: rgba(255,255,255,0.7); }
+.bento-dark h3 { color: white; }
+
+.bento-dark-subtle {
+    background: #1E293B;
+    color: white;
+}
+.bento-dark-subtle .bento-text p { color: rgba(255,255,255,0.7); }
+.bento-dark-subtle h3 { color: white; }
+
+.bento-gradient {
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+    border: 1px solid #FED7AA;
+}
+
+.bento-icon-huge {
+    position: absolute;
+    bottom: -20px;
+    right: -10px;
+    font-size: 120px;
+    opacity: 0.2;
+    transform: rotate(-15deg);
+}
+
+/* Faux visuels pour remplir les cartes */
+.bento-visual {
+    margin-top: 30px;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.browser-mockup {
+    width: 100%;
+    height: 180px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px 16px 0 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-bottom: none;
+    backdrop-filter: blur(10px);
+    padding: 12px;
+}
+
+.browser-dots span {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #475569;
+    margin-right: 6px;
+}
+.browser-dots span:nth-child(1) { background: #EF4444; }
+.browser-dots span:nth-child(2) { background: #F59E0B; }
+.browser-dots span:nth-child(3) { background: #10B981; }
+
+.mockup-social {
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+.floating-like {
+    background: white;
+    color: #0F172A;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 800;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    animation: float 4s ease-in-out infinite;
+}
+.floating-like.delay {
+    top: 60%;
+    left: auto;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* --- 4. CALL TO ACTION FINAL --- */
+.cta-agency-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    border-radius: 40px;
+    padding: 80px 40px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 40px 80px rgba(15, 118, 110, 0.3);
+    margin-bottom: 80px;
+}
+.cta-agency-card h2 { font-size: 3rem; margin-bottom: 20px; letter-spacing: -0.03em; color: white;}
+.cta-agency-card p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 40px auto; }
+.btn-white { background: white; color: var(--primary); }
+.btn-white:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.2); transform: scale(1.05); }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 992px) {
+    .hero-agency { padding: 180px 24px 80px; }
+    .hero-agency-title { font-size: 3rem; }
+    .bento-header h2 { font-size: 2.5rem; }
+    
+    /* Le Bento s'effondre en 1 colonne sur mobile */
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    .bento-large, .bento-wide, .bento-tall {
+        grid-column: span 1;
+        grid-row: auto;
+    }
+    .bento-card {
+        padding: 30px;
+        border-radius: 32px;
+    }
+    .cta-agency-card { padding: 50px 24px; border-radius: 32px; }
+    .cta-agency-card h2 { font-size: 2rem; }
+}
