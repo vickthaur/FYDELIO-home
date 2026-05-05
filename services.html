@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -11,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agence Marketing Digital | FYDELIO</title>
-    <meta name="description" content="Découvrez l'agence digitale FYDELIO : Création de site web, Réseaux Sociaux et Emailing pour les restaurants du Vaucluse.">
+    <meta name="description" content="L'agence digitale FYDELIO : site web, réseaux sociaux, emailing et contenu pour les restaurants du Vaucluse. Faites rayonner votre établissement.">
 
     <link rel="icon" type="image/jpeg" href="flavicon.jpg">
     <meta name="theme-color" content="#0F766E">
@@ -20,22 +19,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Fichier global (header, footer, boutons, typographie) -->
+    <script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
-    <!-- Fichier spécifique à cette page (sticky scroll, roadmap, FAQ) -->
     <link rel="stylesheet" href="services.css">
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTJPD5BL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTJPD5BL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Formes d'arrière-plan (reprises de style.css) -->
     <div class="bg-shape-1"></div>
     <div class="bg-shape-2"></div>
 
-    <!-- =============================================
-         HEADER — classes identiques à index.html
-         ============================================= -->
+    <!-- HEADER -->
     <header id="main-header">
         <div class="container nav-inner">
             <a href="index.html" class="logo">
@@ -44,105 +39,184 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html" class="link-text">Logiciel</a>
-                <!-- Lien actif stylé avec la variable verte de la charte -->
                 <a href="services.html" class="link-text nav-link-active">Agence Digitale</a>
                 <a href="index.html#tarifs" class="link-text">Tarifs</a>
                 <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-nav">Réserver un audit</a>
             </nav>
             <button class="menu-toggle" aria-label="Ouvrir le menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </button>
         </div>
     </header>
 
     <!-- =============================================
-         HERO — structure identique à index.html
+         HERO — 2 colonnes, photo agence, stats
          ============================================= -->
-    <section class="hero container">
-        <div class="badge-hero">L'Agence FYDELIO</div>
-        <h1>Au-delà de la fidélité,<br><span class="text-gradient">dominez votre marché.</span></h1>
-        <p>La création d'un programme de fidélité n'est que la première étape. Découvrez notre pôle agence 360° pour faire rayonner votre établissement sur le web et attirer une nouvelle clientèle en continu.</p>
-        <div class="hero-actions">
-            <a href="#sticky-expertise" class="btn btn-primary btn-large">Découvrir nos expertises</a>
+    <section class="hero-modern">
+        <div class="hero-content container">
+
+            <div class="hero-text-col">
+                <div class="badge-hero animate-on-scroll">
+                    <i data-lucide="zap" style="width:14px;height:14px;"></i>
+                    L'Agence FYDELIO
+                </div>
+                <h1 class="animate-on-scroll">
+                    Au-delà de la fidélité,<br>
+                    <span class="text-gradient">dominez votre marché.</span>
+                </h1>
+                <p class="animate-on-scroll">
+                    Capter des clients fidèles n'est que la première victoire. Nous construisons votre présence digitale complète — site, réseaux, contenu, emailing — pour que votre restaurant devienne une référence incontournable dans le Vaucluse.
+                </p>
+                <div class="hero-actions animate-on-scroll">
+                    <a href="#sticky-expertise" class="btn btn-primary btn-large">
+                        Découvrir nos expertises
+                    </a>
+                    <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn-ghost-link">
+                        Audit gratuit
+                        <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                    </a>
+                </div>
+                <div class="hero-stats animate-on-scroll">
+                    <div class="hero-stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">expertises complémentaires</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="stat-number">2 sem.</span>
+                        <span class="stat-label">pour être en ligne</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">local Vaucluse</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual-col animate-on-scroll">
+                <div class="hero-photo-stack">
+                    <div class="hero-photo-main">
+                        <img
+                            src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=700&q=80&fit=crop"
+                            alt="Marketing digital restaurant"
+                            loading="eager">
+                        <div class="hero-floating-badge">
+                            <i data-lucide="trending-up" style="width:15px;height:15px;color:#0F766E;"></i>
+                            <span>+38% de retours clients</span>
+                        </div>
+                    </div>
+                    <div class="hero-photo-secondary">
+                        <img
+                            src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&q=80&fit=crop"
+                            alt="Création de site web restaurant"
+                            loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="locality-band">
+            <div class="container locality-inner">
+                <span class="locality-label">Nos clients</span>
+                <div class="locality-places">
+                    <span>Restaurants</span><span class="loc-dot"></span>
+                    <span>Hôtels</span><span class="loc-dot"></span>
+                    <span>Bistrots</span><span class="loc-dot"></span>
+                    <span>Brasseries</span><span class="loc-dot"></span>
+                    <span>Caves à vin</span><span class="loc-dot"></span>
+                    <span>Tables d'hôtes</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- =============================================
-         SECTION STICKY SCROLL — L'EXPERTISE EN 3 ACTES
-         Mécanique : texte défile à gauche, visuel épinglé à droite
-         Classes utilisées par animations.js : .scroll-node / .visual-layer
+         STICKY SCROLL — L'EXPERTISE EN 3 ACTES
          ============================================= -->
     <section id="sticky-expertise" class="section">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <h2>Notre expertise, acte par acte</h2>
-                <p>Trois leviers complémentaires pour faire de votre restaurant une référence digitale incontournable dans le Vaucluse.</p>
+                <div class="section-eyebrow">Notre méthode</div>
+                <h2>Trois leviers qui font la différence</h2>
+                <p>Une présence digitale efficace repose sur trois piliers qui se renforcent mutuellement. Voici comment on les active pour votre établissement.</p>
             </div>
         </div>
 
-        <!-- Wrapper principal de la mécanique sticky -->
         <div class="sticky-scroll-wrapper">
 
-            <!-- COLONNE GAUCHE : textes qui défilent -->
             <div class="scroll-text-column">
 
-                <!-- Nœud 1 : Site Web -->
                 <div class="scroll-node" data-index="0">
                     <div class="scroll-node-inner">
-                        <div class="scroll-node-badge">01 — Site Web</div>
-                        <h3>Une vitrine digitale qui convertit chaque visiteur.</h3>
-                        <p>Votre restaurant mérite un site web à la hauteur de votre cuisine. Nous concevons des expériences premium, ultra-rapides et pensées pour transformer chaque visiteur en réservation concrète.</p>
+                        <div class="scroll-node-badge">
+                            <i data-lucide="monitor" style="width:12px;height:12px;"></i>
+                            01 — Site Web
+                        </div>
+                        <h3>Une vitrine qui convertit chaque visiteur.</h3>
+                        <p>Votre restaurant mérite un site à la hauteur de votre cuisine. Nous concevons des expériences premium, rapides et pensées pour transformer chaque visiteur en réservation concrète.</p>
                         <ul class="scroll-node-list">
                             <li>Design sur-mesure, identité cohérente</li>
                             <li>Optimisé pour Google (Core Web Vitals)</li>
                             <li>Intégration réservation &amp; carte digitale</li>
                         </ul>
+                        <div class="step-highlight">
+                            <i data-lucide="clock" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
+                            <span>Livré en moins de 2 semaines, clé en main</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Nœud 2 : Réseaux Sociaux -->
                 <div class="scroll-node" data-index="1">
                     <div class="scroll-node-inner">
-                        <div class="scroll-node-badge">02 — Réseaux Sociaux</div>
-                        <h3>Votre communauté, gérée sans que vous y pensiez.</h3>
-                        <p>Déléguez Instagram et Facebook à nos créatifs. Calendrier éditorial sur-mesure, Reels tendances, engagement actif — votre marque devient une référence locale avant même l'addition.</p>
+                        <div class="scroll-node-badge">
+                            <i data-lucide="smartphone" style="width:12px;height:12px;"></i>
+                            02 — Réseaux Sociaux
+                        </div>
+                        <h3>Votre communauté, gérée sans y penser.</h3>
+                        <p>Déléguez Instagram et Facebook à nos créatifs. Calendrier éditorial, Reels tendances, engagement actif — votre marque devient une référence locale avant même l'addition.</p>
                         <ul class="scroll-node-list">
                             <li>Stratégie éditoriale mensuelle</li>
                             <li>Création Reels / TikTok / Stories</li>
                             <li>Analyse des performances &amp; reporting</li>
                         </ul>
+                        <div class="step-highlight">
+                            <i data-lucide="users" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
+                            <span>Communauté locale engagée dès la première semaine</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Nœud 3 : Emailing FYDELIO -->
                 <div class="scroll-node" data-index="2">
                     <div class="scroll-node-inner">
-                        <div class="scroll-node-badge">03 — Emailing FYDELIO</div>
-                        <h3>Réactivez vos clients au bon moment, automatiquement.</h3>
-                        <p>Votre base de données FYDELIO est une mine d'or inexploitée. Nous rédigeons et programmons des campagnes d'emailing qui font revenir vos habitués lors de chaque événement clé.</p>
+                        <div class="scroll-node-badge">
+                            <i data-lucide="mail" style="width:12px;height:12px;"></i>
+                            03 — Emailing FYDELIO
+                        </div>
+                        <h3>Réactivez vos clients au bon moment.</h3>
+                        <p>Votre base FYDELIO est une mine d'or inexploitée. Nous rédigeons des campagnes d'emailing qui font revenir vos habitués lors de chaque événement clé de l'année.</p>
                         <ul class="scroll-node-list">
                             <li>Newsletters pour St-Valentin, nouvelle carte…</li>
                             <li>Segmentation par fréquence de visite</li>
-                            <li>Taux d'ouverture moyen : 38% vs 21% secteur</li>
+                            <li>38% de taux d'ouverture vs 21% secteur</li>
                         </ul>
+                        <div class="step-highlight">
+                            <i data-lucide="repeat" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
+                            <span>Automatisé — tourne seul après configuration</span>
+                        </div>
                     </div>
                 </div>
 
-            </div><!-- /scroll-text-column -->
+            </div>
 
-            <!-- COLONNE DROITE : visuels épinglés (sticky) -->
             <div class="scroll-visual-column">
                 <div class="visual-sticky-frame">
 
-                    <!-- Image 0 : Site Web -->
                     <div class="visual-layer active" data-index="0">
                         <div class="visual-placeholder vp-web">
                             <div class="vp-browser-bar">
-                                <span class="vp-dot"></span>
-                                <span class="vp-dot"></span>
-                                <span class="vp-dot"></span>
+                                <span class="vp-dot"></span><span class="vp-dot"></span><span class="vp-dot"></span>
                                 <div class="vp-url-bar">fydelio.fr/restaurant</div>
                             </div>
                             <div class="vp-browser-content">
@@ -162,7 +236,6 @@
                         <div class="visual-label">Site Web Premium</div>
                     </div>
 
-                    <!-- Image 1 : Réseaux Sociaux -->
                     <div class="visual-layer" data-index="1">
                         <div class="visual-placeholder vp-social">
                             <div class="vp-phone-frame">
@@ -194,7 +267,6 @@
                         <div class="visual-label">Réseaux Sociaux</div>
                     </div>
 
-                    <!-- Image 2 : Emailing -->
                     <div class="visual-layer" data-index="2">
                         <div class="visual-placeholder vp-email">
                             <div class="vp-email-frame">
@@ -220,15 +292,15 @@
                                 </div>
                                 <div class="vp-email-stat-row">
                                     <div class="vp-email-stat">
-                                        <span class="vp-stat-val">38%</span>
+                                        <span class="vp-stat-val" data-target-text="38%">38%</span>
                                         <span class="vp-stat-lbl">Taux d'ouverture</span>
                                     </div>
                                     <div class="vp-email-stat">
-                                        <span class="vp-stat-val">12%</span>
+                                        <span class="vp-stat-val" data-target-text="12%">12%</span>
                                         <span class="vp-stat-lbl">Taux de clic</span>
                                     </div>
                                     <div class="vp-email-stat">
-                                        <span class="vp-stat-val">×3</span>
+                                        <span class="vp-stat-val" data-target-text="×3">×3</span>
                                         <span class="vp-stat-lbl">Retours clients</span>
                                     </div>
                                 </div>
@@ -237,116 +309,172 @@
                         <div class="visual-label">Campagne Emailing</div>
                     </div>
 
-                </div><!-- /visual-sticky-frame -->
-            </div><!-- /scroll-visual-column -->
+                </div>
+            </div>
 
-        </div><!-- /sticky-scroll-wrapper -->
+        </div>
+    </section>
+
+    <!-- PHOTO VAUCLUSE FULL-WIDTH -->
+    <section class="vaucluse-photo-section">
+        <div class="vaucluse-photo-wrapper">
+            <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80&fit=crop"
+                alt="Restaurant Vaucluse ambiance"
+                loading="lazy"
+                class="vaucluse-photo-img">
+            <div class="vaucluse-photo-overlay">
+                <div class="container">
+                    <div class="vaucluse-quote">
+                        <p>"Votre restaurant est exceptionnel. Votre présence digitale doit l'être aussi."</p>
+                        <span>— Victor &amp; Mathys, fondateurs FYDELIO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- =============================================
-         GRILLE DES 6 SERVICES (section existante)
+         GRILLE DES 6 SERVICES
          ============================================= -->
     <section id="services-grid" class="section container">
         <div class="section-header animate-on-scroll">
-            <h2>Toutes nos expertises</h2>
-            <p>Un accompagnement complet, du premier clic à la réservation finale.</p>
+            <div class="section-eyebrow">Toutes nos expertises</div>
+            <h2>Un accompagnement 360°</h2>
+            <p>Du premier clic à la réservation finale — six leviers qui travaillent ensemble pour votre croissance.</p>
         </div>
         <div class="grid-3">
-            <div class="card animate-on-scroll">
-                <div class="card-icon">💻</div>
+
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--teal">
+                    <i data-lucide="monitor"></i>
+                </div>
                 <h3>Création de Site Web</h3>
-                <p>Votre restaurant mérite une vitrine digitale à la hauteur de votre cuisine. Nous concevons des sites web premium, ultra-rapides et pensés pour convertir vos visiteurs en réservations concrètes.</p>
+                <p>Votre restaurant mérite une vitrine à la hauteur de votre cuisine. Sites premium, rapides et pensés pour convertir vos visiteurs en réservations concrètes.</p>
             </div>
-            <div class="card animate-on-scroll">
-                <div class="card-icon">🔎</div>
+
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--purple">
+                    <i data-lucide="search"></i>
+                </div>
                 <h3>SEO &amp; Visibilité Locale</h3>
-                <p>Apparaissez en premier sur Google lorsque les clients cherchent un restaurant dans votre ville. Optimisation Google My Business et stratégie de mots-clés locaux redoutables.</p>
+                <p>Apparaissez en premier sur Google quand un client cherche un restaurant dans votre ville. Fiche Google My Business et mots-clés locaux redoutables.</p>
             </div>
-            <div class="card animate-on-scroll">
-                <div class="card-icon">📱</div>
+
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--amber">
+                    <i data-lucide="smartphone"></i>
+                </div>
                 <h3>Gestion des Réseaux Sociaux</h3>
-                <p>Déléguez la gestion de votre Instagram et Facebook. Calendrier éditorial sur-mesure, engagement actif et stratégies algorithmiques prouvées.</p>
+                <p>Déléguez votre Instagram et Facebook. Calendrier éditorial sur-mesure, engagement actif et stratégies algorithmiques prouvées qui font grandir votre audience.</p>
             </div>
-            <div class="card animate-on-scroll">
-                <div class="card-icon">📸</div>
+
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--red">
+                    <i data-lucide="camera"></i>
+                </div>
                 <h3>Création de Contenu Photo/Vidéo</h3>
-                <p>Shooting photo culinaire professionnel, vidéos immersives et création de TikTok/Reels tendances pour rendre votre carte absolument irrésistible en ligne.</p>
+                <p>On mange d'abord avec les yeux. Shooting culinaire professionnel, vidéos immersives et Reels tendances pour rendre votre carte irrésistible en ligne.</p>
             </div>
-            <div class="card animate-on-scroll">
-                <div class="card-icon">✉️</div>
+
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--blue">
+                    <i data-lucide="mail"></i>
+                </div>
                 <h3>Campagnes Emailing</h3>
-                <p>Exploitez la base de données générée par votre carte FYDELIO. Newsletters esthétiques et percutantes pour relancer vos clients lors des événements clés.</p>
+                <p>Exploitez la base FYDELIO. Newsletters esthétiques et percutantes pour relancer vos clients lors des événements clés de l'année.</p>
             </div>
-            <div class="card animate-on-scroll">
-                <div class="card-icon">🎯</div>
+
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--green">
+                    <i data-lucide="bar-chart-2"></i>
+                </div>
                 <h3>Audit &amp; Conseil Marketing</h3>
-                <p>Un diagnostic complet de votre présence en ligne actuelle. Identifiez vos points de fuite, analysez la concurrence et obtenez un plan d'action clair.</p>
+                <p>Diagnostic complet de votre présence digitale. Identification des points de fuite, analyse concurrentielle et plan d'action clair pour doubler votre visibilité.</p>
             </div>
+
         </div>
     </section>
 
     <!-- =============================================
-         ROADMAP DE DÉPLOIEMENT
+         ROADMAP
          ============================================= -->
     <section class="section container">
         <div class="section-header animate-on-scroll">
-            <h2>Comment on démarre ensemble</h2>
-            <p>Un processus d'onboarding sans friction, conçu pour le rythme d'un restaurateur.</p>
+            <div class="section-eyebrow">Comment on démarre</div>
+            <h2>Trois étapes, zéro friction.</h2>
+            <p>Un processus d'onboarding conçu pour le rythme d'un restaurateur — sans réunions inutiles, sans jargon.</p>
         </div>
         <div class="roadmap-grid">
+
             <div class="roadmap-card animate-on-scroll">
+                <div class="roadmap-icon">
+                    <i data-lucide="search" style="width:24px;height:24px;color:#0F766E;"></i>
+                </div>
                 <div class="roadmap-number">01</div>
                 <h3>Audit &amp; Stratégie</h3>
-                <p>Un appel de 30 minutes pour analyser votre présence actuelle, comprendre vos objectifs et définir ensemble les leviers prioritaires.</p>
+                <p>30 minutes pour analyser votre présence actuelle, comprendre vos objectifs et identifier les leviers prioritaires — gratuit, sans engagement.</p>
             </div>
+
             <div class="roadmap-connector animate-on-scroll"></div>
+
             <div class="roadmap-card animate-on-scroll">
+                <div class="roadmap-icon">
+                    <i data-lucide="rocket" style="width:24px;height:24px;color:#0F766E;"></i>
+                </div>
                 <div class="roadmap-number">02</div>
                 <h3>Production &amp; Mise en ligne</h3>
-                <p>Notre équipe produit vos assets (site, contenu, campagnes) en moins de 2 semaines. Vous validez, on déploie. Zéro friction de votre côté.</p>
+                <p>Notre équipe produit vos assets en moins de 2 semaines. Vous validez, on déploie. Zéro friction de votre côté — vous continuez à cuisiner.</p>
             </div>
+
             <div class="roadmap-connector animate-on-scroll"></div>
+
             <div class="roadmap-card animate-on-scroll">
+                <div class="roadmap-icon">
+                    <i data-lucide="trending-up" style="width:24px;height:24px;color:#0F766E;"></i>
+                </div>
                 <div class="roadmap-number">03</div>
                 <h3>Pilotage &amp; Croissance</h3>
-                <p>Suivi mensuel des performances, optimisations continues et reporting clair. Vous voyez les résultats, nous restons à l'affût des opportunités.</p>
+                <p>Suivi mensuel, optimisations continues et reporting clair. Vous voyez les chiffres, on reste à l'affût des opportunités pour accélérer.</p>
             </div>
+
         </div>
     </section>
 
     <!-- =============================================
-         FAQ ACCORDÉON
+         FAQ
          ============================================= -->
     <section class="section container">
         <div class="section-header animate-on-scroll">
-            <h2>Questions fréquentes</h2>
+            <div class="section-eyebrow">Questions fréquentes</div>
+            <h2>On répond franchement.</h2>
         </div>
         <div class="faq-list animate-on-scroll">
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
                     <span>Est-ce que je dois avoir FYDELIO pour accéder à l'agence ?</span>
-                    <span class="faq-icon">+</span>
+                    <div class="faq-icon-wrap"><i data-lucide="plus" style="width:18px;height:18px;"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>Non, nos services d'agence sont accessibles indépendamment. Cependant, la combinaison Logiciel + Agence crée une synergie unique : votre base de données FYDELIO alimente directement vos campagnes emailing pour des résultats nettement supérieurs.</p>
+                    <p>Non, nos services d'agence sont accessibles indépendamment. Cependant, la combinaison Logiciel + Agence crée une synergie unique : votre base FYDELIO alimente directement vos campagnes emailing pour des résultats nettement supérieurs.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
                     <span>Quels sont vos tarifs pour l'agence ?</span>
-                    <span class="faq-icon">+</span>
+                    <div class="faq-icon-wrap"><i data-lucide="plus" style="width:18px;height:18px;"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>Chaque projet étant unique, nous proposons des devis sur-mesure après un audit gratuit. Nos offres démarrent à partir de 299€/mois pour un accompagnement réseaux sociaux, jusqu'à des packs complets incluant site web, contenu et emailing.</p>
+                    <p>Chaque projet étant unique, nous proposons des devis sur-mesure après un audit gratuit. Nos offres démarrent à 299€/mois pour la gestion des réseaux sociaux, jusqu'aux packs complets incluant site web, contenu et emailing.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
                     <span>Combien de temps pour voir les premiers résultats ?</span>
-                    <span class="faq-icon">+</span>
+                    <div class="faq-icon-wrap"><i data-lucide="plus" style="width:18px;height:18px;"></i></div>
                 </button>
                 <div class="faq-answer">
                     <p>Les réseaux sociaux et l'emailing produisent des résultats dès la première campagne (2 à 4 semaines). Le SEO et la refonte de site sont des investissements à 3-6 mois, avec un impact durable et exponentiel sur votre visibilité locale.</p>
@@ -356,35 +484,39 @@
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
                     <span>Y a-t-il un engagement minimum ?</span>
-                    <span class="faq-icon">+</span>
+                    <div class="faq-icon-wrap"><i data-lucide="plus" style="width:18px;height:18px;"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>Nos formules mensuelles (réseaux sociaux, emailing) sont sans engagement longue durée. Pour les projets de création de site web, nous travaillons avec un contrat de projet ponctuel. La confiance doit se mériter chaque mois.</p>
+                    <p>Nos formules mensuelles sont sans engagement longue durée. Pour les projets de création de site, nous travaillons avec un contrat de projet ponctuel. La confiance se mérite chaque mois — pas avec un contrat de 12 mois forcé.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- =============================================
-         CTA FINAL
-         ============================================= -->
-    <section class="section container">
-        <div class="cta-final-band animate-on-scroll">
-            <div class="cta-final-content">
-                <div class="cta-final-badge">Audit Gratuit</div>
-                <h2>Prêt à passer au niveau supérieur ?</h2>
-                <p>30 minutes avec nos experts pour analyser votre présence digitale et définir votre plan de croissance. Sans engagement, sans jargon.</p>
-                <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-large cta-final-btn">
-                    Réserver mon audit offert →
-                </a>
+    <!-- CTA FINAL PHOTO -->
+    <section class="cta-photo-section">
+        <div class="cta-photo-bg">
+            <img
+                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1400&q=80&fit=crop"
+                alt="Restaurant Provence"
+                loading="lazy">
+        </div>
+        <div class="cta-photo-overlay"></div>
+        <div class="container cta-photo-content animate-on-scroll">
+            <div class="badge-hero" style="background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.25);">
+                Audit gratuit · Sans engagement
             </div>
+            <h2>Prêt à dominer votre marché local ?</h2>
+            <p>30 minutes avec Victor ou Mathys. On analyse votre présence digitale actuelle et on vous montre exactement ce qu'on ferait pour votre établissement.</p>
+            <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-large cta-photo-btn">
+                Réserver mon audit offert
+                <i data-lucide="calendar" style="width:17px;height:17px;"></i>
+            </a>
         </div>
     </section>
 
-    <!-- =============================================
-         FOOTER — identique à index.html
-         ============================================= -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container footer-content animate-on-scroll">
             <div class="footer-brand">
@@ -392,7 +524,11 @@
                     <img src="flavicon.jpg" alt="Logo FYDELIO" loading="lazy">
                     <span>FYDELIO</span>
                 </div>
-                <p class="footer-bio">Le partenaire technologique des restaurateurs qui veulent fidéliser sans friction et augmenter leur chiffre d'affaires.</p>
+                <p class="footer-bio">Le partenaire technologique des restaurateurs du Vaucluse qui veulent fidéliser sans friction et augmenter leur chiffre d'affaires.</p>
+                <div class="footer-location">
+                    <i data-lucide="map-pin" style="width:14px;height:14px;opacity:0.5;"></i>
+                    <span>Vaucluse, Provence</span>
+                </div>
             </div>
             <div class="footer-links">
                 <h4>Navigation</h4>
@@ -405,9 +541,18 @@
             <div class="footer-contact">
                 <h4>Nous Contacter</h4>
                 <ul>
-                    <li><span class="icon">📍</span> Vaucluse (Cavaillon / L'Isle)</li>
-                    <li><span class="icon">✉️</span> <a href="mailto:victordetroux2@gmail.com">victordetroux2@gmail.com</a></li>
-                    <li><span class="icon">✉️</span> <a href="mailto:mathys.groy84@gmail.com">mathys.groy84@gmail.com</a></li>
+                    <li>
+                        <i data-lucide="mail" style="width:13px;height:13px;opacity:0.5;"></i>
+                        <a href="mailto:victordetroux2@gmail.com">victordetroux2@gmail.com</a>
+                    </li>
+                    <li>
+                        <i data-lucide="mail" style="width:13px;height:13px;opacity:0.5;"></i>
+                        <a href="mailto:mathys.groy84@gmail.com">mathys.groy84@gmail.com</a>
+                    </li>
+                    <li>
+                        <i data-lucide="calendar" style="width:13px;height:13px;opacity:0.5;"></i>
+                        <a href="https://calendly.com/victordetroux2/30min" target="_blank">Réserver un créneau</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -418,21 +563,19 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS — même ordre que index.html -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="animations.js"></script>
 
-    <!-- Menu Mobile (identique à index.html) -->
     <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    lucide.createIcons();
 
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks   = document.querySelector('.nav-links');
     menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
-
     document.querySelectorAll('.link-text, .btn-nav').forEach(link => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
@@ -440,10 +583,10 @@
         });
     });
 
-    // FAQ Accordéon
+    // FAQ Accordéon avec Lucide
     document.querySelectorAll('.faq-question').forEach(btn => {
         btn.addEventListener('click', () => {
-            const item = btn.closest('.faq-item');
+            const item   = btn.closest('.faq-item');
             const isOpen = item.classList.contains('open');
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
             document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', 'false'));
