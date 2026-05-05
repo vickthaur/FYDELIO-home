@@ -1,363 +1,364 @@
 /* ==========================================================================
-   🚀 FYDELIO AGENCE - STYLES SPÉCIFIQUES (APPLE / AWWWARDS LEVEL)
+   🚀 FYDELIO AGENCE - TERMINAL OS AESTHETIC (AWWWARDS LEVEL)
    ========================================================================== */
-/* --- 0. FIX ANIMATIONS --- */
-/* On désactive l'ancienne méthode d'animation pour laisser GSAP faire sa magie Apple */
-.agency-body .animate-on-scroll {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-}
-/* --- 0. FOND DE PAGE PREMIUM --- */
-/* Un gris ultra-clair avec un très léger halo bleuté en fond pour la profondeur */
-.agency-body {
-    background-color: #F8FAFC; 
-    background-image: 
-        radial-gradient(at 0% 0%, hsla(210, 100%, 98%, 1) 0, transparent 50%), 
-        radial-gradient(at 100% 0%, hsla(190, 100%, 98%, 1) 0, transparent 50%);
-}
 
-/* --- 1. HERO SECTION (TYPOGRAPHIE GÉANTE) --- */
-.hero-agency {
-    padding: 220px 24px 100px;
-    text-align: center;
-    max-width: 1050px;
-    margin: 0 auto;
-}
-
-.hero-agency-title {
-    font-size: 5.8rem;
-    font-weight: 900;
-    line-height: 1.02;
-    letter-spacing: -0.04em; /* Le secret d'Apple : des lettres très resserrées */
-    margin-bottom: 32px;
-    color: #020617;
-}
-
-.hero-agency-subtitle {
-    font-size: 1.35rem;
-    color: #475569;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.7;
-    font-weight: 500;
-}
-
-/* --- 2. LE BANDEAU DÉFILANT INFINI (MARQUEE) --- */
-.marquee-wrapper {
-    width: 100%;
-    background: #020617; /* Presque noir absolu */
-    color: white;
-    padding: 28px 0;
-    overflow: hidden;
-    position: relative;
-    transform: rotate(-2.5deg) scale(1.05); /* Effet d'inclinaison dynamique */
-    box-shadow: 0 24px 48px -12px rgba(2, 6, 23, 0.4);
-    margin: 70px 0 140px 0;
-    z-index: 10;
-}
-
-.marquee {
-    width: 100%;
-    overflow: hidden;
-}
-
-.marquee-content {
-    display: flex;
-    white-space: nowrap;
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: 0.15em;
-    will-change: transform;
-}
-
-.marquee-content span {
-    margin: 0 45px;
+/* --- 0. VARIABLES & THÈME DE BASE --- */
+.terminal-os-body {
+    background-color: #030712; /* Noir très profond */
     color: #F8FAFC;
-    display: flex;
-    align-items: center;
-    opacity: 0.9;
-}
-
-/* --- 3. LE BENTO GRID (LA GRILLE MAGIQUE) --- */
-.bento-section {
-    padding-top: 40px;
-}
-
-.bento-header {
-    text-align: center;
-    margin-bottom: 70px;
-}
-
-.bento-header h2 { 
-    font-size: 3.5rem; 
-    letter-spacing: -0.03em; 
-    margin-bottom: 15px; 
-    color: #0F172A;
-}
-
-.bento-header p { 
-    font-size: 1.25rem; 
-    color: #64748B; 
-}
-
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(320px, auto);
-    gap: 24px;
-    margin-bottom: 140px;
-}
-
-/* LA CARTE BENTO DE BASE (Le joyau) */
-.bento-card {
-    background: #FFFFFF;
-    border-radius: 40px; /* Arrondi maximal façon icône iPhone */
-    padding: 48px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
     position: relative;
-    overflow: hidden;
-    /* Un reflet interne blanc (Inner Glow) + Une bordure ultra fine */
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 1), /* Reflet haut */
-        0 4px 6px -1px rgba(0, 0, 0, 0.02), /* Ombre proche */
-        0 20px 40px -10px rgba(0, 0, 0, 0.04); /* Ombre lointaine */
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    flex-direction: column;
-    will-change: transform, box-shadow;
-    z-index: 1;
-}
-
-/* Effet de lévitation magnétique au survol */
-.bento-card:hover {
-    transform: translateY(-8px) scale(1.015);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 1),
-        0 10px 15px -3px rgba(0, 0, 0, 0.03),
-        0 30px 60px -15px rgba(0, 0, 0, 0.08);
-    z-index: 2;
-}
-
-/* Typographie interne des cartes */
-.bento-text h3 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    color: #0F172A;
-}
-
-.bento-text p {
-    color: #475569;
-    font-size: 1.1rem;
     line-height: 1.6;
 }
 
-.bento-icon {
-    font-size: 2.5rem;
-    margin-bottom: 24px;
-    background: #F1F5F9;
-    width: 68px;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 22px; /* Squircle interne */
-}
+/* Polices utilitaires */
+.tech-font { font-family: 'Fira Code', monospace; }
 
-/* Formats Spécifiques (Le puzzle du Bento) */
-.bento-large { grid-column: span 2; grid-row: span 2; }
-.bento-wide { grid-column: span 2; }
-.bento-tall { grid-row: span 2; }
-
-/* --- THÈMES DE CARTES PREMIUM --- */
-
-/* Thème Sombre Profond (Nuit) */
-.bento-dark {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 20px 40px -10px rgba(15, 23, 42, 0.3);
-}
-.bento-dark .bento-text p { color: rgba(255, 255, 255, 0.75); }
-.bento-dark .bento-text h3 { color: #FFFFFF; }
-
-/* Thème Sombre Doux (Gris) */
-.bento-dark-subtle {
-    background: #1E293B;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-.bento-dark-subtle .bento-text p { color: rgba(255, 255, 255, 0.7); }
-.bento-dark-subtle .bento-text h3 { color: #FFFFFF; }
-.bento-dark-subtle .bento-icon { background: rgba(255, 255, 255, 0.1); }
-
-/* Thème Pêche/Chaud (Désirabilité) */
-.bento-gradient {
-    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
-    border: 1px solid rgba(253, 186, 116, 0.5);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-.bento-icon-huge {
-    position: absolute;
-    bottom: -30px;
-    right: -20px;
-    font-size: 160px;
-    opacity: 0.15;
-    transform: rotate(-15deg);
+/* --- 1. DÉCORS ET ARRIÈRE-PLANS (L'ambiance Matrice) --- */
+.system-environment {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
     pointer-events: none;
 }
 
-/* --- 4. LES MOCKUPS VISUELS EN VERRE --- */
-.bento-visual {
-    margin-top: 40px;
-    flex: 1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
+/* Bruit visuel */
+.noise-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.04;
+    mix-blend-mode: overlay;
 }
 
-/* Faux navigateur Mac */
-.browser-mockup {
-    width: 110%;
-    height: 240px;
-    background: rgba(255, 255, 255, 0.03); /* Transparence totale */
-    border-radius: 20px 20px 0 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: none;
-    backdrop-filter: blur(20px); /* L'effet verre poli puissant */
-    -webkit-backdrop-filter: blur(20px);
-    padding: 16px;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+/* Grille technique de fond */
+.tech-grid-background {
+    position: absolute;
+    inset: 0;
+    background-size: 100px 100px;
+    background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
 }
 
-.browser-dots span {
-    display: inline-block;
-    width: 12px; height: 12px;
+/* Halos Lumineux (Orbs) */
+.glow-orb {
+    position: absolute;
     border-radius: 50%;
-    margin-right: 8px;
-    opacity: 0.8;
+    filter: blur(120px);
+    opacity: 0.4;
 }
-.browser-dots span:nth-child(1) { background: #FF5F56; }
-.browser-dots span:nth-child(2) { background: #FFBD2E; }
-.browser-dots span:nth-child(3) { background: #27C93F; }
+.primary-orb { width: 500px; height: 500px; background: #0F766E; top: -100px; right: -100px; }
+.secondary-orb { width: 600px; height: 600px; background: #0369A1; bottom: 20%; left: -200px; opacity: 0.2; }
+.accent-orb { width: 400px; height: 400px; background: #0D9488; top: 40%; right: -150px; opacity: 0.15; }
 
-/* Mockup Réseaux Sociaux */
-.mockup-social {
+
+/* --- 2. HEADER & BOUTONS TECH --- */
+.glass-header {
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(3, 7, 18, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+    padding: 16px 0;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+}
+.logo-mark img { width: 40px; height: 40px; border-radius: 8px; }
+.logo-type { display: flex; flex-direction: column; }
+.company-name { font-weight: 800; font-size: 1.2rem; color: #F8FAFC; letter-spacing: 0.05em; }
+.system-version { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: #2DD4BF; }
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #94A3B8;
+    transition: all 0.3s ease;
     position: relative;
+}
+.nav-index { font-family: 'Fira Code', monospace; font-size: 0.7rem; opacity: 0.5; }
+.nav-label { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.nav-item:hover, .active-state { color: #2DD4BF; }
+.nav-dot { width: 6px; height: 6px; background: #2DD4BF; border-radius: 50%; position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 10px #2DD4BF; }
+
+/* Boutons Cyber/Tech */
+.btn-tech {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 14px 28px; border-radius: 4px;
+    font-family: 'Fira Code', monospace; font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer; position: relative; overflow: hidden;
+}
+.btn-outline { border: 1px solid rgba(45, 212, 191, 0.4); color: #2DD4BF; background: rgba(45, 212, 191, 0.05); }
+.btn-outline:hover { background: rgba(45, 212, 191, 0.15); box-shadow: 0 0 20px rgba(45, 212, 191, 0.2); }
+.btn-solid { background: #0F766E; color: #FFFFFF; border: 1px solid #14B8A6; }
+.btn-solid:hover { background: #14B8A6; box-shadow: 0 0 30px rgba(20, 184, 166, 0.4); transform: translateY(-2px); }
+.icon-arrow, .icon-calendar { width: 18px; height: 18px; }
+
+/* --- 3. COMPOSANTS UTILITAIRES (Glassmorphism, Badges) --- */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.status-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 6px 16px; border-radius: 100px;
+    background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);
+    font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #34D399;
+}
+.pulse-indicator { width: 8px; height: 8px; background: #34D399; border-radius: 50%; box-shadow: 0 0 10px #34D399; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+.text-glow {
+    color: #F8FAFC;
+    text-shadow: 0 0 40px rgba(255,255,255,0.3);
+}
+.highlight-primary { color: #2DD4BF; text-shadow: 0 0 40px rgba(45, 212, 191, 0.4); }
+
+/* --- 4. HERO SECTION --- */
+.hero-module {
+    padding: 240px 0 120px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.hero-container {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.hero-title {
+    font-size: 5.5rem; font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
+    margin: 30px 0;
+}
+.hero-description {
+    font-size: 1.25rem; color: #94A3B8; max-width: 750px; line-height: 1.7; margin-bottom: 50px;
+}
+.hero-action-group {
+    display: flex; flex-direction: column; align-items: center; gap: 40px;
+}
+.hero-metrics {
+    display: flex; gap: 40px; align-items: center;
+    padding: 20px 40px; background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);
+}
+.metric-item { display: flex; flex-direction: column; gap: 4px; }
+.metric-value { font-size: 1.8rem; font-weight: 800; color: #F8FAFC; }
+.metric-label { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #64748B; text-transform: uppercase; }
+.metric-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
+
+/* --- 5. STICKY ARCHITECTURE (Le coeur de la page) --- */
+.sticky-tracker-module { padding: 120px 0; }
+
+.section-header { margin-bottom: 80px; }
+.section-title { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+.section-subtitle { font-size: 1.2rem; color: #94A3B8; font-family: 'Fira Code', monospace; }
+
+.sticky-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Moitié texte, moitié image */
+    gap: 80px;
+    position: relative;
+    align-items: start; /* Crucial pour que le sticky fonctionne */
+}
+
+/* Colonne de texte qui défile */
+.scroll-narrative-column {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50vh; /* Permet de scroller jusqu'au bout du dernier élément */
+}
+
+.scroll-node {
+    padding: 60px 0;
+    opacity: 0.3; /* Par défaut, les blocs sont grisés */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateX(-20px);
+}
+/* Le JS ajoutera la classe 'is-active' au bloc en cours de lecture */
+.scroll-node.is-active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.node-meta { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 30px; font-family: 'Fira Code', monospace; font-size: 0.8rem; }
+.node-id { color: #64748B; }
+.node-status { color: #475569; }
+.node-status.active { color: #10B981; }
+.node-status.highlight { color: #F59E0B; }
+
+.node-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 24px; color: #F8FAFC; }
+.node-text { font-size: 1.15rem; color: #94A3B8; line-height: 1.7; margin-bottom: 30px; }
+
+.node-features { list-style: none; margin-bottom: 30px; }
+.node-features li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #CBD5E1; }
+.feature-bullet { display: block; width: 6px; height: 6px; background: #2DD4BF; border-radius: 50%; box-shadow: 0 0 8px #2DD4BF; }
+
+.tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.tech-tags span { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.7rem; color: #94A3B8; }
+
+/* Colonne de droite (Sticky) */
+.scroll-visual-column {
+    position: sticky;
+    top: 120px; /* S'arrête à 120px du haut de l'écran */
+    height: calc(100vh - 160px); /* Prend toute la hauteur moins la marge */
+    display: flex;
+    align-items: center;
+}
+
+.sticky-visual-viewport {
     width: 100%;
     height: 100%;
-    min-height: 220px;
-}
-.floating-like {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #0F172A;
-    padding: 14px 28px;
-    border-radius: 100px;
-    font-weight: 800;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    border: 1px solid rgba(0,0,0,0.02);
-}
-.floating-like.delay {
-    top: 55%;
-    left: auto;
-    right: 5%;
-}
-
-/* --- 5. SYNERGIE & CTA FINAL --- */
-.synergy-block {
-    background: #FFFFFF;
-    border-radius: 40px;
-    padding: 80px 60px;
-    border: 1px solid rgba(0,0,0,0.03);
-    box-shadow: 
-        inset 0 1px 0 rgba(255,255,255,1),
-        0 20px 40px -10px rgba(0,0,0,0.04);
-    text-align: center;
-    margin-bottom: 100px;
-}
-
-.cta-agency-card {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
-    border-radius: 48px; /* Ultra rond */
-    padding: 100px 40px;
-    text-align: center;
-    color: white;
-    box-shadow: 
-        inset 0 2px 0 rgba(255,255,255,0.2),
-        0 40px 80px -20px rgba(15, 118, 110, 0.5);
-    margin-bottom: 80px;
+    max-height: 700px;
+    border-radius: 24px;
     position: relative;
     overflow: hidden;
+    padding: 2px; /* Pour la bordure fine */
 }
-.cta-agency-card h2 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.03em; color: white;}
-.cta-agency-card p { font-size: 1.25rem; opacity: 0.9; max-width: 650px; margin: 0 auto 40px auto; line-height: 1.6;}
-.btn-white { background: white; color: var(--primary); }
-.btn-white:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: translateY(-4px) scale(1.02); }
+
+.viewport-ui-header {
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; padding: 0 20px; gap: 20px;
+}
+.ui-dots span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #475569; margin-right: 6px; }
+.ui-dots span:nth-child(1) { background: #EF4444; } .ui-dots span:nth-child(2) { background: #F59E0B; } .ui-dots span:nth-child(3) { background: #10B981; }
+.ui-path { font-family: 'Fira Code', monospace; font-size: 0.7rem; color: #64748B; }
+
+.viewport-image-container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 40px);
+    background: #020617;
+}
+
+/* Calques d'images empilés */
+.visual-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0; /* Cachées par défaut */
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(1.05);
+}
+.visual-layer.is-visible {
+    opacity: 1; /* Rendu visible par JS */
+    transform: scale(1);
+}
+.visual-layer img { width: 100%; height: 100%; object-fit: cover; }
+/* Filtre pour assombrir un peu les images et garder le côté tech */
+.image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,7,18,0.8), transparent); }
+
+/* Décorations de la fenêtre Sticky */
+.corner-bracket { position: absolute; width: 20px; height: 20px; border: 2px solid #2DD4BF; z-index: 10; }
+.top-left { top: 0; left: 0; border-right: none; border-bottom: none; border-top-left-radius: 24px; }
+.top-right { top: 0; right: 0; border-left: none; border-bottom: none; border-top-right-radius: 24px; }
+.bottom-left { bottom: 0; left: 0; border-right: none; border-top: none; border-bottom-left-radius: 24px; }
+.bottom-right { bottom: 0; right: 0; border-left: none; border-top: none; border-bottom-right-radius: 24px; }
+.scanner-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(45, 212, 191, 0.5); box-shadow: 0 0 20px #2DD4BF; z-index: 20; animation: scan 3s linear infinite; }
+@keyframes scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+/* --- 6. ROADMAP --- */
+.roadmap-module { padding: 100px 0; }
+.align-center { text-align: center; display: flex; flex-direction: column; align-items: center; }
+
+.timeline-grid { display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 60px auto 0; }
+.timeline-item { display: flex; align-items: center; gap: 40px; }
+.timeline-number { font-family: 'Fira Code', monospace; font-size: 3rem; font-weight: 800; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); width: 100px; text-align: right; }
+.timeline-content { flex: 1; padding: 40px; border-radius: 24px; }
+.timeline-content h4 { font-size: 1.5rem; margin-bottom: 12px; color: #F8FAFC; }
+.timeline-content p { color: #94A3B8; font-size: 1.05rem; }
+.timeline-line { height: 40px; width: 1px; background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent); margin-left: 90px; }
+
+/* --- 7. FAQ --- */
+.faq-module { padding: 100px 0; max-width: 900px; margin: 0 auto; }
+.faq-inner { padding: 60px; border-radius: 32px; }
+.faq-header { text-align: center; margin-bottom: 60px; }
+.faq-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+
+.faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 24px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 600; cursor: pointer; list-style: none; color: #E2E8F0; }
+.faq-question::-webkit-details-marker { display: none; }
+.faq-icon { font-family: 'Fira Code', monospace; font-size: 1.5rem; color: #0F766E; transition: transform 0.3s ease; }
+details[open] .faq-icon { transform: rotate(45deg); color: #EF4444; }
+.faq-answer { padding-top: 20px; color: #94A3B8; line-height: 1.7; }
+
+/* --- 8. CALL TO ACTION --- */
+.cta-terminal-module { padding: 100px 0 160px; }
+.cta-terminal-inner { background: rgba(15, 118, 110, 0.05); border: 1px solid rgba(15, 118, 110, 0.3); border-radius: 32px; padding: 100px 40px; text-align: center; position: relative; overflow: hidden; }
+.radar-sweep { position: absolute; inset: 0; background: conic-gradient(from 0deg at 50% 50%, transparent 0%, rgba(45, 212, 191, 0.1) 10%, transparent 40%); animation: sweep 4s linear infinite; }
+@keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.cta-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+.alert-mode { border-color: #EF4444; color: #EF4444; background: rgba(239, 68, 68, 0.1); margin-bottom: 30px; }
+.alert-mode .pulse-indicator { background: #EF4444; box-shadow: 0 0 10px #EF4444; }
+.cta-content h2 { font-size: 3rem; margin-bottom: 24px; }
+.cta-desc { font-family: 'Fira Code', monospace; color: #94A3B8; max-width: 600px; margin-bottom: 40px; }
+
+/* --- 9. FOOTER --- */
+.terminal-footer { background: rgba(0,0,0,0.5); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 80px; font-family: 'Fira Code', monospace; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.brand-col p { color: #64748B; font-size: 0.85rem; margin-top: 20px; line-height: 1.6; }
+.col-title { display: block; color: #F8FAFC; font-weight: 600; margin-bottom: 24px; font-size: 0.9rem; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 16px; font-size: 0.85rem; color: #64748B; }
+.footer-col a { color: #94A3B8; text-decoration: none; transition: color 0.3s; }
+.footer-col a:hover { color: #2DD4BF; }
+.footer-bottom { display: flex; justify-content: space-between; padding: 30px 0; font-size: 0.75rem; color: #475569; }
+
+/* --- FIX ANIMATION : Pour laisser GSAP travailler --- */
+.terminal-os-body .reveal-up, .terminal-os-body .reveal-fade { opacity: 1 !important; transform: none !important; transition: none !important; }
 
 /* ==========================================================================
-   📱 RESPONSIVE : ADAPTATION MILLIMÉTRÉE
+   📱 RESPONSIVE : ADAPTATION TABLETTE & MOBILE
    ========================================================================== */
-
-/* --- TABLETTE (Le Bento passe en 2 colonnes) --- */
 @media (max-width: 1024px) {
-    .hero-agency { padding: 180px 24px 80px; }
-    .hero-agency-title { font-size: 4rem; }
-    .bento-header h2 { font-size: 2.8rem; }
+    .hero-title { font-size: 4rem; }
     
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colonnes parfaites */
-        gap: 20px;
+    /* Sur tablette/mobile, le Sticky devient compliqué. On le passe en colonne classique */
+    .sticky-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
     }
-    .bento-large, .bento-wide { grid-column: span 2; }
-    .bento-tall { grid-row: span 1; } /* On retire la hauteur double */
+    .scroll-visual-column {
+        position: relative; /* Désactive le sticky */
+        top: 0; height: 400px;
+        order: -1; /* L'image passe au-dessus du texte sur mobile */
+    }
+    .scroll-node { padding: 40px 0; opacity: 1; transform: none; }
+    .scroll-node.is-active { transform: none; }
+    
+    .timeline-item { flex-direction: column; text-align: center; gap: 20px; }
+    .timeline-number { text-align: center; width: 100%; }
+    .timeline-line { margin: 0 auto; height: 20px; }
 }
 
-/* --- MOBILE (Le Bento passe en 1 colonne) --- */
 @media (max-width: 768px) {
-    .hero-agency { padding: 150px 20px 60px; }
-    .hero-agency-title { font-size: 3.2rem; }
-    .hero-agency-subtitle { font-size: 1.15rem; }
+    .hero-module { padding: 150px 0 80px; }
+    .hero-title { font-size: 2.8rem; }
+    .hero-metrics { flex-direction: column; gap: 20px; width: 100%; }
+    .metric-divider { width: 100%; height: 1px; }
     
-    .bento-header h2 { font-size: 2.2rem; }
+    .section-title, .cta-content h2 { font-size: 2.2rem; }
+    .scroll-visual-column { height: 300px; }
+    .node-title { font-size: 1.8rem; }
     
-    .marquee-wrapper { margin: 40px 0 80px 0; padding: 20px 0; }
-    .marquee-content { font-size: 1.1rem; }
+    .faq-inner { padding: 30px 20px; }
+    .cta-terminal-inner { padding: 60px 20px; }
     
-    .bento-grid {
-        grid-template-columns: 1fr; /* 1 seule colonne */
-        gap: 16px;
-        margin-bottom: 80px;
-    }
-    
-    /* On réduit légèrement les cartes pour le pouce (UX Mobile) */
-    .bento-card {
-        padding: 32px 24px;
-        border-radius: 32px;
-    }
-    .bento-large, .bento-wide, .bento-tall {
-        grid-column: span 1;
-        grid-row: auto;
-    }
-    
-    .bento-text h3 { font-size: 1.5rem; }
-    
-    .browser-mockup { height: 180px; }
-    .mockup-social { min-height: 160px; }
-    
-    .synergy-block { padding: 50px 24px; border-radius: 32px; margin-bottom: 60px; }
-    .synergy-block h2 { font-size: 1.8rem; }
-    
-    .cta-agency-card { padding: 60px 24px; border-radius: 32px; }
-    .cta-agency-card h2 { font-size: 2.2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; align-items: center; gap: 16px; }
 }
