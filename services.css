@@ -1,258 +1,357 @@
 /* ==========================================================================
-   🚀 FYDELIO AGENCE - STYLES SPÉCIFIQUES (APPLE-LIKE)
+   🚀 FYDELIO AGENCE - STYLES SPÉCIFIQUES (APPLE / AWWWARDS LEVEL)
    ========================================================================== */
 
-/* Modification du fond global pour la page agence (un gris ultra ultra clair) */
+/* --- 0. FOND DE PAGE PREMIUM --- */
+/* Un gris ultra-clair avec un très léger halo bleuté en fond pour la profondeur */
 .agency-body {
     background-color: #F8FAFC; 
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(210, 100%, 98%, 1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(190, 100%, 98%, 1) 0, transparent 50%);
 }
 
-/* --- 1. HERO SECTION MASSIF --- */
+/* --- 1. HERO SECTION (TYPOGRAPHIE GÉANTE) --- */
 .hero-agency {
-    padding: 240px 0 100px;
+    padding: 220px 24px 100px;
     text-align: center;
-    max-width: 1000px;
+    max-width: 1050px;
+    margin: 0 auto;
 }
 
 .hero-agency-title {
-    font-size: 5.5rem;
+    font-size: 5.8rem;
     font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.04em; /* Le secret d'Apple : des lettres très serrées */
-    margin-bottom: 30px;
-    color: #0F172A;
+    line-height: 1.02;
+    letter-spacing: -0.04em; /* Le secret d'Apple : des lettres très resserrées */
+    margin-bottom: 32px;
+    color: #020617;
 }
 
 .hero-agency-subtitle {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     color: #475569;
     max-width: 700px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.7;
     font-weight: 500;
 }
 
-/* --- 2. LE BANDEAU DÉFILANT (MARQUEE) --- */
+/* --- 2. LE BANDEAU DÉFILANT INFINI (MARQUEE) --- */
 .marquee-wrapper {
     width: 100%;
-    background: #0F172A;
+    background: #020617; /* Presque noir absolu */
     color: white;
-    padding: 20px 0;
+    padding: 28px 0;
     overflow: hidden;
     position: relative;
-    transform: rotate(-2deg) scale(1.05); /* Effet d'inclinaison très moderne */
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
-    margin: 80px 0 120px 0;
+    transform: rotate(-2.5deg) scale(1.05); /* Effet d'inclinaison dynamique */
+    box-shadow: 0 24px 48px -12px rgba(2, 6, 23, 0.4);
+    margin: 70px 0 140px 0;
+    z-index: 10;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
 }
 
 .marquee-content {
     display: flex;
-    width: max-content;
-    animation: scroll-marquee 20s linear infinite;
+    white-space: nowrap;
     font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: 0.1em;
+    font-size: 1.25rem;
+    letter-spacing: 0.15em;
+    will-change: transform;
 }
 
 .marquee-content span {
-    margin: 0 30px;
-    color: #FFFFFF;
-}
-
-@keyframes scroll-marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    margin: 0 45px;
+    color: #F8FAFC;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
 }
 
 /* --- 3. LE BENTO GRID (LA GRILLE MAGIQUE) --- */
+.bento-section {
+    padding-top: 40px;
+}
+
 .bento-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 }
-.bento-header h2 { font-size: 3.5rem; letter-spacing: -0.03em; margin-bottom: 10px; }
-.bento-header p { font-size: 1.2rem; color: var(--text-muted); }
+
+.bento-header h2 { 
+    font-size: 3.5rem; 
+    letter-spacing: -0.03em; 
+    margin-bottom: 15px; 
+    color: #0F172A;
+}
+
+.bento-header p { 
+    font-size: 1.25rem; 
+    color: #64748B; 
+}
 
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(280px, auto);
+    grid-auto-rows: minmax(320px, auto);
     gap: 24px;
-    margin-bottom: 120px;
+    margin-bottom: 140px;
 }
 
+/* LA CARTE BENTO DE BASE (Le joyau) */
 .bento-card {
-    background: var(--surface);
-    border-radius: 40px; /* Bords très arrondis Apple */
-    padding: 40px;
+    background: #FFFFFF;
+    border-radius: 40px; /* Arrondi maximal façon icône iPhone */
+    padding: 48px;
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.04);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+    /* Un reflet interne blanc (Inner Glow) + Une bordure ultra fine */
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 1), /* Reflet haut */
+        0 4px 6px -1px rgba(0, 0, 0, 0.02), /* Ombre proche */
+        0 20px 40px -10px rgba(0, 0, 0, 0.04); /* Ombre lointaine */
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
+    will-change: transform, box-shadow;
+    z-index: 1;
 }
 
+/* Effet de lévitation magnétique au survol */
 .bento-card:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        0 10px 15px -3px rgba(0, 0, 0, 0.03),
+        0 30px 60px -15px rgba(0, 0, 0, 0.08);
+    z-index: 2;
 }
 
+/* Typographie interne des cartes */
 .bento-text h3 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #0F172A;
 }
 
 .bento-text p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
+    color: #475569;
+    font-size: 1.1rem;
     line-height: 1.6;
 }
 
 .bento-icon {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    background: #F1F5F9;
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px; /* Squircle interne */
 }
 
-/* Tailles spécifiques du Bento */
-.bento-large {
-    grid-column: span 2;
-    grid-row: span 2;
-}
+/* Formats Spécifiques (Le puzzle du Bento) */
+.bento-large { grid-column: span 2; grid-row: span 2; }
+.bento-wide { grid-column: span 2; }
+.bento-tall { grid-row: span 2; }
 
-.bento-wide {
-    grid-column: span 2;
-}
+/* --- THÈMES DE CARTES PREMIUM --- */
 
-.bento-tall {
-    grid-row: span 2;
-}
-
-/* Thèmes de cartes (Noir, Dégradé) */
+/* Thème Sombre Profond (Nuit) */
 .bento-dark {
-    background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
     color: white;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 20px 40px -10px rgba(15, 23, 42, 0.3);
 }
-.bento-dark .bento-text p { color: rgba(255,255,255,0.7); }
-.bento-dark h3 { color: white; }
+.bento-dark .bento-text p { color: rgba(255, 255, 255, 0.75); }
+.bento-dark .bento-text h3 { color: #FFFFFF; }
 
+/* Thème Sombre Doux (Gris) */
 .bento-dark-subtle {
     background: #1E293B;
-    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
-.bento-dark-subtle .bento-text p { color: rgba(255,255,255,0.7); }
-.bento-dark-subtle h3 { color: white; }
+.bento-dark-subtle .bento-text p { color: rgba(255, 255, 255, 0.7); }
+.bento-dark-subtle .bento-text h3 { color: #FFFFFF; }
+.bento-dark-subtle .bento-icon { background: rgba(255, 255, 255, 0.1); }
 
+/* Thème Pêche/Chaud (Désirabilité) */
 .bento-gradient {
     background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
-    border: 1px solid #FED7AA;
+    border: 1px solid rgba(253, 186, 116, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
-
 .bento-icon-huge {
     position: absolute;
-    bottom: -20px;
-    right: -10px;
-    font-size: 120px;
-    opacity: 0.2;
+    bottom: -30px;
+    right: -20px;
+    font-size: 160px;
+    opacity: 0.15;
     transform: rotate(-15deg);
+    pointer-events: none;
 }
 
-/* Faux visuels pour remplir les cartes */
+/* --- 4. LES MOCKUPS VISUELS EN VERRE --- */
 .bento-visual {
-    margin-top: 30px;
+    margin-top: 40px;
     flex: 1;
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    position: relative;
 }
 
+/* Faux navigateur Mac */
 .browser-mockup {
-    width: 100%;
-    height: 180px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 16px 16px 0 0;
-    border: 1px solid rgba(255,255,255,0.1);
+    width: 110%;
+    height: 240px;
+    background: rgba(255, 255, 255, 0.03); /* Transparence totale */
+    border-radius: 20px 20px 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none;
-    backdrop-filter: blur(10px);
-    padding: 12px;
+    backdrop-filter: blur(20px); /* L'effet verre poli puissant */
+    -webkit-backdrop-filter: blur(20px);
+    padding: 16px;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .browser-dots span {
     display: inline-block;
-    width: 10px; height: 10px;
+    width: 12px; height: 12px;
     border-radius: 50%;
-    background: #475569;
-    margin-right: 6px;
+    margin-right: 8px;
+    opacity: 0.8;
 }
-.browser-dots span:nth-child(1) { background: #EF4444; }
-.browser-dots span:nth-child(2) { background: #F59E0B; }
-.browser-dots span:nth-child(3) { background: #10B981; }
+.browser-dots span:nth-child(1) { background: #FF5F56; }
+.browser-dots span:nth-child(2) { background: #FFBD2E; }
+.browser-dots span:nth-child(3) { background: #27C93F; }
 
+/* Mockup Réseaux Sociaux */
 .mockup-social {
     position: relative;
     width: 100%;
-    height: 150px;
+    height: 100%;
+    min-height: 220px;
 }
 .floating-like {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: #0F172A;
-    padding: 10px 20px;
+    padding: 14px 28px;
     border-radius: 100px;
     font-weight: 800;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 20%;
-    left: 10%;
-    animation: float 4s ease-in-out infinite;
+    top: 15%;
+    left: 5%;
+    border: 1px solid rgba(0,0,0,0.02);
 }
 .floating-like.delay {
-    top: 60%;
+    top: 55%;
     left: auto;
-    right: 10%;
-    animation-delay: 2s;
+    right: 5%;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+/* --- 5. SYNERGIE & CTA FINAL --- */
+.synergy-block {
+    background: #FFFFFF;
+    border-radius: 40px;
+    padding: 80px 60px;
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 
+        inset 0 1px 0 rgba(255,255,255,1),
+        0 20px 40px -10px rgba(0,0,0,0.04);
+    text-align: center;
+    margin-bottom: 100px;
 }
 
-/* --- 4. CALL TO ACTION FINAL --- */
 .cta-agency-card {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
-    border-radius: 40px;
-    padding: 80px 40px;
+    border-radius: 48px; /* Ultra rond */
+    padding: 100px 40px;
     text-align: center;
     color: white;
-    box-shadow: 0 40px 80px rgba(15, 118, 110, 0.3);
+    box-shadow: 
+        inset 0 2px 0 rgba(255,255,255,0.2),
+        0 40px 80px -20px rgba(15, 118, 110, 0.5);
     margin-bottom: 80px;
+    position: relative;
+    overflow: hidden;
 }
-.cta-agency-card h2 { font-size: 3rem; margin-bottom: 20px; letter-spacing: -0.03em; color: white;}
-.cta-agency-card p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 40px auto; }
+.cta-agency-card h2 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.03em; color: white;}
+.cta-agency-card p { font-size: 1.25rem; opacity: 0.9; max-width: 650px; margin: 0 auto 40px auto; line-height: 1.6;}
 .btn-white { background: white; color: var(--primary); }
-.btn-white:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.2); transform: scale(1.05); }
+.btn-white:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: translateY(-4px) scale(1.02); }
 
-/* --- RESPONSIVE MOBILE --- */
-@media (max-width: 992px) {
+/* ==========================================================================
+   📱 RESPONSIVE : ADAPTATION MILLIMÉTRÉE
+   ========================================================================== */
+
+/* --- TABLETTE (Le Bento passe en 2 colonnes) --- */
+@media (max-width: 1024px) {
     .hero-agency { padding: 180px 24px 80px; }
-    .hero-agency-title { font-size: 3rem; }
-    .bento-header h2 { font-size: 2.5rem; }
+    .hero-agency-title { font-size: 4rem; }
+    .bento-header h2 { font-size: 2.8rem; }
     
-    /* Le Bento s'effondre en 1 colonne sur mobile */
     .bento-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes parfaites */
+        gap: 20px;
+    }
+    .bento-large, .bento-wide { grid-column: span 2; }
+    .bento-tall { grid-row: span 1; } /* On retire la hauteur double */
+}
+
+/* --- MOBILE (Le Bento passe en 1 colonne) --- */
+@media (max-width: 768px) {
+    .hero-agency { padding: 150px 20px 60px; }
+    .hero-agency-title { font-size: 3.2rem; }
+    .hero-agency-subtitle { font-size: 1.15rem; }
+    
+    .bento-header h2 { font-size: 2.2rem; }
+    
+    .marquee-wrapper { margin: 40px 0 80px 0; padding: 20px 0; }
+    .marquee-content { font-size: 1.1rem; }
+    
+    .bento-grid {
+        grid-template-columns: 1fr; /* 1 seule colonne */
+        gap: 16px;
+        margin-bottom: 80px;
+    }
+    
+    /* On réduit légèrement les cartes pour le pouce (UX Mobile) */
+    .bento-card {
+        padding: 32px 24px;
+        border-radius: 32px;
     }
     .bento-large, .bento-wide, .bento-tall {
         grid-column: span 1;
         grid-row: auto;
     }
-    .bento-card {
-        padding: 30px;
-        border-radius: 32px;
-    }
-    .cta-agency-card { padding: 50px 24px; border-radius: 32px; }
-    .cta-agency-card h2 { font-size: 2rem; }
+    
+    .bento-text h3 { font-size: 1.5rem; }
+    
+    .browser-mockup { height: 180px; }
+    .mockup-social { min-height: 160px; }
+    
+    .synergy-block { padding: 50px 24px; border-radius: 32px; margin-bottom: 60px; }
+    .synergy-block h2 { font-size: 1.8rem; }
+    
+    .cta-agency-card { padding: 60px 24px; border-radius: 32px; }
+    .cta-agency-card h2 { font-size: 2.2rem; }
 }
