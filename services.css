@@ -619,45 +619,213 @@
 .footer-contact li { display: flex; align-items: center; gap: 10px; }
 
 /* ============================================================
-   13. RESPONSIVE
+   13. RESPONSIVE — TABLETTE (max 992px)
    ============================================================ */
 @media (max-width: 992px) {
-    .hero-content { flex-direction: column; gap: 60px; padding-bottom: 60px; }
+
+    /* Hero : empilé */
+    .hero-content {
+        flex-direction: column;
+        gap: 48px;
+        padding-bottom: 48px;
+    }
     .hero-text-col { max-width: 100%; }
-    .hero-text-col h1 { font-size: 3rem; }
-    .hero-visual-col { width: 100%; min-height: 360px; }
-    .hero-photo-stack { height: 360px; }
+    .hero-text-col h1 { font-size: 2.8rem; }
+    .hero-visual-col { width: 100%; min-height: 300px; }
+    .hero-photo-stack { height: 300px; }
+    .hero-photo-secondary { bottom: -16px; }
 
-    .sticky-scroll-wrapper { flex-direction: column; gap: 0; }
-    .scroll-visual-column { position: relative; height: auto; top: auto; padding-top: 0; order: -1; }
-    .visual-sticky-frame { max-width: 100%; aspect-ratio: 4 / 3; }
-    .visual-layer { display: flex !important; opacity: 1 !important; transform: none !important; position: relative !important; inset: auto !important; }
-    .scroll-text-column { padding: 0; }
-    .scroll-node { min-height: auto; opacity: 1; transform: none; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 32px 24px; margin-bottom: 16px; }
+    /* Stats : 3 sur une ligne */
+    .hero-stats { gap: 20px; }
+    .stat-number { font-size: 1.4rem; }
 
-    .roadmap-grid { grid-template-columns: 1fr; }
-    .roadmap-connector { width: 2px; height: 40px; margin: 0 auto; background: linear-gradient(180deg, var(--primary), rgba(15,118,110,0.2)); }
-    .roadmap-connector::after { content: '↓'; right: 50%; top: auto; bottom: -12px; transform: translateX(50%); }
+    /* Sticky scroll : empilé, visuel en haut */
+    .sticky-scroll-wrapper {
+        flex-direction: column;
+        gap: 32px;
+        padding: 0 20px;
+    }
+    .scroll-visual-column {
+        position: relative;
+        height: auto;
+        top: auto;
+        padding-top: 0;
+        order: -1;
+        width: 100%;
+    }
+    .visual-sticky-frame {
+        max-width: 100%;
+        aspect-ratio: 16 / 10;
+        position: relative;
+        height: auto;
+    }
+    /* Sur tablette : afficher uniquement le 1er layer, les autres masqués */
+    .visual-layer {
+        position: relative !important;
+        inset: auto !important;
+        opacity: 0 !important;
+        transform: none !important;
+        display: none !important;
+        pointer-events: none;
+    }
+    .visual-layer.active,
+    .visual-layer:first-child {
+        display: flex !important;
+        opacity: 1 !important;
+        position: relative !important;
+    }
+
+    .scroll-text-column { padding: 0; width: 100%; }
+    .scroll-node {
+        min-height: auto;
+        opacity: 1 !important;
+        transform: none !important;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 28px 24px;
+        margin-bottom: 14px;
+    }
+    .scroll-node h3 { font-size: 1.5rem; }
+    .scroll-node p  { font-size: 1rem; margin-bottom: 16px; }
+    .scroll-node-badge { font-size: 0.72rem; padding: 6px 14px; }
+
+    /* Roadmap : colonne */
+    .roadmap-grid { grid-template-columns: 1fr; gap: 0; }
+    .roadmap-connector {
+        width: 2px; height: 36px;
+        margin: 0 auto;
+        background: linear-gradient(180deg, var(--primary), rgba(15,118,110,0.15));
+    }
+    .roadmap-connector::after {
+        content: '↓';
+        right: 50%; top: auto; bottom: -13px;
+        transform: translateX(50%);
+    }
+    .roadmap-card { padding: 36px 28px; }
 }
 
-@media (max-width: 768px) {
-    .hero-modern { padding-top: 110px; }
-    .hero-text-col h1 { font-size: 2.4rem; }
-    .hero-stats { flex-wrap: wrap; gap: 16px; }
+/* ============================================================
+   14. RESPONSIVE — MOBILE (max 767px)
+   ============================================================ */
+@media (max-width: 767px) {
+
+    /* Hero */
+    .hero-modern { padding-top: 100px; }
+    .hero-text-col h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+    .hero-text-col p { font-size: 1rem; margin-bottom: 28px; }
+
+    .hero-photo-stack { height: 240px; }
+    .hero-photo-main { width: 100%; border-radius: 20px; }
+    .hero-photo-secondary { display: none; }
+    .hero-floating-badge { font-size: 0.78rem; padding: 8px 14px; bottom: 16px; left: 16px; }
+
+    /* Stats */
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-top: 20px;
+        margin-top: 28px;
+    }
     .hero-stat-divider { display: none; }
+    .hero-stat {
+        flex: 1 1 calc(33% - 12px);
+        text-align: center;
+    }
+    .stat-number { font-size: 1.3rem; }
+    .stat-label { font-size: 0.7rem; }
 
-    .scroll-node h3 { font-size: 1.5rem; }
-    .scroll-node p  { font-size: 0.98rem; }
+    /* Boutons hero */
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    .hero-actions .btn-large {
+        width: 100%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 16px 20px;
+    }
 
-    .vaucluse-photo-wrapper { height: 280px; }
-    .vaucluse-quote p { font-size: 1.1rem; }
-
-    .cta-photo-content { padding: 80px 24px; }
-    .cta-photo-content h2 { font-size: 2rem; }
-
-    .roadmap-card { padding: 32px 20px; }
-    .faq-question { font-size: 0.98rem; padding: 18px 20px; }
-    .faq-answer p { padding: 0 20px 20px; font-size: 0.95rem; }
-
+    /* Locality band */
     .locality-band { display: none; }
+
+    /* Section headers */
+    .section-eyebrow { font-size: 0.7rem; }
+
+    /* Sticky scroll */
+    .sticky-scroll-wrapper { padding: 0 16px; gap: 20px; }
+    .visual-sticky-frame { aspect-ratio: 4 / 3; }
+    .scroll-node { padding: 22px 18px; border-radius: 18px; margin-bottom: 12px; }
+    .scroll-node h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .scroll-node p  { font-size: 0.95rem; margin-bottom: 14px; }
+    .scroll-node-list li { font-size: 0.9rem; gap: 10px; }
+    .scroll-node-list li::before { width: 22px; height: 22px; font-size: 11px; }
+    .step-highlight { font-size: 0.82rem; padding: 10px 14px; }
+
+    /* Placeholder téléphone Instagram — réduction sur mobile */
+    .vp-phone-frame { width: 200px; padding: 12px; gap: 10px; }
+    .vp-insta-image { height: 150px; }
+
+    /* Photo Vaucluse */
+    .vaucluse-photo-section { margin: 24px 0; }
+    .vaucluse-photo-wrapper { height: 220px; }
+    .vaucluse-photo-overlay {
+        background: linear-gradient(to bottom, rgba(8,13,26,0.5) 0%, rgba(8,13,26,0.75) 100%);
+        align-items: center;
+        justify-content: center;
+    }
+    .vaucluse-quote { padding: 20px 20px; text-align: center; max-width: 100%; }
+    .vaucluse-quote p { font-size: 1rem; margin-bottom: 8px; }
+    .vaucluse-quote span { font-size: 0.8rem; }
+
+    /* Cards services */
+    .card-modern { padding: 28px 20px !important; border-radius: 20px !important; }
+    .card-icon-3d { width: 52px; height: 52px; border-radius: 14px; margin-bottom: 20px; }
+    .card-icon-3d i { width: 24px; height: 24px; }
+
+    /* Roadmap */
+    .roadmap-card { padding: 28px 20px; border-radius: 20px; }
+    .roadmap-icon { width: 44px; height: 44px; border-radius: 12px; margin-bottom: 12px; }
+    .roadmap-number { font-size: 2.8rem; margin-bottom: 12px; }
+    .roadmap-card h3 { font-size: 1.1rem; }
+    .roadmap-card p  { font-size: 0.92rem; }
+    .roadmap-connector { height: 28px; }
+
+    /* FAQ */
+    .faq-list { gap: 10px; }
+    .faq-item { border-radius: 16px; }
+    .faq-question { font-size: 0.95rem; padding: 18px 16px; gap: 12px; }
+    .faq-icon-wrap { width: 28px; height: 28px; flex-shrink: 0; }
+    .faq-answer p { padding: 0 16px 20px; font-size: 0.92rem; }
+
+    /* CTA photo */
+    .cta-photo-content { padding: 72px 20px; }
+    .cta-photo-content h2 { font-size: clamp(1.6rem, 6vw, 2rem); }
+    .cta-photo-content p { font-size: 1rem; margin-bottom: 28px; }
+    .cta-photo-btn {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+        font-size: 15px !important;
+        padding: 16px 24px !important;
+    }
+
+    /* Footer */
+    .footer-contact li { flex-wrap: wrap; }
+    .footer-location { justify-content: center; }
+}
+
+/* ============================================================
+   15. RESPONSIVE — TRÈS PETIT MOBILE (max 390px)
+   ============================================================ */
+@media (max-width: 390px) {
+    .hero-text-col h1 { font-size: 1.75rem; }
+    .hero-photo-stack { height: 200px; }
+    .scroll-node h3 { font-size: 1.2rem; }
+    .vaucluse-photo-wrapper { height: 180px; }
+    .cta-photo-content h2 { font-size: 1.5rem; }
+    .faq-question { font-size: 0.88rem; }
 }
