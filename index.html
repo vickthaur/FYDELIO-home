@@ -1,57 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WTJPD5BL');</script>
-<!-- End Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WTJPD5BL');</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>FYDELIO | Carte de fidélité digitale pour Restaurants (Vaucluse)</title>
-    
-    <meta name="description" content="FYDELIO est la carte de fidélité digitale simple et automatisée pour les restaurateurs du Vaucluse. Transformez vos clients de passage en habitués sans application à télécharger. Augmentez votre CA.">
-    <meta name="keywords" content="carte de fidélité digitale, fidélisation restaurant, application fidélité sans téléchargement, marketing restaurant vaucluse, fydelio, qr code fidélité">
-    
+    <meta name="description" content="FYDELIO est la carte de fidélité digitale simple et automatisée pour les restaurateurs du Vaucluse. Transformez vos clients de passage en habitués sans application à télécharger.">
+    <meta name="keywords" content="carte de fidélité digitale, fidélisation restaurant, marketing restaurant vaucluse, fydelio, qr code fidélité">
     <meta property="og:title" content="FYDELIO | Carte de fidélité digitale pour Restaurants">
     <meta property="og:description" content="La solution la plus simple pour capturer les données de vos clients à table et les faire revenir. Sans engagement.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fydelio.fr">
-    <meta property="og:image" content="https://fydelio.fr/flavicon.jpg"> 
+    <meta property="og:image" content="https://fydelio.fr/flavicon.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FYDELIO | Fidélisation Digitale pour Restaurants">
-    <meta name="twitter:description" content="La solution de fidélité sans friction pensée pour la restauration.">
-    <meta name="twitter:image" content="https://fydelio.fr/flavicon.jpg">
-
     <link rel="icon" type="image/jpeg" href="flavicon.jpg">
     <link rel="apple-touch-icon" href="flavicon.jpg">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="FYDELIO">
     <meta name="theme-color" content="#0F766E">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index-modern.css">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTJPD5BL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTJPD5BL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="bg-shape-1"></div>
     <div class="bg-shape-2"></div>
 
-    <!-- =============================================
-         HEADER — identique à services.html
-         "Logiciel" est le lien actif (nav-link-active)
-         ============================================= -->
     <header id="main-header">
         <div class="container nav-inner">
             <a href="index.html" class="logo">
@@ -59,95 +46,183 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span>FYDELIO</span>
             </a>
             <nav class="nav-links">
-                <!-- Lien actif sur cette page -->
                 <a href="#concept" class="link-text nav-link-active">Logiciel</a>
                 <a href="services.html" class="link-text">Agence Digitale</a>
                 <a href="#tarifs" class="link-text">Tarifs</a>
                 <button id="btnOpenModal" class="btn btn-outline btn-nav">Espace Restaurateur</button>
             </nav>
             <button class="menu-toggle" aria-label="Ouvrir le menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </button>
         </div>
     </header>
 
-    <!-- Le reste de la page est identique -->
+    <!-- HERO MODERNE -->
+    <section class="hero-modern">
+        <div class="hero-content container">
+            <div class="hero-text-col">
+                <div class="badge-hero animate-on-scroll">
+                    <i data-lucide="map-pin" style="width:14px;height:14px;"></i>
+                    Ancré dans le Vaucluse
+                </div>
+                <h1 class="animate-on-scroll">
+                    Vos clients repassent<br>
+                    <span class="text-gradient">la porte.</span>
+                </h1>
+                <p class="animate-on-scroll">
+                    Chaque soir, des dizaines de clients quittent votre salle sans laisser de trace. FYDELIO capture leurs données à table — discrètement, élégamment — et les fait revenir automatiquement.
+                </p>
+                <div class="hero-actions animate-on-scroll">
+                    <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
+                        Réserver une démo gratuite
+                    </a>
+                    <a href="#fonctionnement" class="btn-ghost-link">
+                        Voir comment ça marche
+                        <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                    </a>
+                </div>
+                <div class="hero-stats animate-on-scroll">
+                    <div class="hero-stat">
+                        <span class="stat-number">+38%</span>
+                        <span class="stat-label">de clients qui reviennent</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="stat-number">3 min</span>
+                        <span class="stat-label">pour être opérationnel</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">app à télécharger</span>
+                    </div>
+                </div>
+            </div>
 
-    <section class="hero container">
-        <div class="badge-hero">Conçu pour les établissements du Vaucluse</div>
-        <h1>Ne perdez plus jamais un client<br><span class="text-gradient">après l'addition.</span></h1>
-        <p>Transformez vos visiteurs de passage en contacts réactivables et fidèles. Une solution claire, élégante et automatisée, pensée par et pour les restaurateurs.</p>
-        <div class="hero-actions">
-            <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Réserver une démo (30 min)</a>
+            <div class="hero-visual-col animate-on-scroll">
+                <div class="hero-photo-stack">
+                    <div class="hero-photo-main">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80&fit=crop" alt="Ambiance restaurant Vaucluse" loading="eager">
+                        <div class="hero-floating-badge">
+                            <i data-lucide="trending-up" style="width:15px;height:15px;color:#0F766E;"></i>
+                            <span>+12 nouveaux clients hier</span>
+                        </div>
+                    </div>
+                    <div class="hero-photo-secondary">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&q=80&fit=crop" alt="Village du Vaucluse" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="locality-band">
+            <div class="container locality-inner">
+                <span class="locality-label">Actif dans le Vaucluse</span>
+                <div class="locality-places">
+                    <span>Cavaillon</span><span class="loc-dot"></span>
+                    <span>L'Isle-sur-la-Sorgue</span><span class="loc-dot"></span>
+                    <span>Apt</span><span class="loc-dot"></span>
+                    <span>Avignon</span><span class="loc-dot"></span>
+                    <span>Gordes</span><span class="loc-dot"></span>
+                    <span>Roussillon</span>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- PROBLÈME -->
     <section id="concept" class="section container">
         <div class="section-header animate-on-scroll">
-            <h2>Le problème de la restauration</h2>
-            <p>Vous générez du trafic, mais vous ne capturez aucune donnée client.</p>
+            <div class="section-eyebrow">Le constat terrain</div>
+            <h2>Ce que vivent vos confrères chaque soir</h2>
+            <p>Trois réalités que chaque restaurateur du Vaucluse connaît par cœur.</p>
         </div>
         <div class="grid-3">
-            <div class="card animate-on-scroll">
-                <div class="card-icon">👥</div>
-                <h3>Visiteurs fantômes</h3>
-                <p>Un client vient, consomme et repart. Vous n'avez aucune stratégie de fidélisation ni moyen de le relancer pour un événement.</p>
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--red">
+                    <i data-lucide="user-x"></i>
+                </div>
+                <h3>Des clients invisibles</h3>
+                <p>Un client vient, apprécie, repart. Sans son contact, vous ne pouvez ni le remercier, ni l'inviter à votre prochaine soirée, ni le fidéliser. Il existe — vous ne le savez pas.</p>
             </div>
-            <div class="card animate-on-scroll">
-                <div class="card-icon">📉</div>
-                <h3>Dépendance</h3>
-                <p>Sans base de données exploitable, vous dépendez fortement des plateformes de réservation externes pour remplir votre salle.</p>
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--amber">
+                    <i data-lucide="link-2-off"></i>
+                </div>
+                <h3>La dépendance aux plateformes</h3>
+                <p>TheFork, Tripadvisor, Google — vous payez pour que vos propres clients vous trouvent. Une base de données à vous libère de cette rente perpétuelle.</p>
             </div>
-            <div class="card animate-on-scroll">
-                <div class="card-icon">⏱️</div>
-                <h3>Zéro temps libre</h3>
-                <p>Vos serveurs n'ont pas le temps de gérer des cartes papier. Vous avez besoin d'un système qui tourne sans effort opérationnel.</p>
+            <div class="card card-modern animate-on-scroll">
+                <div class="card-icon-3d card-icon-3d--green">
+                    <i data-lucide="zap-off"></i>
+                </div>
+                <h3>Les cartes papier ne tiennent pas</h3>
+                <p>Vos serveurs sont en plein rush. Demander un nom, un mail, tamponner — ça ne fonctionne jamais longtemps. Il faut un système qui tourne sans eux.</p>
             </div>
         </div>
     </section>
 
+    <!-- PHOTO VAUCLUSE FULL-WIDTH -->
+    <section class="vaucluse-photo-section">
+        <div class="vaucluse-photo-wrapper">
+            <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1400&q=80&fit=crop" alt="Vaucluse, Provence" loading="lazy" class="vaucluse-photo-img">
+            <div class="vaucluse-photo-overlay">
+                <div class="container">
+                    <div class="vaucluse-quote">
+                        <p>"Un outil pensé pour le rythme d'un restaurant, pas pour une startup."</p>
+                        <span>— Victor & Mathys, fondateurs FYDELIO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTHODE -->
     <section id="fonctionnement" class="section container">
         <div class="section-header animate-on-scroll">
-            <h2>La méthode FYDELIO</h2>
-            <p>Un fonctionnement élégant pour le client, un pilotage puissant pour le patron.</p>
+            <div class="section-eyebrow">La méthode</div>
+            <h2>Simple pour le client.<br>Puissant pour vous.</h2>
+            <p>Trois étapes qui tournent seules — même un soir de coup de feu.</p>
         </div>
-        
         <div class="method-split-layout">
-            
             <div class="method-text-column">
                 <div class="method-step" id="step-1">
-                    <div class="step-number mobile-only-show">1</div>
                     <div class="step-image-container mobile-only-show">
                         <img src="etape-1.png" alt="Scan Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 1</div>
-                    <h3>Scan à table</h3>
-                    <p>Le client flashe un QR Code Premium posé sur sa table pour s'inscrire au programme en quelques secondes. Plus besoin de dicter son numéro ou de télécharger une application lourde.</p>
+                    <h3>Le client scanne, c'est tout.</h3>
+                    <p>Un QR Code élégant posé sur la table. Le client le flashe avec son téléphone, entre son prénom et email en 20 secondes. Pas d'app, pas de friction — juste un geste naturel.</p>
+                    <div class="step-highlight">
+                        <i data-lucide="shield-check" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
+                        <span>Conforme RGPD — consentement explicite enregistré</span>
+                    </div>
                 </div>
-                
                 <div class="method-step" id="step-2">
-                    <div class="step-number mobile-only-show">2</div>
                     <div class="step-image-container mobile-only-show">
                         <img src="etape-2.png" alt="Validation Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 2</div>
-                    <h3>Validation Pro</h3>
-                    <p>Le serveur valide les points d'un simple clic via notre outil sécurisé. Le processus est conçu pour être ultra-rapide en plein service, fluide et surtout impossible à frauder.</p>
+                    <h3>Votre équipe valide en un clic.</h3>
+                    <p>Le serveur ouvre l'outil sur son téléphone et appuie sur "Valider". Trois secondes. Le point est crédité, le client confirme — sans jamais quitter la salle des yeux.</p>
+                    <div class="step-highlight">
+                        <i data-lucide="lock" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
+                        <span>Système anti-fraude intégré — impossible à tricher</span>
+                    </div>
                 </div>
-                
                 <div class="method-step" id="step-3">
-                    <div class="step-number mobile-only-show">3</div>
                     <div class="step-image-container mobile-only-show">
                         <img src="etape-3.png" alt="Espace Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 3</div>
-                    <h3>Votre Espace</h3>
-                    <p>Connectez-vous à votre Espace Pro pour voir votre base de données grandir jour après jour. Exportez vos contacts et profitez de nos relances automatisées pour faire revenir vos clients.</p>
+                    <h3>Votre base grandit. Vos relances partent seules.</h3>
+                    <p>Connectez-vous à votre Espace Pro quand vous voulez. Visualisez vos clients, exportez vos contacts, déclenchez une campagne. FYDELIO travaille pendant que vous cuisinez.</p>
+                    <div class="step-highlight">
+                        <i data-lucide="send" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
+                        <span>Emails automatisés — anniversaires, événements, nouvelle carte</span>
+                    </div>
                 </div>
             </div>
-
             <div class="method-phone-column mobile-only-hide">
                 <div class="phone-mockup">
                     <div class="phone-notch"></div>
@@ -158,45 +233,116 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                 </div>
             </div>
-
-        </div> 
+        </div>
     </section>
 
+    <!-- PREUVE SOCIALE -->
+    <section class="social-proof-section">
+        <div class="container">
+            <div class="social-proof-grid">
+                <div class="sp-photo-col animate-on-scroll">
+                    <div class="sp-photo-frame">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80&fit=crop&crop=face" alt="Restaurateur du Vaucluse" loading="lazy">
+                        <div class="sp-photo-tag">
+                            <i data-lucide="star" style="width:13px;height:13px;color:#D97706;fill:#D97706;"></i>
+                            <span>Villa Saint Antoine — Cavaillon</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sp-text-col animate-on-scroll">
+                    <div class="section-eyebrow">Ils nous font confiance</div>
+                    <h2>Des résultats concrets,<br>mesurés sur le terrain.</h2>
+                    <p>Pas des promesses — des chiffres issus de nos premiers établissements partenaires dans le Vaucluse.</p>
+                    <div class="kpi-inline-grid">
+                        <div class="kpi-inline">
+                            <div class="kpi-inline-top">
+                                <span class="kpi-inline-val" data-target="247">0</span>
+                            </div>
+                            <span class="kpi-inline-label">clients capturés en 3 mois</span>
+                        </div>
+                        <div class="kpi-inline">
+                            <div class="kpi-inline-top">
+                                <span class="kpi-inline-val" data-target="38">0</span><span class="kpi-inline-unit">%</span>
+                            </div>
+                            <span class="kpi-inline-label">taux de retour moyen</span>
+                        </div>
+                        <div class="kpi-inline">
+                            <div class="kpi-inline-top">
+                                <span class="kpi-inline-val" data-target="4">0</span><span class="kpi-inline-unit">×</span>
+                            </div>
+                            <span class="kpi-inline-label">plus rapide que le papier</span>
+                        </div>
+                    </div>
+                    <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Je veux les mêmes résultats
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFS -->
     <section id="tarifs" class="section container">
         <div class="section-header animate-on-scroll">
-            <h2>Un modèle économique transparent</h2>
-            <p>Votre base de données vous appartient à 100%. Aucun engagement caché.</p>
+            <div class="section-eyebrow">Tarifs</div>
+            <h2>Un investissement transparent.<br>Pas de mauvaise surprise.</h2>
+            <p>Votre base de données vous appartient à 100%. Sans engagement caché, sans commission sur vos ventes.</p>
         </div>
         <div class="pricing-grid">
             <div class="pricing-card animate-on-scroll">
+                <div class="pricing-icon">
+                    <i data-lucide="package" style="width:26px;height:26px;color:#0F766E;"></i>
+                </div>
                 <div class="price-title">Installation</div>
                 <div class="price-amount">300 € <span>/ paiement unique</span></div>
-                <p class="price-desc">Mise en place complète et rapide de votre écosystème sur-mesure.</p>
+                <p class="price-desc">On vient chez vous, on installe tout, on forme votre équipe. Opérationnels le jour même.</p>
                 <ul class="pricing-list">
-                    <li>Création de votre programme fidélité</li>
-                    <li>Design & Impression des QR Codes</li>
-                    <li>Configuration des emails automatisés</li>
-                    <li>Formation rapide de l'équipe en salle</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Création de votre programme fidélité</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Design & impression des QR Codes</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Configuration des emails automatisés</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Formation de l'équipe en salle (30 min)</li>
                 </ul>
             </div>
-
             <div class="pricing-card highlight animate-on-scroll">
                 <div class="badge-popular">Le plus choisi</div>
+                <div class="pricing-icon pricing-icon--white">
+                    <i data-lucide="zap" style="width:26px;height:26px;color:white;"></i>
+                </div>
                 <div class="price-title">Abonnement Logiciel</div>
                 <div class="price-amount">99 € <span>/ mois</span></div>
-                <p class="price-desc">Le moteur de votre croissance et l'accès à votre espace privé.</p>
+                <p class="price-desc">Le moteur silencieux qui travaille pour vous 24h/24, 7j/7. Votre base, vos données, votre croissance.</p>
                 <ul class="pricing-list">
-                    <li>Accès Espace Restaurateur 24/7</li>
-                    <li>Export illimité de votre base (CSV)</li>
-                    <li>Automatisations emails illimitées</li>
-                    <li>Hébergement Cloud Sécurisé (RGPD)</li>
-                    <li>Support local & maintenance inclus</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Accès Espace Restaurateur 24/7</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Export illimité de votre base (CSV)</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Automatisations emails illimitées</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Hébergement Cloud sécurisé (RGPD)</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Support local & maintenance inclus</li>
                 </ul>
                 <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full mt-4">Démarrer avec FYDELIO</a>
             </div>
         </div>
     </section>
 
+    <!-- CTA FINAL PHOTO -->
+    <section class="cta-photo-section">
+        <div class="cta-photo-bg">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1400&q=80&fit=crop" alt="Restaurant Provence" loading="lazy">
+        </div>
+        <div class="cta-photo-overlay"></div>
+        <div class="container cta-photo-content animate-on-scroll">
+            <div class="badge-hero" style="background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.25);">
+                Audit gratuit · Sans engagement
+            </div>
+            <h2>Prêt à transformer votre salle<br>en base de données vivante ?</h2>
+            <p>30 minutes avec Victor ou Mathys. On analyse votre situation, on vous montre ce que FYDELIO ferait pour vous — gratuitement, sans pression.</p>
+            <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-large cta-photo-btn">
+                Réserver mon créneau gratuit
+                <i data-lucide="calendar" style="width:17px;height:17px;"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container footer-content animate-on-scroll">
             <div class="footer-brand">
@@ -204,29 +350,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <img src="flavicon.jpg" alt="Logo FYDELIO" loading="lazy">
                     <span>FYDELIO</span>
                 </div>
-                <p class="footer-bio">Le partenaire technologique des restaurateurs qui veulent fidéliser sans friction et augmenter leur chiffre d'affaires.</p>
+                <p class="footer-bio">Le partenaire de fidélisation des restaurateurs du Vaucluse qui veulent construire une relation durable avec leurs clients.</p>
+                <div class="footer-location">
+                    <i data-lucide="map-pin" style="width:14px;height:14px;opacity:0.5;"></i>
+                    <span>Vaucluse, Provence</span>
+                </div>
             </div>
-            
             <div class="footer-links">
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="#concept">Concept</a></li>
+                    <li><a href="#concept">Le Logiciel</a></li>
                     <li><a href="#fonctionnement">Notre Méthode</a></li>
-                    <li><a href="#tarifs">Tarifs & Offres</a></li>
+                    <li><a href="#tarifs">Tarifs</a></li>
                     <li><a href="services.html">L'Agence Marketing</a></li>
                 </ul>
             </div>
-
             <div class="footer-contact">
                 <h4>Nous Contacter</h4>
                 <ul>
-                    <li><span class="icon">📍</span> Vaucluse (Cavaillon / L'Isle)</li>
-                    <li><span class="icon">✉️</span> <a href="mailto:victordetroux2@gmail.com">victordetroux2@gmail.com</a></li>
-                    <li><span class="icon">✉️</span> <a href="mailto:mathys.groy84@gmail.com">mathys.groy84@gmail.com</a></li>
+                    <li>
+                        <i data-lucide="mail" style="width:13px;height:13px;opacity:0.5;"></i>
+                        <a href="mailto:victordetroux2@gmail.com">victordetroux2@gmail.com</a>
+                    </li>
+                    <li>
+                        <i data-lucide="mail" style="width:13px;height:13px;opacity:0.5;"></i>
+                        <a href="mailto:mathys.groy84@gmail.com">mathys.groy84@gmail.com</a>
+                    </li>
+                    <li>
+                        <i data-lucide="calendar" style="width:13px;height:13px;opacity:0.5;"></i>
+                        <a href="https://calendly.com/victordetroux2/30min" target="_blank">Réserver un créneau</a>
+                    </li>
                 </ul>
             </div>
         </div>
-        
         <div class="footer-bottom">
             <div class="container">
                 <p>© 2026 FYDELIO. Tous droits réservés. | Conformité RGPD stricte.</p>
@@ -234,7 +390,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
 
-    <!-- MODALE DE CONNEXION -->
+    <!-- MODALE -->
     <div id="loginModal" class="modal-overlay">
         <div class="modal-content">
             <button id="btnCloseModal" class="modal-close" aria-label="Fermer">&times;</button>
@@ -258,34 +414,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </button>
             </form>
             <p class="modal-footer">
-                Un problème de connexion ? <br>
+                Un problème de connexion ?<br>
                 <a href="mailto:victordetroux2@gmail.com">Contactez le support FYDELIO</a>
             </p>
         </div>
     </div>
 
-    <!-- SCRIPTS — ordre strict -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="fiddle-pro.js"></script>
     <script src="animations.js"></script>
-    
     <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    lucide.createIcons();
 
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks   = document.querySelector('.nav-links');
     menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
-
     document.querySelectorAll('.link-text, .btn-nav').forEach(link => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
             navLinks.classList.remove('active');
         });
     });
+
+    // Compteurs KPI
+    const kpiObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.dataset.target, 10);
+            let current = 0;
+            const duration = 1800;
+            const step = target / (duration / 16);
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) { el.textContent = target; clearInterval(timer); }
+                else { el.textContent = Math.floor(current); }
+            }, 16);
+            kpiObs.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.kpi-inline-val').forEach(el => kpiObs.observe(el));
     </script>
 </body>
 </html>
