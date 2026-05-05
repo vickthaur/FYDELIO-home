@@ -1,7 +1,13 @@
 /* ==========================================================================
    🚀 FYDELIO AGENCE - STYLES SPÉCIFIQUES (APPLE / AWWWARDS LEVEL)
    ========================================================================== */
-
+/* --- 0. FIX ANIMATIONS --- */
+/* On désactive l'ancienne méthode d'animation pour laisser GSAP faire sa magie Apple */
+.agency-body .animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
 /* --- 0. FOND DE PAGE PREMIUM --- */
 /* Un gris ultra-clair avec un très léger halo bleuté en fond pour la profondeur */
 .agency-body {
