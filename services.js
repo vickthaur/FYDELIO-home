@@ -1,197 +1,181 @@
 /* ==========================================================================
-   ✨ FYDELIO_OS // CORE ANIMATION ENGINE (GSAP)
+   ✨ FYDELIO_OS // LUXURY ANIMATION ENGINE (GSAP 3)
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 0. INITIALISATION & VÉRIFICATION ---
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-        console.error("CRITICAL ERROR: GSAP ou ScrollTrigger introuvable. Le système a besoin de ces librairies pour fonctionner.");
-        return;
-    }
-    
-    // Enregistrement du plugin de scroll
+    // Initialisation des plugins GSAP
     gsap.registerPlugin(ScrollTrigger);
 
-    console.log("FYDELIO_OS: Animation Engine Loaded. All systems nominal.");
+    // Configuration des Easings Apple (fluide et organique)
+    const APPLE_EASE = "expo.out";
+    const SOFT_EASE = "power3.out";
+    const SPRING_EASE = "back.out(1.7)";
 
-    /* ==========================================================================
-       1. HERO SECTION : SÉQUENCE D'AMORÇAGE (BOOT SEQUENCE)
-       ========================================================================== */
-    const bootSequence = gsap.timeline({ defaults: { ease: "power4.out" } });
+    /* --- 1. SÉQUENCE D'AMORÇAGE HERO (L'EFFET WAOUH) --- */
+    const heroTl = gsap.timeline({ defaults: { ease: APPLE_EASE } });
 
-    // Les éléments "Fade" (Badges, éléments de fond)
-    const fadeElements = document.querySelectorAll(".reveal-fade");
-    if(fadeElements.length > 0) {
-        bootSequence.from(fadeElements, {
+    heroTl
+        .from(".status-badge", {
+            y: 20,
             opacity: 0,
-            duration: 1.5,
+            duration: 1,
+            delay: 0.3
+        })
+        .from(".hero-title", {
+            y: 80,
+            opacity: 0,
+            duration: 1.8,
+            letterSpacing: "0.1em", // Effet de resserrement typique luxe
             stagger: 0.2
-        }, "+=0.2");
-    }
-
-    // Les éléments "Up" (Titres, Paragraphes, Boutons)
-    const upElements = document.querySelectorAll(".hero-module .reveal-up");
-    if(upElements.length > 0) {
-        bootSequence.from(upElements, {
+        }, "-=0.8")
+        .from(".hero-description", {
+            y: 30,
+            opacity: 0,
+            duration: 1.2
+        }, "-=1.2")
+        .from(".btn-tech", {
+            scale: 0.9,
+            opacity: 0,
+            duration: 1,
+            ease: SPRING_EASE
+        }, "-=1")
+        .from(".hero-metrics", {
             y: 40,
             opacity: 0,
-            duration: 1.2,
-            stagger: 0.15 // Cascade effect
-        }, "-=1.2"); // Commence légèrement avant la fin du fade
-    }
+            duration: 1.2
+        }, "-=0.8");
 
-    /* ==========================================================================
-       2. LE MOTEUR STICKY SCROLL (LE CŒUR DE L'EXPÉRIENCE)
-       ========================================================================== */
+
+    /* --- 2. MOTEUR STICKY SCROLL (TRANSITIONS DE CALQUES) --- */
     const scrollNodes = document.querySelectorAll('.scroll-node');
     const visualLayers = document.querySelectorAll('.visual-layer');
 
-    // Initialisation : On s'assure que le premier élément est actif au chargement
-    if(scrollNodes.length > 0 && visualLayers.length > 0) {
-        scrollNodes[0].classList.add('is-active');
-        visualLayers[0].classList.add('is-visible');
-    }
-
-    // On parcourt chaque bloc de texte (les étapes à gauche)
-    scrollNodes.forEach((node, index) => {
-        ScrollTrigger.create({
-            trigger: node,
-            // Le point de déclenchement : quand le haut du bloc texte arrive à 50% de l'écran
-            start: "top 55%", 
-            end: "bottom 55%",
-            // Quand le bloc entre dans la zone (en descendant ou en remontant)
-            onToggle: (self) => {
-                if (self.isActive) {
-                    
-                    // 1. Désactiver tous les autres blocs de texte
-                    scrollNodes.forEach(n => n.classList.remove('is-active'));
-                    // Activer le bloc actuel
-                    node.classList.add('is-active');
-
-                    // 2. Désactiver toutes les images à droite
-                    visualLayers.forEach(v => v.classList.remove('is-visible'));
-                    
-                    // 3. Trouver et activer l'image correspondante via le data-target
-                    const targetId = node.id; // ex: "node-1"
-                    const targetVisual = document.querySelector(`.visual-layer[data-target="${targetId}"]`);
-                    
-                    if (targetVisual) {
-                        targetVisual.classList.add('is-visible');
+    if(scrollNodes.length > 0) {
+        scrollNodes.forEach((node, index) => {
+            ScrollTrigger.create({
+                trigger: node,
+                start: "top 55%",
+                end: "bottom 55%",
+                onToggle: (self) => {
+                    if (self.isActive) {
+                        updateStickyVisual(index);
                     }
                 }
+            });
+        });
+    }
+
+    function updateStickyVisual(index) {
+        // Animation du texte (Node)
+        scrollNodes.forEach((n, i) => {
+            if(i === index) n.classList.add('is-active');
+            else n.classList.remove('is-active');
+        });
+
+        // Animation des calques d'images (Layer)
+        visualLayers.forEach((layer, i) => {
+            if(i === index) {
+                // L'image entrante
+                gsap.to(layer, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: APPLE_EASE,
+                    overwrite: true
+                });
+            } else {
+                // L'image sortante
+                gsap.to(layer, {
+                    opacity: 0,
+                    scale: 1.1, // Effet de zoom arrière en partant
+                    duration: 0.8,
+                    ease: SOFT_EASE,
+                    overwrite: true
+                });
             }
+        });
+    }
+
+
+    /* --- 3. EFFET MAGNÉTIQUE SUR LES BOUTONS (INTERACTION PREZ) --- */
+    const magneticBtns = document.querySelectorAll('.btn-tech');
+    
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            // Le bouton suit légèrement la souris
+            gsap.to(btn, {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+            
+            // Le texte à l'intérieur bouge encore plus (parallax interne)
+            const text = btn.querySelector('.btn-text');
+            if(text) {
+                gsap.to(text, {
+                    x: x * 0.1,
+                    y: y * 0.1,
+                    duration: 0.5
+                });
+            }
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            // Remise à zéro fluide
+            gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+            const text = btn.querySelector('.btn-text');
+            if(text) gsap.to(text, { x: 0, y: 0, duration: 0.7 });
         });
     });
 
-    /* ==========================================================================
-       3. REVEAL AU SCROLL (ROADMAP, FAQ, CTA)
-       ========================================================================== */
-    // Tous les éléments hors Hero qui ont la classe 'reveal-up' s'animent au scroll
-    const scrollRevealElements = document.querySelectorAll("section:not(.hero-module) .reveal-up");
+
+    /* --- 4. REVEAL DES CARTES ROADMAP & FAQ --- */
+    const revealCards = document.querySelectorAll('.glass-panel, .faq-item');
     
-    scrollRevealElements.forEach(element => {
-        gsap.from(element, {
+    revealCards.forEach(card => {
+        gsap.from(card, {
             scrollTrigger: {
-                trigger: element,
-                start: "top 85%", // Se déclenche quand l'élément est à 85% visible
-                toggleActions: "play none none none" // Ne se joue qu'une fois
+                trigger: card,
+                start: "top 90%",
+                toggleActions: "play none none none"
             },
             y: 50,
             opacity: 0,
             duration: 1,
-            ease: "power3.out"
+            ease: SOFT_EASE
         });
     });
 
-    // Ligne de la timeline (Roadmap) qui grandit en scrollant
-    const timelineLines = document.querySelectorAll(".timeline-line");
-    timelineLines.forEach(line => {
-        gsap.from(line, {
-            scrollTrigger: {
-                trigger: line,
-                start: "top 70%",
-                end: "bottom 50%",
-                scrub: 1 // L'animation est liée à la molette de la souris
-            },
-            scaleY: 0,
-            transformOrigin: "top center",
-            ease: "none"
-        });
-    });
 
-    /* ==========================================================================
-       4. EFFET DE PARALLAXE EN ARRIÈRE-PLAN (PROFONDEUR 3D)
-       ========================================================================== */
-    // Les lumières flottantes bougent légèrement quand on scroll pour donner un effet de profondeur
+    /* --- 5. EFFET DE PARALLAXE SUR LES HALOS (GLOWS) --- */
     gsap.to(".primary-orb", {
-        yPercent: 30, // Se déplace de 30% vers le bas
-        ease: "none",
         scrollTrigger: {
             trigger: "body",
             start: "top top",
             end: "bottom bottom",
-            scrub: true
-        }
+            scrub: 2
+        },
+        y: 200,
+        x: -100,
+        ease: "none"
     });
 
     gsap.to(".secondary-orb", {
-        yPercent: -20, // Se déplace vers le haut
-        ease: "none",
         scrollTrigger: {
             trigger: "body",
             start: "top top",
             end: "bottom bottom",
-            scrub: true
-        }
-    });
-
-    /* ==========================================================================
-       5. GLOW TRACKER (EFFET DE LUMIÈRE SOUS LA SOURIS SUR LE VERRE)
-       ========================================================================== */
-    // Sélectionne tous les panneaux en verre
-    const glassPanels = document.querySelectorAll('.glass-panel');
-    
-    glassPanels.forEach(panel => {
-        panel.addEventListener('mousemove', (e) => {
-            // Calcule la position X et Y de la souris par rapport au panneau
-            const rect = panel.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            // Applique un dégradé radial centré sur le curseur
-            panel.style.background = `
-                radial-gradient(
-                    circle 400px at ${x}px ${y}px, 
-                    rgba(255,255,255,0.06), 
-                    rgba(15, 23, 42, 0.4) 40%
-                )
-            `;
-        });
-
-        // Quand la souris sort du panneau, on remet le fond normal en douceur
-        panel.addEventListener('mouseleave', () => {
-            panel.style.background = 'rgba(15, 23, 42, 0.4)';
-        });
-    });
-
-    /* ==========================================================================
-       6. FAQ ACCORDÉON (Fluidité des détails HTML5)
-       ========================================================================== */
-    const faqItems = document.querySelectorAll('details.faq-item');
-    
-    // Assure qu'un seul élément FAQ est ouvert à la fois pour un design plus propre
-    faqItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            // Si on clique sur un item fermé, on ferme les autres
-            if (!item.hasAttribute('open')) {
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.hasAttribute('open')) {
-                        otherItem.removeAttribute('open');
-                    }
-                });
-            }
-        });
+            scrub: 1.5
+        },
+        y: -150,
+        x: 100,
+        ease: "none"
     });
 
 });
