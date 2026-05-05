@@ -207,7 +207,6 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
 .phone-screen {
     width: 100%; 
     height: 100%;
-    /* Fond très sombre pour matcher avec tes captures si elles sont sombres */
     background: #0F172A;
     position: relative; 
     border-radius: 36px; 
@@ -221,11 +220,8 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     left: 0;
     width: 100%; 
     height: 100%; 
-    
-    /* 🚨 LE FIX EST ICI : Plus aucun bord blanc, accroché en haut ! */
     object-fit: cover; 
     object-position: top center; 
-    
     opacity: 0; 
     transform: translateY(40px) scale(0.95);
     transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); 
@@ -237,7 +233,6 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     transform: translateY(0) scale(1);
 }
 
-/* Protection pour les petits écrans d'ordinateur portable */
 @media (min-width: 993px) and (max-height: 850px) {
     .phone-mockup { transform: scale(0.85); }
 }
@@ -245,7 +240,6 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     .phone-mockup { transform: scale(0.75); }
 }
 
-/* Cache les éléments mobiles sur PC */
 .mobile-only-show { display: none !important; }
 
 /* ==========================================================================
@@ -395,71 +389,64 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
 
 /* --- TABLETTE ET MOBILE (Moins de 992px) --- */
 @media (max-width: 992px) {
-    /* 1. Fin du Sticky Phone, retour aux cartes sublimes sur mobile */
+    /* 1. Fin du Sticky Phone, on passe sur des cartes verticales centrées */
     .method-split-layout { flex-direction: column; gap: 40px; }
-    .mobile-only-hide { display: none !important; } /* On cache l'iPhone géant PC */
+    .mobile-only-hide { display: none !important; }
     .method-text-column { padding: 0; }
     
-    /* On force l'affichage des éléments internes de la carte (Chiffres et 3D) */
     .step-image-container.mobile-only-show { display: flex !important; }
-    .step-number.mobile-only-show { display: block !important; }
     
-    /* Design de la carte méthode sur mobile (Super Pro) */
+    /* 🚨 NOUVEAU DESIGN DE LA CARTE MOBILE (Super propre, façon Apple) */
     .method-step { 
         min-height: auto; 
-        margin-bottom: 40px; 
+        margin-bottom: 24px; 
         opacity: 1 !important; 
         transform: none !important; 
         background: var(--surface); 
-        padding: 40px 30px; 
-        border-radius: 32px;
+        padding: 40px 24px; /* Un padding plus doux */
+        border-radius: 28px;
         border: 1px solid var(--border) !important; 
-        box-shadow: var(--shadow-md) !important;
+        box-shadow: var(--shadow-sm) !important; /* Ombre plus légère */
         position: relative; 
-        overflow: hidden !important; 
+        text-align: center; /* On centre tout pour la symétrie */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
-    /* Le chiffre gigantesque en fond sur mobile */
-    .step-number { 
-        position: absolute; 
-        top: -10px; 
-        right: 15px; 
-        left: auto; 
-        font-size: 110px; 
-        font-weight: 900; 
-        color: var(--primary); 
-        opacity: 0.05 !important; 
-        line-height: 1; 
-        z-index: 0; 
-        pointer-events: none; 
+    /* On cache totalement le chiffre géant qui faisait "brouillon" */
+    .step-number.mobile-only-show { 
+        display: none !important; 
     }
     
-    /* Le conteneur de l'image 3D */
+    /* Le conteneur de l'image 3D devient un joli socle circulaire */
     .step-image-container { 
-        height: 160px;
-        width: 100%;
-        margin-bottom: 25px; 
-        background: transparent !important;
+        height: 130px;
+        width: 130px;
+        margin: 0 auto 24px auto; 
+        background: var(--bg-gray) !important; /* Un petit fond gris rond */
+        border-radius: 50%; /* Cercle parfait */
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
         z-index: 2;
+        box-shadow: inset 0 4px 10px rgba(0,0,0,0.03); /* Petite profondeur */
     }
     
-    /* L'image 3D lévitante sur mobile : ZÉRO DÉFORMATION */
+    /* L'image 3D lévitante parfaitement calibrée dans son cercle */
     .app-icon-image { 
-        width: auto; 
-        height: 100%; 
-        max-width: 140px; 
+        width: 65%; /* 65% de la taille du cercle pour bien respirer */
+        height: auto; 
         object-fit: contain; 
         mix-blend-mode: multiply; 
-        filter: drop-shadow(0 20px 30px rgba(15, 118, 110, 0.2));
+        filter: drop-shadow(0 15px 25px rgba(15, 118, 110, 0.15));
     }
     
-    /* Les textes passent au-dessus du chiffre */
-    .step-badge, .method-step h3, .method-step p { position: relative; z-index: 3; }
-    .method-step p { max-width: 100%; }
+    /* Les textes bien alignés au centre */
+    .step-badge { margin: 0 auto 16px auto; }
+    .method-step h3 { font-size: 1.6rem; margin-bottom: 12px; }
+    .method-step p { max-width: 100%; font-size: 1.05rem; color: var(--text-muted); margin: 0; }
 
     /* 2. Autres sections (Tarifs) */
     .pricing-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
