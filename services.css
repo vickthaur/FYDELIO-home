@@ -3,7 +3,6 @@
    ========================================================================== */
 
 /* --- 0. FIX GSAP INITIAL STATES --- */
-/* Empêche les éléments de clignoter avant que le JS ne charge */
 .reveal-up, .reveal-fade { 
     opacity: 1 !important; 
     transform: none !important; 
@@ -16,11 +15,7 @@
     color: var(--text-main);
     position: relative;
     overflow-x: hidden;
-}
-
-/* Suppression du bruit sombre, on garde un fond très propre */
-.noise-overlay, .scanlines, .tech-grid-background {
-    display: none; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Halos lumineux très doux aux couleurs de ta charte */
@@ -31,22 +26,10 @@
     pointer-events: none;
     overflow: hidden;
 }
-.glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-}
-.primary-orb { 
-    width: 600px; height: 600px; 
-    background: var(--primary-light); 
-    top: -200px; right: -200px; 
-}
-.secondary-orb { 
-    width: 800px; height: 800px; 
-    background: var(--accent-light); 
-    bottom: -10%; left: -300px; 
-    opacity: 0.6;
-}
+.glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); }
+.primary-orb { width: 600px; height: 600px; background: var(--primary-light); top: -200px; right: -200px; }
+.secondary-orb { width: 800px; height: 800px; background: var(--accent-light); bottom: -10%; left: -300px; opacity: 0.6; }
+.noise-overlay, .scanlines, .tech-grid-background { display: none; }
 
 /* --- 2. HEADER & BOUTONS PREMIUM --- */
 .glass-header {
@@ -61,13 +44,11 @@
     transition: var(--transition);
 }
 
-.brand-logo {
-    display: flex; align-items: center; gap: 12px; text-decoration: none;
-}
+.brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-mark img { width: 38px; height: 38px; border-radius: 10px; }
 .logo-type { display: flex; flex-direction: column; line-height: 1.2; }
 .company-name { font-weight: 800; font-size: 1.2rem; color: var(--primary); letter-spacing: 0.02em; }
-.system-version { font-size: 0.65rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; }
+.system-version { font-size: 0.65rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; display: none; }
 
 .nav-item {
     display: flex; align-items: center; gap: 8px;
@@ -75,22 +56,29 @@
     font-weight: 600; font-size: 0.95rem; transition: var(--transition);
     position: relative;
 }
-.nav-index { display: none; } /* On cache les numéros "01" du menu pour plus de pureté */
+.nav-index { display: none; } 
 .nav-item:hover, .active-state { color: var(--primary); }
 .nav-dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); }
 
-/* Boutons adaptés à ta charte */
+/* 🚨 BOUTONS CORRIGÉS (Fini le texte coupé) 🚨 */
 .btn-tech {
     display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 14px 28px; border-radius: 14px;
-    font-size: 15px; font-weight: 700;
-    text-decoration: none; transition: var(--transition);
-    cursor: pointer; font-family: inherit; border: none;
+    padding: 14px 32px; /* Marges généreuses */
+    border-radius: 100px; /* Forme pilule façon Apple */
+    font-size: 1rem; 
+    font-weight: 700;
+    text-decoration: none; 
+    transition: var(--transition);
+    cursor: pointer; 
+    border: none;
+    white-space: nowrap; /* EMPÊCHE LE TEXTE DE SE COUPER */
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .btn-outline { background: var(--surface); color: var(--text-main); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
 .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .btn-solid { background: var(--primary); color: white; box-shadow: 0 8px 24px rgba(15, 118, 110, 0.2); }
 .btn-solid:hover { background: var(--primary-hover); transform: translateY(-4px); box-shadow: 0 14px 32px rgba(15, 118, 110, 0.3); }
+.icon-arrow, .icon-calendar { width: 20px; height: 20px; }
 
 /* --- 3. BADGES ET TEXTES --- */
 .status-badge {
@@ -103,70 +91,36 @@
 .pulse-indicator { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 0 4px var(--primary-light); animation: pulse 2s infinite; }
 @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-.highlight-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+.highlight-primary { color: var(--primary); }
 
 /* --- 4. HERO SECTION --- */
-.hero-module {
-    padding: 220px 0 100px;
-    position: relative;
-}
-.hero-container {
-    display: flex; flex-direction: column; align-items: center; text-align: center;
-}
+.hero-module { padding: 220px 0 100px; position: relative; }
+.hero-container { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .hero-title {
-    font-size: 4.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* S'adapte à l'écran */
+    font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;
     margin-bottom: 24px; color: var(--text-main);
 }
-.hero-description {
-    font-size: 1.25rem; color: var(--text-muted); max-width: 750px; line-height: 1.7; margin-bottom: 48px;
-}
-.hero-action-group {
-    display: flex; flex-direction: column; align-items: center; gap: 40px;
-}
-.hero-metrics {
-    display: flex; gap: 40px; align-items: center;
-    padding: 24px 48px; background: var(--surface); border-radius: 24px; 
-    border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-}
+.hero-description { font-size: 1.25rem; color: var(--text-muted); max-width: 750px; line-height: 1.7; margin-bottom: 48px; }
+.hero-action-group { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; }
+.hero-metrics { display: flex; gap: 40px; align-items: center; padding: 24px 48px; background: var(--surface); border-radius: 100px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
 .metric-item { display: flex; flex-direction: column; gap: 4px; }
 .metric-value { font-size: 2rem; font-weight: 800; color: var(--text-main); line-height: 1; }
 .metric-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 .metric-divider { width: 1px; height: 40px; background: var(--border); }
+.hero-visual-abstract { display: none; }
 
-/* --- 5. STICKY ARCHITECTURE (Le scroll asymétrique) --- */
+/* --- 5. STICKY ARCHITECTURE --- */
 .sticky-tracker-module { padding: 120px 0; }
-
 .section-header { margin-bottom: 80px; text-align: center; }
 .section-title { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; color: var(--text-main); }
 .section-subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-.sticky-layout-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-}
+.sticky-layout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 
-/* Colonne de texte qui défile */
-.scroll-narrative-column {
-    display: flex; flex-direction: column;
-    padding-bottom: 40vh; /* Espace pour scroller jusqu'à la dernière carte */
-}
-
-.scroll-node {
-    padding: 60px 0;
-    opacity: 0.2; /* Très effacé par défaut */
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    transform: translateX(-20px);
-}
-.scroll-node.is-active {
-    opacity: 1; /* Pleine lumière quand on le lit */
-    transform: translateX(0);
-}
+.scroll-narrative-column { display: flex; flex-direction: column; padding-bottom: 40vh; }
+.scroll-node { padding: 60px 0; opacity: 0.2; transition: opacity 0.6s ease, transform 0.6s ease; transform: translateX(-20px); }
+.scroll-node.is-active { opacity: 1; transform: translateX(0); }
 
 .node-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; font-weight: 800; font-size: 0.9rem; }
 .node-id { color: var(--text-light); }
@@ -183,72 +137,51 @@
 .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 .tech-tags span { background: var(--bg-gray); border: 1px solid var(--border); padding: 8px 16px; border-radius: 10px; font-weight: 700; font-size: 0.8rem; color: var(--text-muted); }
 
-/* Colonne de droite (Sticky Screen) */
-.scroll-visual-column {
-    position: sticky;
-    top: 120px;
-    height: calc(100vh - 160px);
-    max-height: 700px;
-    display: flex; align-items: center;
-}
-
-.sticky-visual-viewport {
-    width: 100%; height: 100%;
-    background: var(--surface);
-    border-radius: 32px;
-    box-shadow: var(--shadow-xl);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    display: flex; flex-direction: column;
-}
-
-/* Le haut de la fenêtre façon macOS */
-.viewport-ui-header {
-    height: 48px; background: var(--bg-main); border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; padding: 0 24px;
-}
+/* Sticky Écran de droite */
+.scroll-visual-column { position: sticky; top: 120px; height: calc(100vh - 160px); max-height: 700px; display: flex; align-items: center; }
+.sticky-visual-viewport { width: 100%; height: 100%; background: var(--surface); border-radius: 32px; box-shadow: var(--shadow-xl); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
+.viewport-ui-header { height: 48px; background: var(--bg-main); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; }
 .ui-dots { display: flex; gap: 8px; }
 .ui-dots span { display: block; width: 12px; height: 12px; border-radius: 50%; }
 .ui-dots span:nth-child(1) { background: #FF5F56; border: 1px solid #E0443E; }
 .ui-dots span:nth-child(2) { background: #FFBD2E; border: 1px solid #DEA123; }
 .ui-dots span:nth-child(3) { background: #27C93F; border: 1px solid #1AAB29; }
-.ui-path { display: none; } /* Caché pour un look plus clean */
-
-.viewport-image-container {
-    position: relative; flex: 1; background: var(--bg-gray);
-}
-.visual-layer {
-    position: absolute; inset: 0;
-    opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: scale(1.03); /* Léger dézoom à l'apparition */
-}
-.visual-layer.is-visible {
-    opacity: 1; transform: scale(1);
-}
+.ui-path { display: none; }
+.viewport-image-container { position: relative; flex: 1; background: var(--bg-gray); }
+.visual-layer { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease, transform 0.8s ease; transform: scale(1.03); }
+.visual-layer.is-visible { opacity: 1; transform: scale(1); }
 .visual-layer img { width: 100%; height: 100%; object-fit: cover; }
-.image-overlay { display: none; } /* On retire le filtre sombre des images */
+.image-overlay, .corner-bracket, .scanner-line { display: none; }
 
-/* Retrait des décorations Terminal */
-.corner-bracket, .scanner-line { display: none; }
-
-/* --- 6. ROADMAP --- */
+/* 🚨 6. ROADMAP CORRIGÉE (Fini les blocs gris) 🚨 */
 .roadmap-module { padding: 100px 0; }
 .timeline-grid { display: flex; flex-direction: column; gap: 24px; max-width: 850px; margin: 60px auto 0; }
 .timeline-item { display: flex; align-items: center; gap: 40px; }
-.timeline-number { font-size: 4rem; font-weight: 900; color: transparent; -webkit-text-stroke: 2px var(--border); width: 120px; text-align: right; }
-.timeline-content { flex: 1; background: var(--surface); padding: 40px; border-radius: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
-.timeline-content h4 { font-size: 1.5rem; margin-bottom: 12px; color: var(--text-main); font-weight: 800; }
-.timeline-content p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; }
+
+/* Beaux numéros clairs */
+.timeline-number { font-size: 5rem; font-weight: 900; color: var(--primary-light); width: 120px; text-align: right; line-height: 1;}
+
+/* Le nouveau design des cartes Roadmap */
+.glass-panel { 
+    flex: 1; 
+    background: var(--surface); /* Fond blanc pur */
+    padding: 40px; 
+    border-radius: 28px; 
+    box-shadow: var(--shadow-md); 
+    border: 1px solid var(--border); 
+}
+.glass-panel h4 { font-size: 1.5rem; margin-bottom: 12px; color: var(--text-main); font-weight: 800; }
+.glass-panel p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; }
 .timeline-line { height: 40px; width: 2px; background: var(--border); margin-left: 118px; }
 
-/* --- 7. FAQ --- */
+/* --- 7. FAQ CORRIGÉE --- */
 .faq-module { padding: 100px 0; max-width: 900px; margin: 0 auto; }
 .faq-inner { background: var(--surface); padding: 60px; border-radius: 32px; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
 .faq-header { text-align: center; margin-bottom: 50px; }
-.faq-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.faq-header h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--text-main);}
+.faq-header p { color: var(--text-muted); }
 
-.faq-item { border-bottom: 1px solid var(--bg-gray); padding: 24px 0; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
 .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
 .faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 700; cursor: pointer; list-style: none; color: var(--text-main); }
 .faq-question::-webkit-details-marker { display: none; }
@@ -256,21 +189,28 @@
 details[open] .faq-icon { transform: rotate(45deg); color: var(--accent); }
 .faq-answer { padding-top: 20px; color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; }
 
-/* --- 8. CALL TO ACTION --- */
+/* 🚨 8. CALL TO ACTION CORRIGÉ (Image 1) 🚨 */
 .cta-terminal-module { padding: 100px 0 160px; }
 .cta-terminal-inner { 
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%); 
-    border-radius: 40px; padding: 100px 40px; text-align: center; position: relative; overflow: hidden; 
+    border-radius: 40px; padding: 80px 40px; text-align: center; position: relative; overflow: hidden; 
     box-shadow: 0 30px 60px rgba(15, 118, 110, 0.3);
 }
-.radar-sweep { display: none; } /* On retire l'effet radar inutile */
-
+.radar-sweep { display: none; }
 .cta-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; color: white; }
 .alert-mode { background: rgba(255,255,255,0.2); color: white; border: none; box-shadow: none; margin-bottom: 24px; }
 .alert-mode .pulse-indicator { background: white; box-shadow: none; }
-.cta-content h2 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.03em; color: white; }
-.cta-desc { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin-bottom: 40px; line-height: 1.6; }
-.cta-content .btn-solid { background: white; color: var(--primary); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+.cta-content h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 24px; letter-spacing: -0.03em; color: white; }
+.cta-desc { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin-bottom: 40px; line-height: 1.6; }
+
+/* Le bouton dans la boite verte */
+.cta-content .btn-solid { 
+    background: white; 
+    color: var(--primary); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
+    padding: 16px 36px;
+    border-radius: 100px;
+}
 .cta-content .btn-solid:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
 
 /* --- 9. FOOTER CLEAN --- */
@@ -284,31 +224,28 @@ details[open] .faq-icon { transform: rotate(45deg); color: var(--accent); }
 .footer-col a:hover { color: var(--primary); transform: translateX(5px); display: inline-block;}
 .footer-bottom { display: flex; justify-content: space-between; padding: 30px 0; font-size: 0.9rem; color: var(--text-muted); }
 .sys-status { display: flex; align-items: center; gap: 8px; font-weight: 600;}
-.pulse-dot.green { background: #10B981; }
+.pulse-dot.green { background: #10B981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
 
 /* ==========================================================================
-   📱 RESPONSIVE
+   📱 RESPONSIVE (Tablettes & Mobiles)
    ========================================================================== */
 @media (max-width: 1024px) {
-    .hero-title { font-size: 4rem; }
-    
     .sticky-layout-grid { grid-template-columns: 1fr; gap: 60px; }
     .scroll-visual-column { position: relative; top: 0; height: 500px; order: -1; }
     .scroll-node { padding: 40px 0; opacity: 1; transform: none; }
     .scroll-node.is-active { transform: none; }
     
     .timeline-item { flex-direction: column; text-align: center; gap: 20px; }
-    .timeline-number { text-align: center; width: 100%; border: none; color: var(--primary-light); }
+    .timeline-number { text-align: center; width: 100%; border: none; }
     .timeline-line { margin: 0 auto; height: 20px; }
 }
 
 @media (max-width: 768px) {
     .hero-module { padding: 150px 0 80px; }
-    .hero-title { font-size: 2.8rem; }
-    .hero-metrics { flex-direction: column; gap: 20px; width: 100%; padding: 24px; }
+    .hero-metrics { flex-direction: column; gap: 20px; width: 100%; padding: 24px; border-radius: 32px;}
     .metric-divider { width: 100%; height: 1px; }
     
-    .section-title, .cta-content h2 { font-size: 2.2rem; }
+    .section-title { font-size: 2.2rem; }
     .scroll-visual-column { height: 350px; }
     .node-title { font-size: 1.8rem; }
     
