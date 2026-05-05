@@ -108,7 +108,7 @@
             <!-- TOPBAR -->
             <header class="dash-topbar">
                 <!-- Burger mobile -->
-                <button id="mobileMenuBtn" class="dash-burger mobile-only">
+                <button id="mobileMenuBtn" class="dash-burger">
                     <i data-lucide="menu" style="width:20px;height:20px;"></i>
                 </button>
 
@@ -330,6 +330,9 @@
         </main>
     </div>
 
+    <!-- Backdrop mobile (ferme la sidebar au clic extérieur) -->
+    <div id="dashBackdrop" class="dash-backdrop"></div>
+
     <script src="fiddle-pro.js"></script>
     <script src="animations.js"></script>
     <script>
@@ -360,11 +363,31 @@
         rowObs.observe(tbody, { childList: true });
     }
 
-    // Mobile sidebar
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const sidebar   = document.querySelector('.sidebar');
-    if (mobileBtn && sidebar) {
-        mobileBtn.addEventListener('click', () => sidebar.classList.toggle('mobile-open'));
+    // Backdrop mobile — ferme la sidebar au clic extérieur
+    const dashBackdrop = document.getElementById('dashBackdrop');
+    const dashSidebar  = document.querySelector('.sidebar');
+    if (dashBackdrop && dashSidebar) {
+        dashBackdrop.addEventListener('click', () => {
+            dashSidebar.classList.remove('mobile-open');
+            dashBackdrop.classList.remove('active');
+        });
+    }
+    // Sync backdrop avec le bouton burger
+    const burgerBtn = document.getElementById('mobileMenuBtn');
+    if (burgerBtn && dashSidebar && dashBackdrop) {
+        burgerBtn.addEventListener('click', () => {
+            dashSidebar.classList.toggle('mobile-open');
+            dashBackdrop.classList.toggle('active');
+        });
+        // Fermer aussi quand on clique sur un lien nav
+        dashSidebar.querySelectorAll('.sidebar-nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    dashSidebar.classList.remove('mobile-open');
+                    dashBackdrop.classList.remove('active');
+                }
+            });
+        });
     }
     </script>
 </body>
