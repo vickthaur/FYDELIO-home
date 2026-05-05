@@ -364,6 +364,53 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
 .badge-points { background: var(--primary-light); color: var(--primary); padding: 8px 16px; border-radius: 100px; font-weight: 800; font-size: 0.9rem; display: inline-block; border: 1px solid rgba(15, 118, 110, 0.2); }
 
 /* ==========================================================================
+   📱 SECTION QR CODE DASHBOARD (DESKTOP)
+   ========================================================================== */
+.qr-section {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border: 1px solid var(--border);
+    max-width: 850px;
+}
+.qr-code-box {
+    min-width: 220px;
+    min-height: 220px;
+    background: var(--bg-gray);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border);
+    padding: 16px;
+}
+.qr-code-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+.qr-text-content {
+    flex: 1;
+}
+.qr-text-content h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+.qr-text-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
    ✨ ANIMATIONS & 3D
    ========================================================================== */
 .animate-on-scroll { opacity: 0; transform: translateY(50px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -391,7 +438,6 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     
     .step-image-container.mobile-only-show { display: flex !important; }
     
-    /* Carte mobile allégée */
     .method-step { 
         min-height: auto; 
         margin-bottom: 24px; 
@@ -411,29 +457,26 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     
     .step-number.mobile-only-show { display: none !important; }
     
-    /* 🚨 LE CORRECTIF DU QR CODE MOBILE (MÉTHODE) 🚨 */
-    /* On utilise un format "icône iOS" (Squircle) plutôt qu'un rond parfait, avec fond blanc pur */
     .step-image-container { 
-        height: 180px; /* Plus grand pour que le QR/Screenshot soit bien lisible */
+        height: 180px; 
         width: 180px;
         margin: 0 auto 24px auto; 
         background: #FFFFFF !important; 
-        border-radius: 36px; /* Arrondi léger façon Apple */
+        border-radius: 36px; 
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
         z-index: 2;
         border: 1px solid var(--border);
-        box-shadow: var(--shadow-sm); /* Ombre douce sur le CADRE, pas sur l'image */
-        overflow: hidden; /* Coupe ce qui dépasse */
+        box-shadow: var(--shadow-sm); 
+        overflow: hidden; 
     }
     
-    /* L'image elle-même n'a plus d'ombre floue ni de filtre bizarre */
     .app-icon-image { 
-        width: 100%; /* Prend toute la place dans son cadre */
+        width: 100%; 
         height: 100%; 
-        object-fit: contain; /* S'adapte sans se déformer */
+        object-fit: contain; 
     }
     
     .step-badge { margin: 0 auto 16px auto; }
@@ -447,7 +490,6 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
 @media (max-width: 768px) {
     .mobile-only { display: block !important; }
 
-    /* Vitrine : Menu Burger */
     #main-header { padding: 12px 0; background: rgba(255, 255, 255, 0.95); } 
     .nav-inner { position: relative; }
     .nav-links { 
@@ -464,7 +506,6 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
     
-    /* Vitrine : Contenu */
     .hero { padding: 160px 0 80px; }
     .hero h1 { font-size: 2.8rem; }
     .grid-3 { grid-template-columns: 1fr; gap: 30px; }
@@ -490,7 +531,6 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     .kpi-header { margin-bottom: 16px; }
     .kpi-value { font-size: 2.4rem; }
 
-    /* 🚨 LE CORRECTIF DU TABLEAU QUI SLIDE ICI 🚨 */
     .table-container { 
         overflow-x: auto !important; 
         -webkit-overflow-scrolling: touch; 
@@ -499,7 +539,7 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
         box-shadow: var(--shadow-sm);
     }
     .pro-table { 
-        min-width: 650px; /* Assure que le tableau déborde pour autoriser le scroll */
+        min-width: 650px; 
     }
     .table-header-row { 
         padding: 16px; 
@@ -513,33 +553,26 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
         font-size: 0.8rem;
         padding: 6px 12px;
     }
-    
-    /* 🚨 CLASSE SPÉCIALE SI TU AS UN QR CODE DANS LE DASHBOARD 🚨 */
-    .dashboard-qr {
-        background: white;
-        padding: 20px;
-        border-radius: 20px;
-        text-align: center;
-        margin: 0 auto 24px auto;
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--border);
-        max-width: 250px;
+
+    /* 🚨 LE CORRECTIF DU QR CODE DASHBOARD MOBILE 🚨 */
+    .qr-section {
+        flex-direction: column; /* L'image passe au-dessus du texte */
+        text-align: center; /* On centre le texte */
+        padding: 24px; /* On réduit la marge blanche */
+        gap: 24px; /* On resserre l'espace */
     }
-    .dashboard-qr img {
-        width: 100%;
-        height: auto;
-        border-radius: 12px;
-        display: block;
+    .qr-code-box {
+        margin: 0 auto; /* On centre la boîte grise du QR code */
+        min-width: 180px; /* Légèrement plus petit sur mobile */
+        min-height: 180px;
+    }
+    .qr-text-content h3 {
+        font-size: 1.3rem; /* Titre un peu plus petit */
+    }
+    .qr-text-content p {
+        font-size: 0.95rem; /* Paragraphe un peu plus petit */
     }
     
-    /* Fix Sidebar Mobile */
     .sidebar { position: fixed; left: -100%; top: 0; bottom: 0; z-index: 9999; width: 300px; box-shadow: 10px 0 50px rgba(0,0,0,0.2); transition: left 0.4s ease; }
     .sidebar.mobile-open { left: 0; }
-   /* 🚨 CORRECTIF QR CODE DASHBOARD MOBILE 🚨 */
-    .qr-section {
-        flex-direction: column !important; /* Passe l'image et le texte l'un sous l'autre */
-        text-align: center !important; /* Centre le texte pour faire plus propre */
-        padding: 24px !important; /* Réduit l'énorme marge blanche autour */
-        gap: 24px !important; /* Réduit l'espace entre le QR code et le texte */
-    }
 }
