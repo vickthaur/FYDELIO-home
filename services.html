@@ -1,140 +1,442 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark-theme">
 <head>
+    <!-- Méta-données & SEO -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infrastructure Digitale | FYDELIO</title>
-    <meta name="description" content="Déployez l'infrastructure digitale de votre restaurant : Web, SEO, Social Media et Rétention.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Architecture Digitale & Acquisition | FYDELIO Agence</title>
+    <meta name="description" content="Déployez l'infrastructure digitale de votre restaurant : Web Design premium, ingénierie SEO, Algorithmes Sociaux et Rétention client.">
+    <meta name="author" content="Fydelio">
     
+    <!-- Open Graph (Réseaux Sociaux) -->
+    <meta property="og:title" content="Fydelio Agence | Le moteur de votre croissance">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fydelio.fr/services">
+    <meta property="og:image" content="meta-image-agence.jpg">
+    
+    <!-- Favicon & Thème -->
     <link rel="icon" type="image/jpeg" href="flavicon.jpg">
     <meta name="theme-color" content="#030712">
     
-    <!-- Polices : Jakarta pour les titres, et Fira Code pour l'aspect technique/Terminal -->
+    <!-- Typographies : Jakarta pour l'élégance, Fira Code pour l'aspect technique/data -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Fichiers CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="services.css">
 </head>
-<body class="terminal-body">
+<body class="terminal-os-body">
 
-    <!-- Bruit visuel en arrière-plan -->
-    <div class="noise-overlay"></div>
+    <!-- ==========================================
+         ARRIÈRE-PLAN & SYSTÈME DE GRILLE (DÉCORATIF)
+         ========================================== -->
+    <div class="system-environment" aria-hidden="true">
+        <div class="noise-overlay"></div>
+        <div class="scanlines"></div>
+        <div class="ambient-glows">
+            <div class="glow-orb primary-orb"></div>
+            <div class="glow-orb secondary-orb"></div>
+            <div class="glow-orb accent-orb"></div>
+        </div>
+        <div class="tech-grid-background">
+            <div class="grid-line horizontal h-1"></div>
+            <div class="grid-line horizontal h-2"></div>
+            <div class="grid-line vertical v-1"></div>
+            <div class="grid-line vertical v-2"></div>
+        </div>
+    </div>
 
-    <header id="main-header" class="terminal-header">
+    <!-- ==========================================
+         NAVIGATION / HEADER
+         ========================================== -->
+    <header id="main-header" class="glass-header">
         <div class="container nav-inner">
-            <a href="index.html" class="logo terminal-logo">
-                <img src="flavicon.jpg" alt="Logo FYDELIO">
-                <span>FYDELIO_</span>
+            <a href="index.html" class="brand-logo" aria-label="Retour à l'accueil Fydelio">
+                <div class="logo-mark">
+                    <img src="flavicon.jpg" alt="">
+                </div>
+                <div class="logo-type">
+                    <span class="company-name">FYDELIO</span>
+                    <span class="system-version">_OS // V2.4</span>
+                </div>
             </a>
-            <nav class="nav-links">
-                <a href="index.html" class="link-text">01 // Logiciel</a>
-                <a href="services.html" class="link-text active-terminal">02 // Agence</a>
-                <a href="index.html#tarifs" class="link-text">03 // Pricing</a>
-                <a href="https://calendly.com/victordetroux2/30min" target="_blank" class="btn btn-terminal-outline btn-nav">[ INITIER UN AUDIT ]</a>
+            
+            <nav class="nav-links desktop-nav" role="navigation">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-index">01</span>
+                    <span class="nav-label">Le Logiciel</span>
+                </a>
+                <a href="services.html" class="nav-item active-state">
+                    <span class="nav-index">02</span>
+                    <span class="nav-label">L'Agence</span>
+                    <span class="nav-dot"></span>
+                </a>
+                <a href="index.html#tarifs" class="nav-item">
+                    <span class="nav-index">03</span>
+                    <span class="nav-label">Pricing</span>
+                </a>
+                <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener" class="btn-tech btn-outline">
+                    <span class="btn-text">[ INITIER UN AUDIT ]</span>
+                </a>
             </nav>
+
+            <button class="mobile-menu-trigger" aria-label="Menu mobile" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </header>
 
-    <main>
-        <!-- HERO SECTION "TERMINAL" (Minimaliste et impactante) -->
-        <section class="hero-terminal container">
-            <div class="tech-badge"><span class="pulse-dot"></span> SYSTEM.ONLINE</div>
-            <h1>
-                L'infrastructure digitale<br>
-                de votre <span class="glow-text">croissance.</span>
-            </h1>
-            <p>
-                Fydelio déploie un écosystème d'acquisition implacable. Web design premium, ingénierie SEO et algorithmes sociaux. Plus qu'une agence, le moteur de votre établissement.
-            </p>
-        </section>
+    <!-- ==========================================
+         CONTENU PRINCIPAL
+         ========================================== -->
+    <main id="main-content">
 
-        <!-- 🚨 LA NOUVELLE SECTION STICKY SCROLL 🚨 -->
-        <!-- Le texte va défiler à gauche, l'image restera fixe à droite -->
-        <section class="sticky-scroll-section container">
-            
-            <div class="scroll-layout">
+        <!-- 1. HERO SECTION (Immersive & Technique) -->
+        <section class="hero-module">
+            <div class="container hero-container">
                 
-                <!-- COLONNE GAUCHE : LES TEXTES QUI DÉFILENT -->
-                <div class="scroll-text-column">
+                <div class="hero-content">
+                    <div class="status-badge reveal-fade">
+                        <div class="pulse-indicator"></div>
+                        <span class="status-text">SYS.ONLINE // MODULES D'ACQUISITION PRÊTS</span>
+                    </div>
                     
-                    <div class="scroll-step" id="step-1">
-                        <span class="step-index">MOD_01</span>
-                        <h2>Interfaces Web Premium</h2>
-                        <p>Nous développons des vitrines digitales haute performance. Architecture ultra-rapide sur mobile, design immersif et tunnels de conversion optimisés pour générer des réservations en continu. Votre site devient votre meilleur maître d'hôtel.</p>
+                    <h1 class="hero-title reveal-up">
+                        L'infrastructure digitale<br>
+                        de votre <span class="text-glow highlight-primary">croissance.</span>
+                    </h1>
+                    
+                    <p class="hero-description reveal-up delay-1">
+                        Fydelio déploie un écosystème d'acquisition implacable. Web design premium, ingénierie SEO et algorithmes sociaux. Plus qu'une agence, nous devenons le moteur technologique de votre établissement.
+                    </p>
+                    
+                    <div class="hero-action-group reveal-up delay-2">
+                        <a href="#sticky-architecture" class="btn-tech btn-solid">
+                            <span class="btn-text">DÉCOUVRIR L'ARCHITECTURE</span>
+                            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <div class="hero-metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">+340%</span>
+                                <span class="metric-label">Trafic moyen</span>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric-item">
+                                <span class="metric-value">ROI x4</span>
+                                <span class="metric-label">Sur investissement</span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="scroll-step" id="step-2">
-                        <span class="step-index">MOD_02</span>
-                        <h2>Domination Locale (SEO)</h2>
-                        <p>Ingénierie de recherche locale. Nous propulsons votre fiche Google au sommet des résultats lorsque les clients cherchent où manger ce soir dans votre ville. Capturez la demande active instantanément.</p>
-                    </div>
-
-                    <div class="scroll-step" id="step-3">
-                        <span class="step-index">MOD_03</span>
-                        <h2>Algorithmes Sociaux</h2>
-                        <p>Acquisition d'audience via Instagram et TikTok. Direction artistique, création de Reels viraux et gestion de communauté. Nous transformons les vues en trafic physique dans votre restaurant.</p>
-                    </div>
-
-                    <div class="scroll-step" id="step-4">
-                        <span class="step-index">MOD_04</span>
-                        <h2>Production Visuelle</h2>
-                        <p>Direction photographique et réalisation vidéo. Nous capturons l'essence de votre cuisine, de votre salle et de votre équipe pour rendre votre concept absolument irrésistible à l'écran.</p>
-                    </div>
-
-                    <div class="scroll-step" id="step-5">
-                        <span class="step-index">MOD_05</span>
-                        <h2>Synergie Rétention (CRM)</h2>
-                        <p>Couplez l'agence au logiciel FYDELIO. Nous automatisons vos campagnes d'emailing sur votre base de clients fidèles pour remplir les tables lors des jours creux ou des événements spéciaux.</p>
-                    </div>
-
                 </div>
-
-                <!-- COLONNE DROITE : L'IMAGE QUI RESTE FIXE (STICKY) -->
-                <div class="scroll-visual-column">
-                    <div class="sticky-visual-box">
-                        <!-- Ces images s'afficheront tour à tour via le JS au scroll -->
-                        <img src="image-web-design.jpg" alt="Web Design" class="sticky-img" data-step="1">
-                        <img src="image-seo.jpg" alt="SEO Local" class="sticky-img" data-step="2">
-                        <img src="image-social.jpg" alt="Réseaux Sociaux" class="sticky-img" data-step="3">
-                        <img src="image-production.jpg" alt="Production Photo" class="sticky-img" data-step="4">
-                        <img src="image-crm.jpg" alt="Emailing" class="sticky-img" data-step="5">
-                        
-                        <!-- Lignes décoratives façon Terminal Industries -->
-                        <div class="visual-crosshair top-left"></div>
-                        <div class="visual-crosshair top-right"></div>
-                        <div class="visual-crosshair bottom-left"></div>
-                        <div class="visual-crosshair bottom-right"></div>
-                    </div>
+                
+                <!-- Graphique abstrait ou élément visuel Hero (Optionnel) -->
+                <div class="hero-visual-abstract reveal-fade delay-3">
+                    <!-- Réservé pour une animation 3D ou un wireframe SVG dans le CSS -->
+                    <div class="abstract-wireframe"></div>
                 </div>
 
             </div>
         </section>
 
-        <!-- CALL TO ACTION "TERMINAL" -->
-        <section class="container" style="padding-bottom: 120px; padding-top: 80px;">
-            <div class="t-cta-box">
-                <div class="radar-line"></div>
-                <h2>INITIER LE PROTOCOLE DE CROISSANCE</h2>
-                <p>Réservez un audit stratégique offert. Analyse de l'infrastructure actuelle et plan de déploiement.</p>
-                <a href="https://calendly.com/victordetroux2/30min" target="_blank" class="btn btn-terminal-solid">[ RÉSERVER L'AUDIT ]</a>
+        <!-- 2. LA MÉCANIQUE STICKY SCROLL (Le cœur de la page) -->
+        <section id="sticky-architecture" class="sticky-tracker-module">
+            <div class="container">
+                
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">Les 5 piliers de l'acquisition</h2>
+                    <p class="section-subtitle">Chaque module est conçu pour capturer l'attention et générer des réservations.</p>
+                </div>
+
+                <div class="sticky-layout-grid">
+                    
+                    <!-- COLONNE GAUCHE : LE TEXTE DÉFILANT -->
+                    <div class="scroll-narrative-column">
+                        
+                        <!-- Étape 1 : Web Design -->
+                        <article class="scroll-node" id="node-1">
+                            <div class="node-meta">
+                                <span class="node-id">MOD_01</span>
+                                <span class="node-status active">OPERATIONNEL</span>
+                            </div>
+                            <h3 class="node-title">Interfaces Web Premium</h3>
+                            <p class="node-text">
+                                Nous développons des vitrines digitales haute performance. Une architecture ultra-rapide sur mobile, un design immersif et des tunnels de conversion optimisés. Votre site ne sert plus seulement à informer, il devient votre meilleur maître d'hôtel.
+                            </p>
+                            <ul class="node-features">
+                                <li><span class="feature-bullet"></span> Temps de chargement &lt; 1 seconde</li>
+                                <li><span class="feature-bullet"></span> Design UX/UI orienté conversion</li>
+                                <li><span class="feature-bullet"></span> Intégration module de réservation natif</li>
+                            </ul>
+                            <div class="tech-tags">
+                                <span>React/Next.js</span>
+                                <span>Headless CMS</span>
+                                <span>GSAP Animations</span>
+                            </div>
+                        </article>
+
+                        <!-- Étape 2 : SEO -->
+                        <article class="scroll-node" id="node-2">
+                            <div class="node-meta">
+                                <span class="node-id">MOD_02</span>
+                                <span class="node-status">OPERATIONNEL</span>
+                            </div>
+                            <h3 class="node-title">Domination Locale (SEO)</h3>
+                            <p class="node-text">
+                                Ingénierie de recherche locale. Nous propulsons votre établissement au sommet des résultats Google lorsque les clients cherchent où manger ce soir dans votre ville. Capturez la demande active instantanément et devancez vos concurrents.
+                            </p>
+                            <ul class="node-features">
+                                <li><span class="feature-bullet"></span> Optimisation Google Business Profile</li>
+                                <li><span class="feature-bullet"></span> Maillage local & Backlinks pertinents</li>
+                                <li><span class="feature-bullet"></span> Structure sémantique du site web</li>
+                            </ul>
+                            <div class="tech-tags">
+                                <span>Local SEO</span>
+                                <span>Schema Markup</span>
+                                <span>Data Analytics</span>
+                            </div>
+                        </article>
+
+                        <!-- Étape 3 : Réseaux Sociaux -->
+                        <article class="scroll-node" id="node-3">
+                            <div class="node-meta">
+                                <span class="node-id">MOD_03</span>
+                                <span class="node-status">OPERATIONNEL</span>
+                            </div>
+                            <h3 class="node-title">Algorithmes Sociaux</h3>
+                            <p class="node-text">
+                                Acquisition d'audience via Instagram et TikTok. Direction artistique, création de Reels viraux et gestion de communauté. Nous hackons l'algorithme pour transformer les vues en trafic physique dans votre restaurant.
+                            </p>
+                            <ul class="node-features">
+                                <li><span class="feature-bullet"></span> Calendrier éditorial stratégique</li>
+                                <li><span class="feature-bullet"></span> Modération et interaction communauté</li>
+                                <li><span class="feature-bullet"></span> Campagnes Meta Ads ciblées</li>
+                            </ul>
+                        </article>
+
+                        <!-- Étape 4 : Contenu Visuel -->
+                        <article class="scroll-node" id="node-4">
+                            <div class="node-meta">
+                                <span class="node-id">MOD_04</span>
+                                <span class="node-status">OPERATIONNEL</span>
+                            </div>
+                            <h3 class="node-title">Production Visuelle</h3>
+                            <p class="node-text">
+                                Direction photographique et réalisation vidéo haut de gamme. Nous capturons l'essence de votre cuisine, l'ambiance de votre salle et le savoir-faire de votre équipe pour rendre votre concept absolument irrésistible à l'écran.
+                            </p>
+                            <ul class="node-features">
+                                <li><span class="feature-bullet"></span> Shooting culinaire au flash de studio</li>
+                                <li><span class="feature-bullet"></span> Vidéos immersives (Drône, Stabilisateur)</li>
+                                <li><span class="feature-bullet"></span> Formats verticaux optimisés réseaux</li>
+                            </ul>
+                        </article>
+
+                        <!-- Étape 5 : CRM & Rétention -->
+                        <article class="scroll-node" id="node-5">
+                            <div class="node-meta">
+                                <span class="node-id">MOD_05</span>
+                                <span class="node-status highlight">SYNERGIE_ACTIVE</span>
+                            </div>
+                            <h3 class="node-title">Rétention & Base de Données</h3>
+                            <p class="node-text">
+                                L'avantage déloyal de Fydelio. En couplant l'agence à notre logiciel de fidélité, nous exploitons votre base de données. Nous automatisons des campagnes d'emailing et de SMS pour remplir vos tables lors des jours creux ou des événements spéciaux.
+                            </p>
+                            <ul class="node-features">
+                                <li><span class="feature-bullet"></span> Récolte de data 100% automatisée (RGPD)</li>
+                                <li><span class="feature-bullet"></span> Scénarios d'emails (Anniversaires, Relances)</li>
+                                <li><span class="feature-bullet"></span> Tracking du CA généré par campagne</li>
+                            </ul>
+                        </article>
+
+                    </div>
+
+                    <!-- COLONNE DROITE : L'ÉCRAN FIXE (VISUELS) -->
+                    <div class="scroll-visual-column">
+                        <div class="sticky-visual-viewport glass-panel">
+                            
+                            <!-- Éléments UI du faux terminal -->
+                            <div class="viewport-ui-header">
+                                <div class="ui-dots"><span></span><span></span><span></span></div>
+                                <div class="ui-path">/fydelio/modules/viewer.exe</div>
+                            </div>
+
+                            <!-- Conteneur des images -->
+                            <div class="viewport-image-container">
+                                <!-- Les classes 'active' ou 'hidden' seront gérées par le JS -->
+                                <div class="visual-layer" data-target="node-1">
+                                    <img src="placeholder-web.jpg" alt="Interface Web Premium" loading="lazy">
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="visual-layer" data-target="node-2">
+                                    <img src="placeholder-seo.jpg" alt="Analyse Data SEO" loading="lazy">
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="visual-layer" data-target="node-3">
+                                    <img src="placeholder-social.jpg" alt="Engagement Réseaux Sociaux" loading="lazy">
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="visual-layer" data-target="node-4">
+                                    <img src="placeholder-production.jpg" alt="Production Photo Culinaire" loading="lazy">
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="visual-layer" data-target="node-5">
+                                    <img src="placeholder-crm.jpg" alt="Dashboard Rétention" loading="lazy">
+                                    <div class="image-overlay"></div>
+                                </div>
+                            </div>
+
+                            <!-- Décorations de la fenêtre -->
+                            <div class="corner-bracket top-left"></div>
+                            <div class="corner-bracket top-right"></div>
+                            <div class="corner-bracket bottom-left"></div>
+                            <div class="corner-bracket bottom-right"></div>
+                            <div class="scanner-line"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ROADMAP / MÉTHODOLOGIE (Comment on travaille) -->
+        <section class="roadmap-module container">
+            <div class="section-header align-center reveal-up">
+                <span class="tech-badge">PROCESSUS</span>
+                <h2 class="section-title">Protocole de Déploiement</h2>
+            </div>
+            
+            <div class="timeline-grid">
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content glass-panel">
+                        <h4>Audit Initial</h4>
+                        <p>Analyse de votre écosystème actuel, de vos concurrents directs et de l'expérience client dans votre restaurant.</p>
+                    </div>
+                </div>
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item reveal-up delay-1">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content glass-panel">
+                        <h4>Setup & Ingénierie</h4>
+                        <p>Refonte de vos outils digitaux (Site web, Menus QR, Fiche Google). Mise en place du logiciel de fidélité Fydelio.</p>
+                    </div>
+                </div>
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item reveal-up delay-2">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content glass-panel">
+                        <h4>Acquisition (Run)</h4>
+                        <p>Lancement des campagnes (Social Media, Ads, Production de contenu régulier). On commence à remplir la salle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FAQ (Lever les freins) -->
+        <section class="faq-module container">
+            <div class="faq-inner glass-panel reveal-up">
+                <div class="faq-header">
+                    <h2>Base de connaissances</h2>
+                    <p>Paramètres fréquents.</p>
+                </div>
+                <div class="faq-list">
+                    
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            Faut-il obligatoirement prendre le logiciel de fidélité avec l'agence ?
+                            <span class="faq-icon">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Non, ce n'est pas obligatoire. Cependant, notre force réside dans la synergie des deux. Le logiciel de fidélité permet de capturer la data des clients que l'agence vous ramène. Sans le logiciel, vous perdez une grande partie de la valeur générée.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            En combien de temps peut-on voir des résultats sur les réservations ?
+                            <span class="faq-icon">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>La refonte visuelle et l'optimisation des réseaux sociaux produisent des effets en quelques semaines. Pour le SEO local, il faut généralement compter 2 à 3 mois pour dominer durablement les résultats Google de votre ville.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            Êtes-vous limités géographiquement (Vaucluse) ?
+                            <span class="faq-icon">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Pour la production de contenu (Photos/Vidéos), nous intervenons principalement en région PACA. Pour tout le reste de l'infrastructure (Web, SEO, Emailing, Social Media), nous accompagnons des restaurateurs sur toute la France.</p>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CALL TO ACTION FINAL -->
+        <section class="cta-terminal-module container">
+            <div class="cta-terminal-inner reveal-up">
+                <div class="radar-sweep"></div>
+                <div class="cta-content">
+                    <span class="status-badge alert-mode">ACTION REQUISE</span>
+                    <h2>INITIER LE PROTOCOLE DE CROISSANCE</h2>
+                    <p class="cta-desc">Réservez un audit stratégique de 30 minutes offert. Analyse de votre infrastructure actuelle et plan d'action d'acquisition.</p>
+                    <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener" class="btn-tech btn-solid btn-large">
+                        <span class="btn-text">[ RÉSERVER LA SESSION ]</span>
+                        <svg class="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </a>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="t-footer">
-        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05);">
-            <p style="font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #475569;">
-                FYDELIO_OS // BUILD: 2026.01 // STATUS: SECURE
-            </p>
+    <!-- ==========================================
+         FOOTER TECHNIQUE
+         ========================================== -->
+    <footer class="terminal-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <div class="logo-mark"><img src="flavicon.jpg" alt=""></div>
+                <p>FYDELIO_AGENCY<br>Division Acquisition & Rétention.</p>
+            </div>
+            <div class="footer-col links-col">
+                <span class="col-title">NAVIGATION_</span>
+                <ul>
+                    <li><a href="index.html">Le Logiciel</a></li>
+                    <li><a href="services.html">L'Agence</a></li>
+                    <li><a href="index.html#tarifs">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-col">
+                <span class="col-title">CONTACT_</span>
+                <ul>
+                    <li>LOC: Provence-Alpes-Côte d'Azur</li>
+                    <li>MAIL: <a href="mailto:victordetroux2@gmail.com">victordetroux2@gmail.com</a></li>
+                    <li>MAIL: <a href="mailto:mathys.groy84@gmail.com">mathys.groy84@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="sys-status">
+                <span class="pulse-dot green"></span> SYSTEM_SECURE // V.2.4.1
+            </div>
+            <div class="copyright">
+                © 2026 FYDELIO. All rights reserved.
+            </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- Scripts Javascript (GSAP pour le Sticky Scroll à venir) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="services.js"></script>
+
 </body>
 </html>
