@@ -434,19 +434,46 @@
     box-shadow: 0 8px 20px rgba(15,118,110,0.3);
 }
 
-/* Burger mobile */
+/* Burger mobile — caché sur desktop, visible sur mobile */
 .dash-burger {
-    display: none;
-    width: 36px;
-    height: 36px;
-    background: none;
+    display: none; /* caché par défaut sur desktop */
+    width: 40px;
+    height: 40px;
+    background: white;
     border: 1px solid #E2E8F0;
-    border-radius: 10px;
+    border-radius: 12px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #64748B;
+    color: #334155;
     flex-shrink: 0;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+.dash-burger:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+.dash-burger:active {
+    transform: scale(0.95);
+}
+
+/* Backdrop overlay pour fermer la sidebar en cliquant dehors */
+.dash-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 13, 24, 0.45);
+    z-index: 99;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.dash-backdrop.active {
+    display: block;
+    opacity: 1;
 }
 
 /* ============================================================
@@ -939,12 +966,14 @@
         left: -280px;
         top: 0;
         bottom: 0;
-        z-index: 9000;
+        z-index: 200; /* au-dessus du backdrop (99) */
         box-shadow: 20px 0 60px rgba(0,0,0,0.3);
+        transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .sidebar.mobile-open { left: 0; }
 
-    .dash-burger { display: flex; }
+    /* Burger visible sur mobile */
+    .dash-burger { display: flex !important; }
 
     .dash-topbar { padding: 0 16px; }
     .dash-search-kbd { display: none; }
