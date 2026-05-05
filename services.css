@@ -717,6 +717,11 @@
     .hero-text-col h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
     .hero-text-col p { font-size: 1rem; margin-bottom: 28px; }
 
+    /* Sticky scroll — on masque aussi les visuels des 3 leviers sur mobile */
+    .scroll-visual-column { display: none !important; }
+    .sticky-scroll-wrapper { flex-direction: column; gap: 16px; padding: 0 16px; }
+    .scroll-text-column { padding: 0; width: 100%; }
+
     /* Stats */
     .hero-stats {
         flex-wrap: wrap;
