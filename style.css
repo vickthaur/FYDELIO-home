@@ -716,7 +716,7 @@ h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
     .sidebar { 
         position: fixed; 
         left: -100%; 
-        top: 0; bottom: 0; 
+        top: 0; bottom: 0;
         z-index: 9999; 
         width: 280px; 
         box-shadow: 10px 0 60px rgba(0,0,0,0.2); 
