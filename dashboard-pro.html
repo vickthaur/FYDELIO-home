@@ -413,7 +413,14 @@
     let chartInscrits = null, chartCumule = null, donneesGraph = [];
 
     async function chargerGraphiques() {
+        // Attendre que fiddle-pro.js expose _supabaseClient
+        let tentatives = 0;
+        while (!window._supabaseClient && tentatives < 20) {
+            await new Promise(r => setTimeout(r, 200));
+            tentatives++;
+        }
         if (!window._supabaseClient || !window.currentRestoConfig) return;
+
         const vue = window.currentRestoConfig.id === 'villa_saint_antoine'
             ? 'vue_inscrits_par_jour_villa' : 'vue_inscrits_par_jour_bistrot';
         const { data } = await window._supabaseClient.from(vue).select('*');
@@ -450,7 +457,14 @@
     // Récompenses
     async function chargerRecompenses() {
         const container = document.getElementById('recompenses-list');
+        // Attendre que fiddle-pro.js soit prêt
+        let tentatives = 0;
+        while (!window._supabaseClient && tentatives < 20) {
+            await new Promise(r => setTimeout(r, 200));
+            tentatives++;
+        }
         if (!window._supabaseClient || !window.currentRestoConfig) return;
+
         const vue = window.currentRestoConfig.id === 'villa_saint_antoine'
             ? 'vue_recompenses_villa' : 'vue_recompenses_bistrot';
         const { data } = await window._supabaseClient.from(vue).select('*');
