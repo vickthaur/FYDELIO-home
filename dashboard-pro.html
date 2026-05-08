@@ -12,67 +12,93 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
     <style>
-        /* Statut abonné/désabonné */
-        .badge-optin { display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:700; }
-        .badge-optin--on  { background:rgba(16,185,129,0.1);color:#059669; }
-        .badge-optin--off { background:rgba(239,68,68,0.1);color:#DC2626; }
+        .badge-optin{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:700;}
+        .badge-optin--on{background:rgba(16,185,129,0.1);color:#059669;}
+        .badge-optin--off{background:rgba(239,68,68,0.1);color:#DC2626;}
 
-        /* Graphique */
-        .chart-card { background:white;border-radius:20px;border:1px solid rgba(0,0,0,0.06);padding:24px;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.03); }
-        .chart-header { display:flex;justify-content:space-between;align-items:center;margin-bottom:20px; }
-        .chart-title { font-size:15px;font-weight:800;color:#0F172A; }
-        .chart-period { display:flex;gap:6px; }
-        .chart-period button { padding:5px 12px;border-radius:8px;border:1px solid #E2E8F0;background:white;font-size:12px;font-weight:700;cursor:pointer;color:#64748B;transition:all 0.2s;font-family:inherit; }
-        .chart-period button.active { background:#0F766E;color:white;border-color:#0F766E; }
-        .chart-wrap { position:relative;height:200px; }
+        /* Charts */
+        .chart-card{background:white;border-radius:20px;border:1px solid rgba(0,0,0,0.06);padding:24px;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.03);}
+        .chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+        .chart-title{font-size:15px;font-weight:800;color:#0F172A;}
+        .chart-period{display:flex;gap:6px;}
+        .chart-period button{padding:5px 12px;border-radius:8px;border:1px solid #E2E8F0;background:white;font-size:12px;font-weight:700;cursor:pointer;color:#64748B;transition:all 0.2s;font-family:inherit;}
+        .chart-period button.active{background:#0F766E;color:white;border-color:#0F766E;}
+        .chart-wrap{position:relative;height:200px;}
+        .chart-empty{display:flex;align-items:center;justify-content:center;height:200px;color:#94A3B8;font-size:14px;font-weight:600;}
 
         /* Récompenses */
-        .recompense-row { display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid #F8FAFC;transition:background 0.15s; }
-        .recompense-row:hover { background:#FAFBFF; }
-        .recompense-badge { width:36px;height:36px;border-radius:10px;background:rgba(217,119,6,0.1);color:#D97706;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0; }
-        .recompense-count { background:rgba(217,119,6,0.1);color:#D97706;font-size:12px;font-weight:800;padding:4px 12px;border-radius:100px; }
+        .recompense-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid #F8FAFC;transition:background 0.15s;}
+        .recompense-row:hover{background:#FAFBFF;}
+        .recompense-badge{width:36px;height:36px;border-radius:10px;background:rgba(217,119,6,0.1);color:#D97706;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+        .recompense-count{background:rgba(217,119,6,0.1);color:#D97706;font-size:12px;font-weight:800;padding:4px 12px;border-radius:100px;}
 
-        /* Modal fiche client */
-        .client-modal-overlay { position:fixed;inset:0;background:rgba(8,13,26,0.5);backdrop-filter:blur(4px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px; }
-        .client-modal-overlay.active { display:flex; }
-        .client-modal { background:white;border-radius:24px;width:100%;max-width:560px;max-height:85vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,0.2);animation:modalIn 0.3s cubic-bezier(0.16,1,0.3,1); }
-        @keyframes modalIn { from { opacity:0;transform:scale(0.95) translateY(20px); } }
-        .client-modal-header { padding:24px 28px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;gap:16px; }
-        .client-modal-body { padding:24px 28px; }
-        .client-modal-close { margin-left:auto;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#64748B;transition:0.2s;flex-shrink:0; }
-        .client-modal-close:hover { background:#F1F5F9; }
-        .client-info-grid { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px; }
-        .client-info-item { background:#F8FAFC;border-radius:12px;padding:14px; }
-        .client-info-label { font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px; }
-        .client-info-value { font-size:14px;font-weight:700;color:#0F172A; }
-        .scan-history-title { font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px; }
-        .scan-item { display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F1F5F9;font-size:13px; }
-        .scan-item:last-child { border-bottom:none; }
-        .scan-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
-        .scan-dot--normal { background:#0F766E; }
-        .scan-dot--cadeau { background:#D97706; }
+        /* IA KPI */
+        .ia-card{background:white;border-radius:20px;border:1px solid rgba(0,0,0,0.06);padding:28px;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.03);}
+        .ia-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+        .ia-icon{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#0F766E,#34d399);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+        .ia-title{font-size:16px;font-weight:800;color:#0F172A;}
+        .ia-subtitle{font-size:13px;color:#64748B;}
+        .ia-note{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:13px;font-weight:800;margin-bottom:16px;}
+        .ia-note--a{background:rgba(16,185,129,0.1);color:#059669;}
+        .ia-note--b{background:rgba(59,130,246,0.1);color:#1D4ED8;}
+        .ia-note--c{background:rgba(245,158,11,0.1);color:#D97706;}
+        .ia-resume{font-size:15px;color:#1e293b;line-height:1.7;margin-bottom:20px;font-weight:500;}
+        .ia-section-title{font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+        .ia-list{list-style:none;padding:0;margin:0 0 20px;}
+        .ia-list li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;color:#334155;border-bottom:1px solid #F8FAFC;}
+        .ia-list li:last-child{border-bottom:none;}
+        .ia-list .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+        .dot--green{background:#10B981;}
+        .dot--orange{background:#F59E0B;}
+        .ia-conseil{background:rgba(15,118,110,0.06);border:1px solid rgba(15,118,110,0.15);border-radius:14px;padding:18px;font-size:14px;color:#0F172A;line-height:1.6;margin-bottom:16px;}
+        .ia-conseil strong{color:#0F766E;}
+        .ia-prediction{background:#F8FAFC;border-radius:14px;padding:16px;font-size:13px;color:#475569;line-height:1.6;font-style:italic;}
+        .btn-ia{display:flex;align-items:center;gap:8px;padding:12px 24px;background:#0F766E;color:white;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-top:8px;}
+        .btn-ia:hover:not(:disabled){background:#0D655E;transform:translateY(-2px);}
+        .btn-ia:disabled{background:#CBD5E1;cursor:not-allowed;transform:none;}
+        .ia-loading{display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px;color:#64748B;}
+        .ia-loading .dash-spinner{width:32px;height:32px;border-width:3px;}
+        .ia-error{background:#FEF2F2;border:1px solid #FECACA;border-radius:14px;padding:16px;color:#991B1B;font-size:14px;}
 
-        /* Modal Email */
-        .email-modal-overlay { position:fixed;inset:0;background:rgba(8,13,26,0.5);backdrop-filter:blur(4px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px; }
-        .email-modal-overlay.active { display:flex; }
-        .email-modal { background:white;border-radius:24px;width:100%;max-width:540px;box-shadow:0 40px 80px rgba(0,0,0,0.2);animation:modalIn 0.3s cubic-bezier(0.16,1,0.3,1); }
-        .email-modal-header { padding:24px 28px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;justify-content:space-between; }
-        .email-modal-header h3 { font-size:17px;font-weight:800;color:#0F172A; }
-        .email-modal-body { padding:24px 28px; }
-        .email-field { margin-bottom:16px; }
-        .email-field label { display:block;font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:7px; }
-        .email-field input, .email-field textarea, .email-field select { width:100%;padding:12px 14px;border:2px solid #E2E8F0;border-radius:12px;font-size:14px;font-family:inherit;color:#0F172A;background:#F8FAFC;transition:0.2s;resize:vertical; }
-        .email-field input:focus, .email-field textarea:focus, .email-field select:focus { outline:none;border-color:#0F766E;box-shadow:0 0 0 3px rgba(15,118,110,0.08);background:white; }
-        .email-field textarea { min-height:120px; }
-        .email-modal-footer { padding:16px 28px;border-top:1px solid #F1F5F9;display:flex;gap:10px;justify-content:flex-end; }
-        .btn-cancel-modal { padding:10px 20px;border-radius:12px;border:1px solid #E2E8F0;background:white;font-size:14px;font-weight:700;cursor:pointer;color:#64748B;font-family:inherit;transition:0.2s; }
-        .btn-cancel-modal:hover { background:#F8FAFC; }
-        .btn-send-email { padding:10px 24px;border-radius:12px;border:none;background:#0F766E;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:0.2s;display:flex;align-items:center;gap:8px; }
-        .btn-send-email:hover:not(:disabled) { background:#0D655E;transform:translateY(-1px); }
-        .btn-send-email:disabled { background:#CBD5E1;cursor:not-allowed; }
-        .btn-email-top { display:flex;align-items:center;gap:8px;padding:9px 18px;background:white;color:#0F172A;border:1px solid #E2E8F0;border-radius:12px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.25s ease; }
-        .btn-email-top:hover { border-color:#0F766E;color:#0F766E; }
-        .dash-table tbody tr { cursor:pointer; }
+        /* Modals */
+        .client-modal-overlay{position:fixed;inset:0;background:rgba(8,13,26,0.5);backdrop-filter:blur(4px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;}
+        .client-modal-overlay.active{display:flex;}
+        .client-modal{background:white;border-radius:24px;width:100%;max-width:560px;max-height:85vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,0.2);animation:modalIn 0.3s cubic-bezier(0.16,1,0.3,1);}
+        @keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(20px);}}
+        .client-modal-header{padding:24px 28px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;gap:16px;}
+        .client-modal-body{padding:24px 28px;}
+        .client-modal-close{margin-left:auto;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#64748B;flex-shrink:0;}
+        .client-modal-close:hover{background:#F1F5F9;}
+        .client-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;}
+        .client-info-item{background:#F8FAFC;border-radius:12px;padding:14px;}
+        .client-info-label{font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px;}
+        .client-info-value{font-size:14px;font-weight:700;color:#0F172A;}
+        .scan-history-title{font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;}
+        .scan-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F1F5F9;font-size:13px;}
+        .scan-item:last-child{border-bottom:none;}
+        .scan-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+        .scan-dot--normal{background:#0F766E;}
+        .scan-dot--cadeau{background:#D97706;}
+
+        .email-modal-overlay{position:fixed;inset:0;background:rgba(8,13,26,0.5);backdrop-filter:blur(4px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;}
+        .email-modal-overlay.active{display:flex;}
+        .email-modal{background:white;border-radius:24px;width:100%;max-width:540px;box-shadow:0 40px 80px rgba(0,0,0,0.2);animation:modalIn 0.3s cubic-bezier(0.16,1,0.3,1);}
+        .email-modal-header{padding:24px 28px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;justify-content:space-between;}
+        .email-modal-header h3{font-size:17px;font-weight:800;color:#0F172A;}
+        .email-modal-body{padding:24px 28px;}
+        .email-field{margin-bottom:16px;}
+        .email-field label{display:block;font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:7px;}
+        .email-field input,.email-field textarea,.email-field select{width:100%;padding:12px 14px;border:2px solid #E2E8F0;border-radius:12px;font-size:14px;font-family:inherit;color:#0F172A;background:#F8FAFC;transition:0.2s;resize:vertical;}
+        .email-field input:focus,.email-field textarea:focus,.email-field select:focus{outline:none;border-color:#0F766E;box-shadow:0 0 0 3px rgba(15,118,110,0.08);background:white;}
+        .email-field textarea{min-height:120px;}
+        .email-modal-footer{padding:16px 28px;border-top:1px solid #F1F5F9;display:flex;gap:10px;justify-content:flex-end;}
+        .btn-cancel-modal{padding:10px 20px;border-radius:12px;border:1px solid #E2E8F0;background:white;font-size:14px;font-weight:700;cursor:pointer;color:#64748B;font-family:inherit;}
+        .btn-send-email{padding:10px 24px;border-radius:12px;border:none;background:#0F766E;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:8px;}
+        .btn-send-email:hover:not(:disabled){background:#0D655E;}
+        .btn-send-email:disabled{background:#CBD5E1;cursor:not-allowed;}
+        .btn-email-top{display:flex;align-items:center;gap:8px;padding:9px 18px;background:white;color:#0F172A;border:1px solid #E2E8F0;border-radius:12px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.25s ease;}
+        .btn-email-top:hover{border-color:#0F766E;color:#0F766E;}
+        .dash-table tbody tr{cursor:pointer;}
     </style>
 </head>
 <body class="dash-body">
@@ -86,7 +112,6 @@
     </div>
 
     <div class="dash-layout">
-
         <aside class="sidebar">
             <div class="sidebar-brand">
                 <div class="sidebar-brand-logo"><img src="flavicon.jpg" alt="FYDELIO"></div>
@@ -111,6 +136,10 @@
                         <div class="sidebar-nav-icon"><i data-lucide="gift"></i></div>
                         <span>Récompenses</span>
                     </a>
+                    <a href="#" class="sidebar-nav-item" id="nav-ia">
+                        <div class="sidebar-nav-icon"><i data-lucide="sparkles"></i></div>
+                        <span>IA Analytics</span>
+                    </a>
                     <a href="#" class="sidebar-nav-item" id="nav-qrcodes">
                         <div class="sidebar-nav-icon"><i data-lucide="qr-code"></i></div>
                         <span>QR Code</span>
@@ -133,7 +162,7 @@
                         <span class="sidebar-user-email" id="displayEmail">chargement…</span>
                     </div>
                 </div>
-                <button class="sidebar-logout-btn" id="btnLogout" title="Déconnexion">
+                <button class="sidebar-logout-btn" id="btnLogout">
                     <i data-lucide="log-out" style="width:16px;height:16px;"></i>
                 </button>
             </div>
@@ -144,18 +173,16 @@
                 <button id="mobileMenuBtn" class="dash-burger"><i data-lucide="menu" style="width:20px;height:20px;"></i></button>
                 <div class="dash-search">
                     <i data-lucide="search" class="dash-search-icon"></i>
-                    <input type="text" id="searchClient" class="dash-search-input" placeholder="Rechercher un client (nom, email…)">
+                    <input type="text" id="searchClient" class="dash-search-input" placeholder="Rechercher un client…">
                     <kbd class="dash-search-kbd">⌘K</kbd>
                 </div>
                 <div class="dash-topbar-actions">
                     <div class="dash-status-pill"><span class="dash-status-dot"></span>Données en direct</div>
                     <button class="btn-email-top" id="btnOpenEmail">
-                        <i data-lucide="send" style="width:14px;height:14px;"></i>
-                        Envoyer un email
+                        <i data-lucide="send" style="width:14px;height:14px;"></i>Envoyer un email
                     </button>
                     <button class="btn-export-top" id="btnExport">
-                        <i data-lucide="download" style="width:15px;height:15px;"></i>
-                        Exporter CSV
+                        <i data-lucide="download" style="width:15px;height:15px;"></i>Exporter CSV
                     </button>
                 </div>
             </header>
@@ -237,7 +264,7 @@
                     <div class="dash-page-header animate-on-scroll">
                         <div>
                             <h1 class="dash-page-title">Évolution des inscrits</h1>
-                            <p class="dash-page-sub">Croissance de votre base clients dans le temps.</p>
+                            <p class="dash-page-sub">Croissance de votre base clients sur les 30 derniers jours.</p>
                         </div>
                     </div>
                     <div class="chart-card animate-on-scroll">
@@ -248,11 +275,15 @@
                                 <button onclick="changerPeriode(7,this)">7j</button>
                             </div>
                         </div>
-                        <div class="chart-wrap"><canvas id="chartInscrits"></canvas></div>
+                        <div class="chart-wrap" id="chart1-wrap">
+                            <div class="chart-empty">Chargement…</div>
+                        </div>
                     </div>
                     <div class="chart-card animate-on-scroll">
                         <div class="chart-header"><div class="chart-title">Total cumulé</div></div>
-                        <div class="chart-wrap"><canvas id="chartCumule"></canvas></div>
+                        <div class="chart-wrap" id="chart2-wrap">
+                            <div class="chart-empty">Chargement…</div>
+                        </div>
                     </div>
                 </div>
 
@@ -272,6 +303,52 @@
                             <div style="padding:40px;text-align:center;color:#94A3B8;">
                                 <div class="dash-spinner" style="margin:0 auto 12px;"></div>Chargement…
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VUE IA ANALYTICS -->
+                <div id="view-ia" style="display:none;">
+                    <div class="dash-page-header animate-on-scroll">
+                        <div>
+                            <h1 class="dash-page-title">IA Analytics</h1>
+                            <p class="dash-page-sub">Claude analyse votre programme de fidélité et vous donne des conseils personnalisés.</p>
+                        </div>
+                    </div>
+
+                    <div class="ia-card animate-on-scroll">
+                        <div class="ia-header">
+                            <div class="ia-icon">🤖</div>
+                            <div>
+                                <div class="ia-title">Analyse par Claude AI</div>
+                                <div class="ia-subtitle">Propulsé par Anthropic — mis à jour à la demande</div>
+                            </div>
+                            <button class="btn-ia" id="btnLancerIA" style="margin-top:0;margin-left:auto;" onclick="lancerAnalyseIA()">
+                                <i data-lucide="sparkles" style="width:16px;height:16px;"></i>
+                                Analyser mes KPIs
+                            </button>
+                        </div>
+
+                        <div id="ia-placeholder" style="text-align:center;padding:40px;color:#94A3B8;">
+                            <div style="font-size:40px;margin-bottom:12px;">✨</div>
+                            <div style="font-size:15px;font-weight:600;margin-bottom:8px;">Prêt à analyser</div>
+                            <div style="font-size:13px;">Cliquez sur "Analyser mes KPIs" pour obtenir des insights personnalisés sur votre programme.</div>
+                        </div>
+
+                        <div id="ia-loading" style="display:none;">
+                            <div class="ia-loading">
+                                <div class="dash-spinner"></div>
+                                <span style="font-weight:600;">Claude analyse vos données…</span>
+                                <span style="font-size:12px;color:#94A3B8;">Environ 5-10 secondes</span>
+                            </div>
+                        </div>
+
+                        <div id="ia-result" style="display:none;">
+                            <!-- Rempli dynamiquement -->
+                        </div>
+
+                        <div id="ia-error" style="display:none;">
+                            <div class="ia-error" id="ia-error-msg"></div>
                         </div>
                     </div>
                 </div>
@@ -310,10 +387,10 @@
     <div class="client-modal-overlay" id="clientModal">
         <div class="client-modal">
             <div class="client-modal-header">
-                <div class="client-modal-avatar" id="modalAvatar" style="width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;"></div>
+                <div id="modalAvatar" style="width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;"></div>
                 <div>
                     <div style="font-size:18px;font-weight:800;color:#0F172A;" id="modalNom"></div>
-                    <div style="font-size:13px;color:#64748B;" id="modalEmail"></div>
+                    <div style="font-size:13px;color:#64748B;" id="modalEmailDisplay"></div>
                 </div>
                 <button class="client-modal-close" onclick="fermerFicheClient()"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
             </div>
@@ -349,7 +426,10 @@
                     <label>Message *</label>
                     <textarea id="emailContenu" placeholder="Rédigez votre message…"></textarea>
                 </div>
-                <div style="font-size:11px;color:#94A3B8;margin-top:8px;">Envoi via votre compte Brevo. Lien de désabonnement ajouté automatiquement.</div>
+                <div style="font-size:11px;color:#94A3B8;margin-top:8px;">
+                    Envoi via Brevo. Lien de désabonnement ajouté automatiquement.<br>
+                    <strong style="color:#D97706;">⚠ Requiert : Edge Function "send-email" + secret BREVO_API_KEY dans Supabase.</strong>
+                </div>
             </div>
             <div class="email-modal-footer">
                 <button class="btn-cancel-modal" onclick="fermerEmailModal()">Annuler</button>
@@ -367,13 +447,12 @@
     <script>
     lucide.createIcons();
 
-    // Date
     const dateEl = document.getElementById('dashDate');
     if (dateEl) dateEl.textContent = new Date().toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long' });
 
-    // Compteur tableau
+    // ── Compteur tableau ──
     const tableCountEl = document.getElementById('tableCount');
-    const tbody = document.getElementById('tableBody');
+    const tbody        = document.getElementById('tableBody');
     if (tbody && tableCountEl) {
         new MutationObserver(() => {
             const rows = tbody.querySelectorAll('tr:not(.dash-table-loading)');
@@ -383,69 +462,116 @@
         }).observe(tbody, { childList: true });
     }
 
-    // Navigation
+    // ── Navigation — attend que fiddle-pro soit prêt ──
     const VUES = {
         'nav-clients':     'view-clients',
         'nav-analytics':   'view-analytics',
         'nav-recompenses': 'view-recompenses',
+        'nav-ia':          'view-ia',
         'nav-qrcodes':     'view-qrcodes',
     };
+
+    function activerVue(navId) {
+        document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+        const navEl = document.getElementById(navId);
+        if (navEl) navEl.classList.add('active');
+        Object.values(VUES).forEach(v => {
+            const el = document.getElementById(v);
+            if (el) el.style.display = 'none';
+        });
+        const target = document.getElementById(VUES[navId]);
+        if (target) target.style.display = 'block';
+
+        if (navId === 'nav-analytics')   chargerGraphiques();
+        if (navId === 'nav-recompenses') chargerRecompenses();
+
+        if (window.innerWidth <= 768) {
+            document.querySelector('.sidebar')?.classList.remove('mobile-open');
+            document.getElementById('dashBackdrop')?.classList.remove('active');
+        }
+    }
 
     document.querySelectorAll('.sidebar-nav-item:not(.sidebar-nav-item--soon)').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
-            const id = item.id;
-            if (!VUES[id]) return;
-            document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-            Object.values(VUES).forEach(v => { const el = document.getElementById(v); if (el) el.style.display = 'none'; });
-            document.getElementById(VUES[id]).style.display = 'block';
-            if (id === 'nav-analytics')   chargerGraphiques();
-            if (id === 'nav-recompenses') chargerRecompenses();
-            if (window.innerWidth <= 768) {
-                document.querySelector('.sidebar')?.classList.remove('mobile-open');
-                document.getElementById('dashBackdrop')?.classList.remove('active');
-            }
+            if (item.id && VUES[item.id]) activerVue(item.id);
         });
     });
 
-    // Graphiques
+    // ── Utilitaire : attendre que fiddle-pro soit prêt ──
+    async function attendreFiddle() {
+        let n = 0;
+        while ((!window._supabaseClient || !window.currentRestoConfig) && n < 30) {
+            await new Promise(r => setTimeout(r, 200));
+            n++;
+        }
+        return !!(window._supabaseClient && window.currentRestoConfig);
+    }
+
+    // ── Graphiques ──
     let chartInscrits = null, chartCumule = null, donneesGraph = [];
 
     async function chargerGraphiques() {
-        // Attendre que fiddle-pro.js expose _supabaseClient
-        let tentatives = 0;
-        while (!window._supabaseClient && tentatives < 20) {
-            await new Promise(r => setTimeout(r, 200));
-            tentatives++;
-        }
-        if (!window._supabaseClient || !window.currentRestoConfig) return;
+        const ok = await attendreFiddle();
+        if (!ok) return;
 
         const vue = window.currentRestoConfig.id === 'villa_saint_antoine'
             ? 'vue_inscrits_par_jour_villa' : 'vue_inscrits_par_jour_bistrot';
-        const { data } = await window._supabaseClient.from(vue).select('*');
+
+        const { data, error } = await window._supabaseClient.from(vue).select('*');
+
+        if (error) {
+            console.error('Erreur graphique:', error);
+            document.getElementById('chart1-wrap').innerHTML = '<div class="chart-empty">Erreur : ' + error.message + '</div>';
+            return;
+        }
+
         donneesGraph = data || [];
+
+        if (donneesGraph.length === 0) {
+            document.getElementById('chart1-wrap').innerHTML = '<div class="chart-empty">Aucune donnée disponible</div>';
+            document.getElementById('chart2-wrap').innerHTML = '<div class="chart-empty">Aucune donnée disponible</div>';
+            return;
+        }
+
         renderGraphiques(donneesGraph);
     }
 
     function renderGraphiques(data) {
-        const labels  = data.map(d => new Date(d.jour).toLocaleDateString('fr-FR', { day:'numeric', month:'short' }));
-        const newData = data.map(d => d.nouveaux_inscrits);
-        const cumData = data.map(d => d.total_cumule);
+        const labels  = data.map(d => new Date(d.jour + 'T00:00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' }));
+        const newData = data.map(d => parseInt(d.nouveaux_inscrits) || 0);
+        const cumData = data.map(d => parseInt(d.total_cumule) || 0);
+
         const opts = {
             responsive:true, maintainAspectRatio:false,
             plugins:{ legend:{ display:false } },
             scales:{
                 x:{ grid:{ display:false }, ticks:{ font:{ family:'Plus Jakarta Sans', size:11 }, color:'#94A3B8' } },
-                y:{ grid:{ color:'#F1F5F9' }, ticks:{ font:{ family:'Plus Jakarta Sans', size:11 }, color:'#94A3B8', stepSize:1 } }
+                y:{ beginAtZero:true, grid:{ color:'#F1F5F9' }, ticks:{ font:{ family:'Plus Jakarta Sans', size:11 }, color:'#94A3B8', stepSize:1, precision:0 } }
             }
         };
+
+        // Chart 1 — barres
+        const wrap1 = document.getElementById('chart1-wrap');
+        wrap1.innerHTML = '<canvas id="chartInscrits"></canvas>';
         const ctx1 = document.getElementById('chartInscrits').getContext('2d');
         if (chartInscrits) chartInscrits.destroy();
-        chartInscrits = new Chart(ctx1, { type:'bar', data:{ labels, datasets:[{ data:newData, backgroundColor:'rgba(15,118,110,0.15)', borderColor:'#0F766E', borderWidth:2, borderRadius:6 }] }, options:opts });
+        chartInscrits = new Chart(ctx1, {
+            type:'bar',
+            data:{ labels, datasets:[{ data:newData, backgroundColor:'rgba(15,118,110,0.15)', borderColor:'#0F766E', borderWidth:2, borderRadius:6 }] },
+            options:opts
+        });
+
+        // Chart 2 — ligne
+        const wrap2 = document.getElementById('chart2-wrap');
+        wrap2.innerHTML = '<canvas id="chartCumule"></canvas>';
         const ctx2 = document.getElementById('chartCumule').getContext('2d');
         if (chartCumule) chartCumule.destroy();
-        chartCumule = new Chart(ctx2, { type:'line', data:{ labels, datasets:[{ data:cumData, borderColor:'#0F766E', backgroundColor:'rgba(15,118,110,0.06)', fill:true, tension:0.4, pointBackgroundColor:'#0F766E', pointRadius:3 }] }, options:opts });
+        chartCumule = new Chart(ctx2, {
+            type:'line',
+            data:{ labels, datasets:[{ data:cumData, borderColor:'#0F766E', backgroundColor:'rgba(15,118,110,0.06)', fill:true, tension:0.4, pointBackgroundColor:'#0F766E', pointRadius:3 }] },
+            options:opts
+        });
     }
 
     function changerPeriode(jours, btn) {
@@ -454,24 +580,31 @@
         renderGraphiques(donneesGraph.slice(-jours));
     }
 
-    // Récompenses
+    // ── Récompenses ──
     async function chargerRecompenses() {
-        const container = document.getElementById('recompenses-list');
-        // Attendre que fiddle-pro.js soit prêt
-        let tentatives = 0;
-        while (!window._supabaseClient && tentatives < 20) {
-            await new Promise(r => setTimeout(r, 200));
-            tentatives++;
-        }
-        if (!window._supabaseClient || !window.currentRestoConfig) return;
+        const ok = await attendreFiddle();
+        if (!ok) return;
 
+        const container = document.getElementById('recompenses-list');
         const vue = window.currentRestoConfig.id === 'villa_saint_antoine'
             ? 'vue_recompenses_villa' : 'vue_recompenses_bistrot';
-        const { data } = await window._supabaseClient.from(vue).select('*');
-        if (!data || data.length === 0) {
-            container.innerHTML = `<div style="padding:40px;text-align:center;color:#94A3B8;font-size:14px;">Aucune récompense débloquée pour l'instant.</div>`;
+
+        const { data, error } = await window._supabaseClient.from(vue).select('*');
+
+        if (error) {
+            container.innerHTML = `<div style="padding:40px;text-align:center;color:#EF4444;">Erreur : ${error.message}</div>`;
             return;
         }
+
+        if (!data || data.length === 0) {
+            container.innerHTML = `<div style="padding:40px;text-align:center;color:#94A3B8;font-size:14px;">
+                <div style="font-size:32px;margin-bottom:8px;">🎁</div>
+                <div style="font-weight:700;">Aucune récompense débloquée pour l'instant</div>
+                <div style="font-size:12px;margin-top:8px;">Les récompenses apparaissent après le premier scan validé avec cadeau.</div>
+            </div>`;
+            return;
+        }
+
         container.innerHTML = data.map(c => `
             <div class="recompense-row">
                 <div class="recompense-badge">🎁</div>
@@ -486,24 +619,129 @@
             </div>`).join('');
     }
 
-    // Fiche client
+    // ── IA Analytics ──
+    async function lancerAnalyseIA() {
+        const btn = document.getElementById('btnLancerIA');
+        btn.disabled = true;
+        btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:white;"></div> Analyse…';
+
+        document.getElementById('ia-placeholder').style.display = 'none';
+        document.getElementById('ia-result').style.display      = 'none';
+        document.getElementById('ia-error').style.display       = 'none';
+        document.getElementById('ia-loading').style.display     = 'flex';
+
+        const ok = await attendreFiddle();
+        if (!ok) {
+            afficherErreurIA('Dashboard non initialisé. Réessayez dans quelques secondes.');
+            resetBtnIA();
+            return;
+        }
+
+        const clients   = window.dataClientsGlobal || [];
+        const config    = window.currentRestoConfig;
+        const colPoints = config.colPoints;
+
+        const totalClients     = clients.length;
+        const totalPoints      = clients.reduce((acc,c) => acc + (parseInt(c[colPoints])||0), 0);
+        const totalRecompenses = clients.reduce((acc,c) => acc + (parseInt(c.recompenses_obtenues)||0), 0);
+        const abonnes          = clients.filter(c => c.optin_email !== false).length;
+        const desabonnes       = totalClients - abonnes;
+
+        // Nouveaux ce mois
+        const debutMois = new Date();
+        debutMois.setDate(1); debutMois.setHours(0,0,0,0);
+        const nouveauxCeMois = clients.filter(c => new Date(c.created_at) >= debutMois).length;
+
+        try {
+            const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/analyse-kpi', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({
+                    restaurant: config.nom, totalClients, totalPoints, totalRecompenses,
+                    abonnes, desabonnes, nouveauxCeMois,
+                    seuilPoints: config.id === 'villa_saint_antoine' ? 10 : 5
+                })
+            });
+
+            const result = await res.json();
+
+            if (!result.ok) throw new Error(result.error || 'Erreur inconnue');
+
+            afficherResultatIA(result.analyse);
+
+        } catch (err) {
+            afficherErreurIA(err.message);
+        }
+
+        resetBtnIA();
+    }
+
+    function afficherResultatIA(a) {
+        document.getElementById('ia-loading').style.display = 'none';
+
+        const noteClass = a.note_globale?.startsWith('A') ? 'ia-note--a'
+                        : a.note_globale?.startsWith('B') ? 'ia-note--b'
+                        : 'ia-note--c';
+
+        document.getElementById('ia-result').style.display = 'block';
+        document.getElementById('ia-result').innerHTML = `
+            <span class="ia-note ${noteClass}">
+                <i data-lucide="award" style="width:14px;height:14px;"></i>
+                Note globale : ${a.note_globale || '—'}
+            </span>
+            <p class="ia-resume">${a.resume || ''}</p>
+
+            <div class="ia-section-title">✅ Points forts</div>
+            <ul class="ia-list">
+                ${(a.points_forts||[]).map(p => `<li><div class="dot dot--green"></div>${p}</li>`).join('')}
+            </ul>
+
+            <div class="ia-section-title">🔧 Points à améliorer</div>
+            <ul class="ia-list">
+                ${(a.points_ameliorer||[]).map(p => `<li><div class="dot dot--orange"></div>${p}</li>`).join('')}
+            </ul>
+
+            <div class="ia-section-title">💡 Conseil prioritaire cette semaine</div>
+            <div class="ia-conseil">${a.conseil_prioritaire || ''}</div>
+
+            <div class="ia-section-title">🚀 Projection</div>
+            <div class="ia-prediction">${a.prediction || ''}</div>
+        `;
+        lucide.createIcons();
+    }
+
+    function afficherErreurIA(msg) {
+        document.getElementById('ia-loading').style.display = 'none';
+        document.getElementById('ia-error').style.display   = 'block';
+        document.getElementById('ia-error-msg').innerHTML   = `<strong>Erreur :</strong> ${msg}<br><small>Vérifiez que l'Edge Function "analyse-kpi" est déployée et que ANTHROPIC_API_KEY est configuré dans Supabase → Secrets.</small>`;
+    }
+
+    function resetBtnIA() {
+        const btn = document.getElementById('btnLancerIA');
+        btn.disabled = false;
+        btn.innerHTML = '<i data-lucide="sparkles" style="width:16px;height:16px;"></i> Analyser mes KPIs';
+        lucide.createIcons();
+    }
+
+    // ── Fiche client ──
     function ouvrirFicheClient(client) {
         const palettes = [
             {bg:'rgba(15,118,110,0.12)',color:'#0F766E'},{bg:'rgba(59,130,246,0.12)',color:'#1D4ED8'},
             {bg:'rgba(124,58,237,0.12)',color:'#6D28D9'},{bg:'rgba(217,119,6,0.12)',color:'#B45309'},
         ];
-        const nom = `${client.prenom||''} ${client.nom||''}`.trim();
+        const nom  = `${client.prenom||''} ${client.nom||''}`.trim();
         const mots = nom.split(' ').filter(Boolean);
-        const init = mots.length >= 2 ? (mots[0][0]+mots[1][0]).toUpperCase() : (mots[0]||'C')[0].toUpperCase();
+        const init = mots.length>=2 ? (mots[0][0]+mots[1][0]).toUpperCase() : (mots[0]||'C')[0].toUpperCase();
         const hash = [...nom].reduce((a,c) => a+c.charCodeAt(0), 0);
-        const p = palettes[hash % palettes.length];
-        const avatar = document.getElementById('modalAvatar');
-        avatar.textContent = init;
-        avatar.style.background = p.bg;
-        avatar.style.color = p.color;
+        const p    = palettes[hash % palettes.length];
 
-        document.getElementById('modalNom').textContent   = nom;
-        document.getElementById('modalEmail').textContent = client.email || '';
+        const avatar = document.getElementById('modalAvatar');
+        avatar.textContent     = init;
+        avatar.style.background = p.bg;
+        avatar.style.color      = p.color;
+
+        document.getElementById('modalNom').textContent         = nom;
+        document.getElementById('modalEmailDisplay').textContent = client.email || '';
         document.getElementById('modalInfoGrid').innerHTML = `
             <div class="client-info-item"><div class="client-info-label">Points</div><div class="client-info-value">${client.points||0} pts</div></div>
             <div class="client-info-item"><div class="client-info-label">Récompenses</div><div class="client-info-value">${client.recompenses_obtenues||0}</div></div>
@@ -524,6 +762,7 @@
             .from('historique_scans').select('*')
             .eq('client_email', email)
             .order('created_at', { ascending: false }).limit(10);
+
         if (!data || data.length === 0) {
             container.innerHTML = `<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px;">Aucun passage enregistré.</div>`;
             return;
@@ -540,52 +779,80 @@
     }
 
     function fermerFicheClient() { document.getElementById('clientModal').classList.remove('active'); }
-    document.getElementById('clientModal').addEventListener('click', e => { if (e.target === document.getElementById('clientModal')) fermerFicheClient(); });
+    document.getElementById('clientModal').addEventListener('click', e => {
+        if (e.target === document.getElementById('clientModal')) fermerFicheClient();
+    });
 
-    // Modal email
+    // ── Email ──
     function fermerEmailModal() { document.getElementById('emailModal').classList.remove('active'); }
     document.getElementById('btnOpenEmail').addEventListener('click', () => {
         document.getElementById('emailModal').classList.add('active');
         lucide.createIcons();
     });
-    document.getElementById('emailModal').addEventListener('click', e => { if (e.target === document.getElementById('emailModal')) fermerEmailModal(); });
+    document.getElementById('emailModal').addEventListener('click', e => {
+        if (e.target === document.getElementById('emailModal')) fermerEmailModal();
+    });
 
     async function envoyerEmail() {
         const objet   = document.getElementById('emailObjet').value.trim();
         const contenu = document.getElementById('emailContenu').value.trim();
         const dest    = document.getElementById('emailDestinataires').value;
         const btn     = document.getElementById('btnSendEmail');
+
         if (!objet || !contenu) { alert('Veuillez remplir l\'objet et le message.'); return; }
+
         btn.disabled = true;
         btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:white;"></div> Envoi…';
+
         let clients = window.dataClientsGlobal || [];
         if (dest === 'tous')           clients = clients.filter(c => c.optin_email !== false);
         if (dest === 'points_faibles') clients = clients.filter(c => c.optin_email !== false && (c.points||0) < 3);
         if (dest === 'recompenses')    clients = clients.filter(c => c.optin_email !== false && (c.recompenses_obtenues||0) > 0);
+
         if (clients.length === 0) {
             alert('Aucun destinataire pour cette sélection.');
-            btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons(); return;
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
+            lucide.createIcons();
+            return;
         }
-        if (!confirm(`Envoyer à ${clients.length} client${clients.length>1?'s':''} ?`)) {
-            btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons(); return;
+
+        if (!confirm(`Envoyer cet email à ${clients.length} client${clients.length>1?'s':''} ?`)) {
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
+            lucide.createIcons();
+            return;
         }
+
         try {
             const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/send-email', {
-                method:'POST', headers:{'Content-Type':'application/json'},
-                body: JSON.stringify({ destinataires: clients.map(c => ({ email:c.email, prenom:c.prenom||'' })), objet, contenu, restaurant: window.currentRestoConfig?.nom||'FYDELIO' })
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({
+                    destinataires: clients.map(c => ({ email: c.email, prenom: c.prenom||'' })),
+                    objet, contenu,
+                    restaurant: window.currentRestoConfig?.nom || 'FYDELIO'
+                })
             });
             const result = await res.json();
             if (result.ok) {
-                alert(`✅ Email envoyé à ${clients.length} client${clients.length>1?'s':''} !`);
+                alert(`✅ Email envoyé à ${result.envoyes} client${result.envoyes>1?'s':''} !`);
                 fermerEmailModal();
-                document.getElementById('emailObjet').value = '';
+                document.getElementById('emailObjet').value  = '';
                 document.getElementById('emailContenu').value = '';
-            } else throw new Error(result.error||'Erreur');
-        } catch (err) { alert('Erreur : ' + err.message); }
-        btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons();
+            } else {
+                throw new Error(result.error || 'Erreur inconnue');
+            }
+        } catch (err) {
+            alert('Erreur : ' + err.message + '\n\nVérifiez que l\'Edge Function "send-email" est déployée et que BREVO_API_KEY est configuré dans Supabase → Secrets.');
+        }
+
+        btn.disabled = false;
+        btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
+        lucide.createIcons();
     }
 
-    // Timeout loader
+    // ── Timeout loader secours ──
     setTimeout(() => {
         const l = document.getElementById('loader');
         if (l && l.style.display !== 'none') { l.style.opacity='0'; setTimeout(()=>{l.style.display='none';},400); }
