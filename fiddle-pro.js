@@ -144,7 +144,7 @@ function initialiserPageAccueil() {
             const restoID = proData?.resto_id || "villa_saint_antoine";
             btn.innerHTML = '✓ Connexion réussie';
             btn.style.background = '#10b981';
-            setTimeout(() => window.location.href = `dashboard-pro.html?resto=${restoID}`, 800);
+           setTimeout(() => window.location.href = `dashboard-pro.html`, 800);
         } catch (err) {
             errEl.style.display = 'block';
             errEl.innerText = 'Identifiants incorrects. Veuillez réessayer.';
