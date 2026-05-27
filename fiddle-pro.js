@@ -11,20 +11,12 @@
 const FYDELIO_CONFIG = {
     supabase: {
         url: "https://qawfwbppnbnskxlkwstu.supabase.co",
-        key: "sb_publishable_EbKZkPjtT8rwkEdw3oVRCg_mBJJ_gNJ"
+        key: "sb_publishable_EbKZkPjtT8rwkEdw3oVRCg_mBJJ_gNJ" // Gardée pour l'auth uniquement
     },
-    restos: {
-        "villa_saint_antoine": {
-            nom:      "Villa Saint Antoine",
-            colPoints: "points",
-            vueSql:    "vue_clients_villa"
-        },
-        "bistrot": {
-            nom:      "Le Bistrot Paris",
-            colPoints: "points",
-            vueSql:    "vue_clients_bistrot"
-        }
+    proxy: {
+        url: "https://script.google.com/macros/s/AKfycbyQQK6NYmt1kbEqHCvbiRgKMcAp67587m-P56gJnc_waPThOuNBgE4vknt088MCg1kYoA/exec" // ← ton lien ici
     },
+    restos: { ... },
     pagination: { parPage: 20 }
 };
 
