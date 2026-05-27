@@ -151,16 +151,15 @@ function initialiserPageAccueil() {
     };
 }
 
-// ====================================================================
-// 📊 DASHBOARD — INITIALISATION
-// ====================================================================
-async function initialiserDashboard() {
-    const loader    = document.getElementById('loader');
-    const urlParams = new URLSearchParams(window.location.search);
-    const restoID   = urlParams.get('resto') || "villa_saint_antoine";
+/**
+ * ====================================================================
+ * 🔐 FIX SÉCURITÉ — RESTO_ID depuis Supabase, jamais depuis l'URL
+ * Remplace la fonction initialiserDashboard() dans ton fichier JS
+ * ====================================================================
+ */
 
-    currentRestoConfig         = FYDELIO_CONFIG.restos[restoID] || FYDELIO_CONFIG.restos["villa_saint_antoine"];
-    window.currentRestoConfig  = currentRestoConfig;
+async function initialiserDashboard() {
+    const loader = document.getElementById('loader');
 
     // Timeout secours loader
     const loaderTimeout = setTimeout(() => {
@@ -174,17 +173,52 @@ async function initialiserDashboard() {
         clearTimeout(loaderTimeout);
         if (loader) { loader.style.opacity='0'; setTimeout(()=>loader.style.display='none',300); }
         const tbody = document.getElementById('tableBody');
-        if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px;color:#EF4444;font-weight:700;">Erreur : Supabase non chargé. Rechargez la page.</td></tr>`;
+        if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px;color:#EF4444;font-weight:700;">Erreur : Supabase non chargé.</td></tr>`;
         return;
     }
 
     try {
+        // ✅ ÉTAPE 1 — Vérifier la session
         const { data: { session } } = await supabaseApp.auth.getSession();
-        if (!session) { clearTimeout(loaderTimeout); window.location.href = "index.html"; return; }
+        if (!session) {
+            clearTimeout(loaderTimeout);
+            window.location.href = "index.html";
+            return;
+        }
 
+        const emailConnecte = session.user.email;
         const emailEl = document.getElementById('displayEmail');
-        if (emailEl) emailEl.innerText = session.user.email;
+        if (emailEl) emailEl.innerText = emailConnecte;
 
+        // ✅ ÉTAPE 2 — Récupérer le resto_id depuis Supabase (jamais depuis l'URL)
+        const { data: proData, error: proError } = await supabaseApp
+            .from('acces_pro')
+            .select('resto_id')
+            .eq('email', emailConnecte)
+            .single();
+
+        if (proError || !proData?.resto_id) {
+            // L'utilisateur connecté n'a aucun restaurant associé — on déconnecte
+            console.warn("Aucun resto associé à cet email.");
+            await supabaseApp.auth.signOut();
+            window.location.href = "index.html";
+            return;
+        }
+
+        const restoID = proData.resto_id;
+
+        // ✅ ÉTAPE 3 — Vérifier que le restoID existe dans la config
+        currentRestoConfig = FYDELIO_CONFIG.restos[restoID];
+        if (!currentRestoConfig) {
+            console.warn("Restaurant inconnu dans la config :", restoID);
+            await supabaseApp.auth.signOut();
+            window.location.href = "index.html";
+            return;
+        }
+
+        window.currentRestoConfig = currentRestoConfig;
+
+        // ✅ ÉTAPE 4 — Charger les données
         const { data, error } = await supabaseApp
             .from(currentRestoConfig.vueSql)
             .select('*')
@@ -192,9 +226,9 @@ async function initialiserDashboard() {
 
         if (error) throw error;
 
-        dataClientsGlobal         = data || [];
-        window.dataClientsGlobal  = dataClientsGlobal;
-        dataClientsFiltres        = [...dataClientsGlobal];
+        dataClientsGlobal        = data || [];
+        window.dataClientsGlobal = dataClientsGlobal;
+        dataClientsFiltres       = [...dataClientsGlobal];
 
         afficherTableau(dataClientsFiltres, currentRestoConfig.colPoints, true);
         showToast(`${dataClientsGlobal.length} clients chargés`, 'success', 2500);
@@ -214,7 +248,7 @@ async function initialiserDashboard() {
     }
 
     // Modules
-    initialiserQRCode(restoID);
+    initialiserQRCode(currentRestoConfig);
     initialiserRecherche();
     initialiserTriColonnes();
     initialiserBurger();
@@ -223,7 +257,6 @@ async function initialiserDashboard() {
     initialiserDeconnexion();
     initialiserRealtime(currentRestoConfig);
 }
-
 // ====================================================================
 // 📋 AFFICHAGE TABLEAU
 // ====================================================================
