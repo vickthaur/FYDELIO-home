@@ -1,7 +1,6 @@
 /**
  * ====================================================================
- * 🚀 FYDELIO ENGINE v6.0 — DASHBOARD PRO
- * Une seule version, propre, sans duplication.
+ * 🚀 FYDELIO ENGINE v6.1 — DASHBOARD PRO (VERSION SÉCURISÉE)
  * ====================================================================
  */
 
@@ -11,16 +10,27 @@
 const FYDELIO_CONFIG = {
     supabase: {
         url: "https://qawfwbppnbnskxlkwstu.supabase.co",
-        key: "sb_publishable_EbKZkPjtT8rwkEdw3oVRCg_mBJJ_gNJ" // Gardée pour l'auth uniquement
+        key: "sb_publishable_EbKZkPjtT8rwkEdw3oVRCg_mBJJ_gNJ" // Auth uniquement
     },
     proxy: {
-        url: "https://script.google.com/macros/s/AKfycbyQQK6NYmt1kbEqHCvbiRgKMcAp67587m-P56gJnc_waPThOuNBgE4vknt088MCg1kYoA/exec" // ← ton lien ici
+        url: "https://script.google.com/macros/s/AKfycbyQQK6NYmt1kbEqHCvbiRgKMcAp67587m-P56gJnc_waPThOuNBgE4vknt088MCg1kYoA/exec"
     },
-    restos: { ... },
+    restos: {
+        "villa_saint_antoine": {
+            nom:       "Villa Saint Antoine",
+            colPoints: "points_villa",
+            vueSql:    "vue_clients_villa"
+        },
+        "bistrot": {
+            nom:       "Le Bistrot Paris",
+            colPoints: "points_bistrot",
+            vueSql:    "vue_clients_bistrot"
+        }
+    },
     pagination: { parPage: 20 }
 };
 
-// Init Supabase — exposition globale pour le dashboard HTML
+// Init Supabase
 const supabaseApp = (typeof window.supabase !== 'undefined')
     ? window.supabase.createClient(FYDELIO_CONFIG.supabase.url, FYDELIO_CONFIG.supabase.key)
     : null;
@@ -135,7 +145,7 @@ function initialiserPageAccueil() {
             setTimeout(() => window.location.href = `dashboard-pro.html?resto=${restoID}`, 800);
         } catch (err) {
             errEl.style.display = 'block';
-            errEl.innerText = 'Identifiants incorrects.';
+            errEl.innerText = 'Identifiants incorrects. Veuillez réessayer.';
             btn.innerHTML = '<span class="btn-text">Se connecter au Dashboard</span>';
             btn.disabled = false;
             btn.style.background = '';
@@ -143,17 +153,12 @@ function initialiserPageAccueil() {
     };
 }
 
-/**
- * ====================================================================
- * 🔐 FIX SÉCURITÉ — RESTO_ID depuis Supabase, jamais depuis l'URL
- * Remplace la fonction initialiserDashboard() dans ton fichier JS
- * ====================================================================
- */
-
+// ====================================================================
+// 📊 DASHBOARD — INITIALISATION (VERSION SÉCURISÉE)
+// ====================================================================
 async function initialiserDashboard() {
     const loader = document.getElementById('loader');
 
-    // Timeout secours loader
     const loaderTimeout = setTimeout(() => {
         if (loader) { loader.style.opacity='0'; setTimeout(()=>loader.style.display='none',300); }
         showToast("Connexion lente — certaines données peuvent manquer.", 'warning');
@@ -165,7 +170,7 @@ async function initialiserDashboard() {
         clearTimeout(loaderTimeout);
         if (loader) { loader.style.opacity='0'; setTimeout(()=>loader.style.display='none',300); }
         const tbody = document.getElementById('tableBody');
-        if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px;color:#EF4444;font-weight:700;">Erreur : Supabase non chargé.</td></tr>`;
+        if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:40px;color:#EF4444;font-weight:700;">Erreur : Supabase non chargé. Rechargez la page.</td></tr>`;
         return;
     }
 
@@ -190,7 +195,6 @@ async function initialiserDashboard() {
             .single();
 
         if (proError || !proData?.resto_id) {
-            // L'utilisateur connecté n'a aucun restaurant associé — on déconnecte
             console.warn("Aucun resto associé à cet email.");
             await supabaseApp.auth.signOut();
             window.location.href = "index.html";
@@ -240,7 +244,7 @@ async function initialiserDashboard() {
     }
 
     // Modules
-    initialiserQRCode(currentRestoConfig);
+    initialiserQRCode(restoID, currentRestoConfig);
     initialiserRecherche();
     initialiserTriColonnes();
     initialiserBurger();
@@ -249,6 +253,7 @@ async function initialiserDashboard() {
     initialiserDeconnexion();
     initialiserRealtime(currentRestoConfig);
 }
+
 // ====================================================================
 // 📋 AFFICHAGE TABLEAU
 // ====================================================================
@@ -256,14 +261,12 @@ function afficherTableau(data, colPoints, updateStats = true) {
     const tbody = document.getElementById('tableBody');
     if (!tbody) return;
 
-    // KPIs
     if (updateStats) {
         animerCompteur('statTotalClients', data.length);
         animerCompteur('statTotalPoints', data.reduce((acc,c) => acc + (parseInt(c[colPoints])||0), 0));
         animerCompteur('statRecompenses', data.reduce((acc,c) => acc + (parseInt(c.recompenses_obtenues)||0), 0));
     }
 
-    // Compteur
     const countEl = document.getElementById('tableCount');
     if (countEl) countEl.textContent = `${data.length} client${data.length>1?'s':''}`;
 
@@ -276,12 +279,10 @@ function afficherTableau(data, colPoints, updateStats = true) {
         return;
     }
 
-    // Pagination
     const parPage   = FYDELIO_CONFIG.pagination.parPage;
     const debut     = (pageActuelle - 1) * parPage;
     const paginated = data.slice(debut, debut + parPage);
 
-    // Stockage pour le clic fiche client
     window._clientsPage = paginated;
 
     tbody.innerHTML = paginated.map((c, idx) => {
@@ -407,9 +408,9 @@ function initialiserTriColonnes() {
 }
 
 // ====================================================================
-// 📱 QR CODE
+// 📱 QR CODE — ✅ CORRIGÉ (accepte restoID string + restoConfig objet)
 // ====================================================================
-function initialiserQRCode(restoID) {
+function initialiserQRCode(restoID, restoConfig) {
     const qrContainer = document.getElementById('qr-code-container');
     const btnDownload = document.getElementById('btnDownloadQR');
     if (!qrContainer) return;
@@ -539,7 +540,7 @@ function initialiserDeconnexion() {
 // 🎨 UTILITAIRES VISUELS
 // ====================================================================
 function genererAvatar(nom) {
-    const mots     = nom.trim().split(' ').filter(Boolean);
+    const mots      = nom.trim().split(' ').filter(Boolean);
     const initiales = mots.length>=2
         ? (mots[0][0]+mots[1][0]).toUpperCase()
         : (mots[0]||'?')[0].toUpperCase();
