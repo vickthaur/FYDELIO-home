@@ -672,9 +672,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const nouveauxCeMois = clients.filter(c => new Date(c.created_at) >= debutMois).length;
 
         try {
-            const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/analyse-kpi', {
+            // Récupère le token de session de l'utilisateur connecté
+            const { data: { session } } = await window._supabaseClient.auth.getSession();
+
+            const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/IA', {
                 method:  'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.access_token || ''}`
+                },
                 body:    JSON.stringify({
                     restaurant: config.nom, totalClients, totalPoints, totalRecompenses,
                     abonnes, desabonnes, nouveauxCeMois,
@@ -694,7 +700,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         resetBtnIA();
     }
-
     function afficherResultatIA(a) {
         document.getElementById('ia-loading').style.display = 'none';
 
