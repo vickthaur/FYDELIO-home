@@ -700,6 +700,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         resetBtnIA();
     }
+
     function afficherResultatIA(a) {
         document.getElementById('ia-loading').style.display = 'none';
 
@@ -737,7 +738,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function afficherErreurIA(msg) {
         document.getElementById('ia-loading').style.display = 'none';
         document.getElementById('ia-error').style.display   = 'block';
-        document.getElementById('ia-error-msg').innerHTML   = `<strong>Erreur :</strong> ${msg}<br><small>Vérifiez que l'Edge Function "analyse-kpi" est déployée et que ANTHROPIC_API_KEY est configuré dans Supabase → Secrets.</small>`;
+        document.getElementById('ia-error-msg').innerHTML   = `<strong>Erreur :</strong> ${msg}<br><small>Vérifiez que l'Edge Function "IA" est déployée et que ANTHROPIC_API_KEY est configuré dans Supabase → Secrets.</small>`;
     }
 
     function resetBtnIA() {
@@ -808,7 +809,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     // ── Email ──
-   async function envoyerEmail() {
+    function fermerEmailModal() { document.getElementById('emailModal').classList.remove('active'); }
+    document.getElementById('btnOpenEmail').addEventListener('click', () => {
+        document.getElementById('emailModal').classList.add('active');
+        lucide.createIcons();
+    });
+    document.getElementById('emailModal').addEventListener('click', e => {
+        if (e.target === document.getElementById('emailModal')) fermerEmailModal();
+    });
+
+    async function envoyerEmail() {
         const objet   = document.getElementById('emailObjet').value.trim();
         const contenu = document.getElementById('emailContenu').value.trim();
         const dest    = document.getElementById('emailDestinataires').value;
@@ -872,6 +882,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
         lucide.createIcons();
     }
+
     // ── Timeout loader secours ──
     setTimeout(() => {
         const l = document.getElementById('loader');
