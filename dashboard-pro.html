@@ -808,16 +808,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     // ── Email ──
-    function fermerEmailModal() { document.getElementById('emailModal').classList.remove('active'); }
-    document.getElementById('btnOpenEmail').addEventListener('click', () => {
-        document.getElementById('emailModal').classList.add('active');
-        lucide.createIcons();
-    });
-    document.getElementById('emailModal').addEventListener('click', e => {
-        if (e.target === document.getElementById('emailModal')) fermerEmailModal();
-    });
-
-    async function envoyerEmail() {
+   async function envoyerEmail() {
         const objet   = document.getElementById('emailObjet').value.trim();
         const contenu = document.getElementById('emailContenu').value.trim();
         const dest    = document.getElementById('emailDestinataires').value;
@@ -849,9 +840,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         try {
+            // Récupère le token de session de l'utilisateur connecté
+            const { data: { session } } = await window._supabaseClient.auth.getSession();
+
             const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/send-email', {
                 method:  'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.access_token || ''}`
+                },
                 body:    JSON.stringify({
                     destinataires: clients.map(c => ({ email: c.email, prenom: c.prenom||'' })),
                     objet, contenu,
@@ -875,7 +872,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
         lucide.createIcons();
     }
-
     // ── Timeout loader secours ──
     setTimeout(() => {
         const l = document.getElementById('loader');
