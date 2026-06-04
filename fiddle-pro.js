@@ -1,11 +1,11 @@
 /**
  * ====================================================================
- * 🚀 FYDELIO ENGINE v6.2 — DASHBOARD PRO (TOUS BUGS CORRIGÉS)
+ * 🚀 FYDELIO ENGINE v6.2 — DASHBOARD PRO (AVEC LE CERCLE)
  * ====================================================================
  */
 
 // ====================================================================
-// ⚙️ CONFIGURATION — id ajouté à chaque resto (nécessaire pour les graphiques)
+// ⚙️ CONFIGURATION — Avec Le Cercle Restaurant intégré
 // ====================================================================
 const FYDELIO_CONFIG = {
     supabase: {
@@ -27,6 +27,12 @@ const FYDELIO_CONFIG = {
             nom:       "Le Bistrot Paris",
             colPoints: "points_bistrot",
             vueSql:    "vue_clients_bistrot"
+        },
+        "le_cercle": {
+            id:        "le_cercle",
+            nom:       "Le Cercle Restaurant",
+            colPoints: "points_le_cercle",
+            vueSql:    "vue_clients_le_cercle"
         }
     },
     pagination: { parPage: 20 }
