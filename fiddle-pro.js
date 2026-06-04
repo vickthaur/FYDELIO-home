@@ -13,7 +13,7 @@ const FYDELIO_CONFIG = {
         key: "sb_publishable_EbKZkPjtT8rwkEdw3oVRCg_mBJJ_gNJ"
     },
     proxy: {
-        url: "https://script.google.com/macros/s/AKfycbxtKWpopH4mcEClQvCBgpL-tbVEEIxoZ8HC0XjlxZUrQkhfbUSMIScYijHt50NHPa1fHg/exec"
+        url: "https://script.google.com/macros/s/AKfycbwBp4-Q5ihfllaTdoPGhTb4vZ2-f-TIuPe9k21I12YQhR10ad9qZq03tSHF7FlfHrMZ/exec"
     },
     restos: {
         "villa_saint_antoine": {
