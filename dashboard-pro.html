@@ -534,8 +534,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const ok = await attendreFiddle();
         if (!ok) return;
 
-        const vue = window.currentRestoConfig.id === 'villa_saint_antoine'
-            ? 'vue_inscrits_par_jour_villa' : 'vue_inscrits_par_jour_bistrot';
+     const suffixe = { villa_saint_antoine:'villa', bistrot:'bistrot', le_cercle:'le_cercle' }[window.currentRestoConfig.id] || 'bistrot';
+const vue = 'vue_inscrits_par_jour_' + suffixe;
 
         const { data, error } = await window._supabaseClient.from(vue).select('*');
 
@@ -605,8 +605,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (!ok) return;
 
         const container = document.getElementById('recompenses-list');
-        const vue = window.currentRestoConfig.id === 'villa_saint_antoine'
-            ? 'vue_recompenses_villa' : 'vue_recompenses_bistrot';
+        const suffixe = { villa_saint_antoine:'villa', bistrot:'bistrot', le_cercle:'le_cercle' }[window.currentRestoConfig.id] || 'bistrot';
+const vue = 'vue_recompenses_' + suffixe;
 
         const { data, error } = await window._supabaseClient.from(vue).select('*');
 
