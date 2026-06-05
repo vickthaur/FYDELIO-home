@@ -7,10 +7,9 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-F359553M99');
 </script>
-    <!-- Google Tag Manager -->
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -48,33 +47,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .recompense-badge{width:36px;height:36px;border-radius:10px;background:rgba(217,119,6,0.1);color:#D97706;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
         .recompense-count{background:rgba(217,119,6,0.1);color:#D97706;font-size:12px;font-weight:800;padding:4px 12px;border-radius:100px;}
 
-        /* IA KPI */
-        .ia-card{background:white;border-radius:20px;border:1px solid rgba(0,0,0,0.06);padding:28px;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.03);}
-        .ia-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
-        .ia-icon{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#0F766E,#34d399);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-        .ia-title{font-size:16px;font-weight:800;color:#0F172A;}
-        .ia-subtitle{font-size:13px;color:#64748B;}
-        .ia-note{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:13px;font-weight:800;margin-bottom:16px;}
-        .ia-note--a{background:rgba(16,185,129,0.1);color:#059669;}
-        .ia-note--b{background:rgba(59,130,246,0.1);color:#1D4ED8;}
-        .ia-note--c{background:rgba(245,158,11,0.1);color:#D97706;}
-        .ia-resume{font-size:15px;color:#1e293b;line-height:1.7;margin-bottom:20px;font-weight:500;}
-        .ia-section-title{font-size:11px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
-        .ia-list{list-style:none;padding:0;margin:0 0 20px;}
-        .ia-list li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;color:#334155;border-bottom:1px solid #F8FAFC;}
-        .ia-list li:last-child{border-bottom:none;}
-        .ia-list .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
-        .dot--green{background:#10B981;}
-        .dot--orange{background:#F59E0B;}
-        .ia-conseil{background:rgba(15,118,110,0.06);border:1px solid rgba(15,118,110,0.15);border-radius:14px;padding:18px;font-size:14px;color:#0F172A;line-height:1.6;margin-bottom:16px;}
-        .ia-conseil strong{color:#0F766E;}
-        .ia-prediction{background:#F8FAFC;border-radius:14px;padding:16px;font-size:13px;color:#475569;line-height:1.6;font-style:italic;}
-        .btn-ia{display:flex;align-items:center;gap:8px;padding:12px 24px;background:#0F766E;color:white;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-top:8px;}
-        .btn-ia:hover:not(:disabled){background:#0D655E;transform:translateY(-2px);}
-        .btn-ia:disabled{background:#CBD5E1;cursor:not-allowed;transform:none;}
-        .ia-loading{display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px;color:#64748B;}
-        .ia-loading .dash-spinner{width:32px;height:32px;border-width:3px;}
-        .ia-error{background:#FEF2F2;border:1px solid #FECACA;border-radius:14px;padding:16px;color:#991B1B;font-size:14px;}
+        /* ════════════ FYDEL'INTELLIGENCE — design premium ════════════ */
+        .fydel-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0F766E 0%,#0c5d56 55%,#0a4d47 100%);border-radius:24px;padding:32px 34px;margin-bottom:24px;box-shadow:0 20px 50px -18px rgba(15,118,110,0.55);}
+        .fydel-hero::before{content:"";position:absolute;top:-90px;right:-70px;width:300px;height:300px;background:radial-gradient(circle,rgba(45,212,191,0.32) 0%,transparent 70%);border-radius:50%;}
+        .fydel-hero::after{content:"";position:absolute;bottom:-110px;left:-50px;width:260px;height:260px;background:radial-gradient(circle,rgba(255,255,255,0.07) 0%,transparent 70%);border-radius:50%;}
+        .fydel-hero-inner{position:relative;z-index:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+        .fydel-avatar{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,#2DD4BF,#0F766E);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;box-shadow:0 8px 20px rgba(0,0,0,0.2);}
+        .fydel-title-group{flex:1;min-width:200px;}
+        .fydel-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(8px);padding:5px 12px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:white;margin-bottom:10px;}
+        .fydel-title{font-size:24px;font-weight:800;color:white;letter-spacing:-0.5px;line-height:1.1;}
+        .fydel-title .accent{background:linear-gradient(90deg,#2DD4BF,#a7f3d0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .fydel-sub{font-size:13.5px;color:rgba(255,255,255,0.82);margin-top:6px;font-weight:500;}
+        .btn-fydel{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;background:white;color:#0F766E;border:none;border-radius:14px;font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.25s ease;flex-shrink:0;box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+        .btn-fydel:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,0.22);}
+        .btn-fydel:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+
+        /* État vide / placeholder */
+        .fydel-placeholder{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:20px;padding:44px 32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.03);}
+        .fydel-placeholder-icon{font-size:46px;margin-bottom:14px;}
+        .fydel-placeholder h3{font-size:17px;font-weight:800;color:#0F172A;margin-bottom:8px;}
+        .fydel-placeholder p{font-size:13.5px;color:#64748B;max-width:420px;margin:0 auto 22px;line-height:1.6;}
+        .fydel-cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:520px;margin:0 auto;}
+        .fydel-cap{background:#F8FAFC;border:1px solid #EEF2F6;border-radius:14px;padding:16px 12px;text-align:center;}
+        .fydel-cap-ico{width:36px;height:36px;border-radius:10px;background:rgba(15,118,110,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:#0F766E;}
+        .fydel-cap-txt{font-size:11.5px;font-weight:700;color:#475569;line-height:1.4;}
+
+        /* Loading */
+        .fydel-loading{display:flex;flex-direction:column;align-items:center;gap:14px;padding:48px;color:#64748B;background:white;border-radius:20px;border:1px solid rgba(0,0,0,0.06);}
+        .fydel-loading .dash-spinner{width:34px;height:34px;border-width:3px;}
+
+        /* Résultat */
+        .fydel-result{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:20px;padding:30px;box-shadow:0 4px 16px rgba(0,0,0,0.03);}
+        .fydel-note{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:100px;font-size:15px;font-weight:800;margin-bottom:18px;}
+        .fydel-note--a{background:rgba(16,185,129,0.12);color:#059669;}
+        .fydel-note--b{background:rgba(59,130,246,0.12);color:#1D4ED8;}
+        .fydel-note--c{background:rgba(245,158,11,0.12);color:#D97706;}
+        .fydel-resume{font-size:16px;color:#1e293b;line-height:1.7;margin-bottom:26px;font-weight:500;}
+        .fydel-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+        .fydel-block{background:#F8FAFC;border-radius:16px;padding:20px;}
+        .fydel-block-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;display:flex;align-items:center;gap:7px;}
+        .fydel-block-title.forts{color:#059669;}
+        .fydel-block-title.faibles{color:#D97706;}
+        .fydel-li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:13.5px;color:#334155;line-height:1.5;}
+        .fydel-li .pt{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+        .pt--green{background:#10B981;}
+        .pt--orange{background:#F59E0B;}
+        .fydel-conseil{background:linear-gradient(135deg,rgba(15,118,110,0.08),rgba(45,212,191,0.05));border:1px solid rgba(15,118,110,0.18);border-radius:16px;padding:22px;margin-bottom:18px;}
+        .fydel-conseil-label{font-size:11px;font-weight:800;color:#0F766E;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+        .fydel-conseil-txt{font-size:14.5px;color:#0F172A;line-height:1.6;font-weight:500;}
+        .fydel-prediction{display:flex;gap:12px;align-items:flex-start;background:#F8FAFC;border-radius:14px;padding:18px;font-size:13.5px;color:#475569;line-height:1.6;font-style:italic;}
+        .fydel-prediction .pred-ico{flex-shrink:0;color:#0F766E;margin-top:2px;}
+        .fydel-cta-relance{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding:20px 22px;background:#0F172A;border-radius:16px;flex-wrap:wrap;}
+        .fydel-cta-relance-txt{color:white;font-size:14px;font-weight:600;flex:1;min-width:200px;}
+        .fydel-cta-relance-txt strong{color:#2DD4BF;}
+        .btn-relance{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#2DD4BF;color:#063b36;border:none;border-radius:12px;font-size:13.5px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;flex-shrink:0;}
+        .btn-relance:hover{background:#5eead4;transform:translateY(-2px);}
+        .fydel-error{background:#FEF2F2;border:1px solid #FECACA;border-radius:16px;padding:18px;color:#991B1B;font-size:14px;}
+        @media(max-width:680px){.fydel-cols{grid-template-columns:1fr;}.fydel-cap-grid{grid-template-columns:1fr;}.btn-fydel{width:100%;justify-content:center;}}
 
         /* Modals */
         .client-modal-overlay{position:fixed;inset:0;background:rgba(8,13,26,0.5);backdrop-filter:blur(4px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;}
@@ -118,10 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </style>
 </head>
 <body class="dash-body">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRNCHJCN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRNCHJCN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="loader" class="dash-loader">
         <div class="dash-loader-inner">
             <div class="dash-loader-logo"><img src="flavicon.jpg" alt="FYDELIO"></div>
@@ -157,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </a>
                     <a href="#" class="sidebar-nav-item" id="nav-ia">
                         <div class="sidebar-nav-icon"><i data-lucide="sparkles"></i></div>
-                        <span>IA Analytics</span>
+                        <span>Fydel'INTELLIGENCE</span>
                     </a>
                     <a href="#" class="sidebar-nav-item" id="nav-qrcodes">
                         <div class="sidebar-nav-icon"><i data-lucide="qr-code"></i></div>
@@ -294,15 +320,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <button onclick="changerPeriode(7,this)">7j</button>
                             </div>
                         </div>
-                        <div class="chart-wrap" id="chart1-wrap">
-                            <div class="chart-empty">Chargement…</div>
-                        </div>
+                        <div class="chart-wrap" id="chart1-wrap"><div class="chart-empty">Chargement…</div></div>
                     </div>
                     <div class="chart-card animate-on-scroll">
                         <div class="chart-header"><div class="chart-title">Total cumulé</div></div>
-                        <div class="chart-wrap" id="chart2-wrap">
-                            <div class="chart-empty">Chargement…</div>
-                        </div>
+                        <div class="chart-wrap" id="chart2-wrap"><div class="chart-empty">Chargement…</div></div>
                     </div>
                 </div>
 
@@ -326,49 +348,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                 </div>
 
-                <!-- VUE IA ANALYTICS -->
+                <!-- ══════════ VUE FYDEL'INTELLIGENCE ══════════ -->
                 <div id="view-ia" style="display:none;">
                     <div class="dash-page-header animate-on-scroll">
                         <div>
-                            <h1 class="dash-page-title">IA Analytics</h1>
-                            <p class="dash-page-sub">Claude analyse votre programme de fidélité et vous donne des conseils personnalisés.</p>
+                            <h1 class="dash-page-title">Fydel'INTELLIGENCE</h1>
+                            <p class="dash-page-sub">Votre analyste personnel décortique vos chiffres et vous dit quoi faire.</p>
                         </div>
                     </div>
 
-                    <div class="ia-card animate-on-scroll">
-                        <div class="ia-header">
-                            <div class="ia-icon">🤖</div>
-                            <div>
-                                <div class="ia-title">Analyse par Claude AI</div>
-                                <div class="ia-subtitle">Propulsé par Anthropic — mis à jour à la demande</div>
+                    <!-- Hero IA -->
+                    <div class="fydel-hero animate-on-scroll">
+                        <div class="fydel-hero-inner">
+                            <div class="fydel-avatar">🤖</div>
+                            <div class="fydel-title-group">
+                                <span class="fydel-badge"><i data-lucide="sparkles" style="width:12px;height:12px;"></i> Intelligence artificielle</span>
+                                <div class="fydel-title">Pilotez avec <span class="accent">Fydel'INTELLIGENCE</span></div>
+                                <div class="fydel-sub">Analyse de vos KPIs en autonomie — mise à jour à la demande</div>
                             </div>
-                            <button class="btn-ia" id="btnLancerIA" style="margin-top:0;margin-left:auto;" onclick="lancerAnalyseIA()">
-                                <i data-lucide="sparkles" style="width:16px;height:16px;"></i>
-                                Analyser mes KPIs
+                            <button class="btn-fydel" id="btnLancerIA" onclick="lancerAnalyseIA()">
+                                <i data-lucide="sparkles" style="width:17px;height:17px;"></i>
+                                Analyser mes performances
                             </button>
                         </div>
+                    </div>
 
-                        <div id="ia-placeholder" style="text-align:center;padding:40px;color:#94A3B8;">
-                            <div style="font-size:40px;margin-bottom:12px;">✨</div>
-                            <div style="font-size:15px;font-weight:600;margin-bottom:8px;">Prêt à analyser</div>
-                            <div style="font-size:13px;">Cliquez sur "Analyser mes KPIs" pour obtenir des insights personnalisés sur votre programme.</div>
-                        </div>
-
-                        <div id="ia-loading" style="display:none;">
-                            <div class="ia-loading">
-                                <div class="dash-spinner"></div>
-                                <span style="font-weight:600;">Claude analyse vos données…</span>
-                                <span style="font-size:12px;color:#94A3B8;">Environ 5-10 secondes</span>
+                    <!-- Placeholder -->
+                    <div id="ia-placeholder" class="fydel-placeholder">
+                        <div class="fydel-placeholder-icon">✨</div>
+                        <h3>Prêt à analyser votre restaurant</h3>
+                        <p>Cliquez sur "Analyser mes performances" — Fydel'INTELLIGENCE lit vos données et vous livre une analyse claire en 10 secondes.</p>
+                        <div class="fydel-cap-grid">
+                            <div class="fydel-cap">
+                                <div class="fydel-cap-ico"><i data-lucide="bar-chart-3" style="width:18px;height:18px;"></i></div>
+                                <div class="fydel-cap-txt">Suivi de vos KPIs en autonomie</div>
+                            </div>
+                            <div class="fydel-cap">
+                                <div class="fydel-cap-ico"><i data-lucide="lightbulb" style="width:18px;height:18px;"></i></div>
+                                <div class="fydel-cap-txt">Conseils prioritaires chaque semaine</div>
+                            </div>
+                            <div class="fydel-cap">
+                                <div class="fydel-cap-ico"><i data-lucide="send" style="width:18px;height:18px;"></i></div>
+                                <div class="fydel-cap-txt">Relance de vos abonnés en un clic</div>
                             </div>
                         </div>
+                    </div>
 
-                        <div id="ia-result" style="display:none;">
-                            <!-- Rempli dynamiquement -->
+                    <!-- Loading -->
+                    <div id="ia-loading" style="display:none;">
+                        <div class="fydel-loading">
+                            <div class="dash-spinner"></div>
+                            <span style="font-weight:700;color:#0F172A;">Fydel'INTELLIGENCE analyse vos données…</span>
+                            <span style="font-size:12px;color:#94A3B8;">Environ 5 à 10 secondes</span>
                         </div>
+                    </div>
 
-                        <div id="ia-error" style="display:none;">
-                            <div class="ia-error" id="ia-error-msg"></div>
-                        </div>
+                    <!-- Résultat -->
+                    <div id="ia-result" style="display:none;"></div>
+
+                    <!-- Erreur -->
+                    <div id="ia-error" style="display:none;">
+                        <div class="fydel-error" id="ia-error-msg"></div>
                     </div>
                 </div>
 
@@ -469,7 +509,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const dateEl = document.getElementById('dashDate');
     if (dateEl) dateEl.textContent = new Date().toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long' });
 
-    // ── Compteur tableau ──
     const tableCountEl = document.getElementById('tableCount');
     const tbody        = document.getElementById('tableBody');
     if (tbody && tableCountEl) {
@@ -481,29 +520,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }).observe(tbody, { childList: true });
     }
 
-    // ── Navigation — attend que fiddle-pro soit prêt ──
     const VUES = {
-        'nav-clients':     'view-clients',
-        'nav-analytics':   'view-analytics',
-        'nav-recompenses': 'view-recompenses',
-        'nav-ia':          'view-ia',
-        'nav-qrcodes':     'view-qrcodes',
+        'nav-clients':'view-clients','nav-analytics':'view-analytics',
+        'nav-recompenses':'view-recompenses','nav-ia':'view-ia','nav-qrcodes':'view-qrcodes',
     };
 
     function activerVue(navId) {
         document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
         const navEl = document.getElementById(navId);
         if (navEl) navEl.classList.add('active');
-        Object.values(VUES).forEach(v => {
-            const el = document.getElementById(v);
-            if (el) el.style.display = 'none';
-        });
+        Object.values(VUES).forEach(v => { const el = document.getElementById(v); if (el) el.style.display = 'none'; });
         const target = document.getElementById(VUES[navId]);
         if (target) target.style.display = 'block';
-
         if (navId === 'nav-analytics')   chargerGraphiques();
         if (navId === 'nav-recompenses') chargerRecompenses();
-
         if (window.innerWidth <= 768) {
             document.querySelector('.sidebar')?.classList.remove('mobile-open');
             document.getElementById('dashBackdrop')?.classList.remove('active');
@@ -517,12 +547,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
     });
 
-    // ── Utilitaire : attendre que fiddle-pro soit prêt ──
     async function attendreFiddle() {
         let n = 0;
         while ((!window._supabaseClient || !window.currentRestoConfig) && n < 30) {
-            await new Promise(r => setTimeout(r, 200));
-            n++;
+            await new Promise(r => setTimeout(r, 200)); n++;
         }
         return !!(window._supabaseClient && window.currentRestoConfig);
     }
@@ -533,26 +561,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     async function chargerGraphiques() {
         const ok = await attendreFiddle();
         if (!ok) return;
-
-     const suffixe = { villa_saint_antoine:'villa', bistrot:'bistrot', le_cercle:'le_cercle' }[window.currentRestoConfig.id] || 'bistrot';
-const vue = 'vue_inscrits_par_jour_' + suffixe;
-
+        const suffixe = { villa_saint_antoine:'villa', bistrot:'bistrot', le_cercle:'le_cercle' }[window.currentRestoConfig.id] || 'bistrot';
+        const vue = 'vue_inscrits_par_jour_' + suffixe;
         const { data, error } = await window._supabaseClient.from(vue).select('*');
-
         if (error) {
             console.error('Erreur graphique:', error);
             document.getElementById('chart1-wrap').innerHTML = '<div class="chart-empty">Erreur : ' + error.message + '</div>';
             return;
         }
-
         donneesGraph = data || [];
-
         if (donneesGraph.length === 0) {
             document.getElementById('chart1-wrap').innerHTML = '<div class="chart-empty">Aucune donnée disponible</div>';
             document.getElementById('chart2-wrap').innerHTML = '<div class="chart-empty">Aucune donnée disponible</div>';
             return;
         }
-
         renderGraphiques(donneesGraph);
     }
 
@@ -560,7 +582,6 @@ const vue = 'vue_inscrits_par_jour_' + suffixe;
         const labels  = data.map(d => new Date(d.jour + 'T00:00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' }));
         const newData = data.map(d => parseInt(d.nouveaux_inscrits) || 0);
         const cumData = data.map(d => parseInt(d.total_cumule) || 0);
-
         const opts = {
             responsive:true, maintainAspectRatio:false,
             plugins:{ legend:{ display:false } },
@@ -569,8 +590,6 @@ const vue = 'vue_inscrits_par_jour_' + suffixe;
                 y:{ beginAtZero:true, grid:{ color:'#F1F5F9' }, ticks:{ font:{ family:'Plus Jakarta Sans', size:11 }, color:'#94A3B8', stepSize:1, precision:0 } }
             }
         };
-
-        // Chart 1 — barres
         const wrap1 = document.getElementById('chart1-wrap');
         wrap1.innerHTML = '<canvas id="chartInscrits"></canvas>';
         const ctx1 = document.getElementById('chartInscrits').getContext('2d');
@@ -580,8 +599,6 @@ const vue = 'vue_inscrits_par_jour_' + suffixe;
             data:{ labels, datasets:[{ data:newData, backgroundColor:'rgba(15,118,110,0.15)', borderColor:'#0F766E', borderWidth:2, borderRadius:6 }] },
             options:opts
         });
-
-        // Chart 2 — ligne
         const wrap2 = document.getElementById('chart2-wrap');
         wrap2.innerHTML = '<canvas id="chartCumule"></canvas>';
         const ctx2 = document.getElementById('chartCumule').getContext('2d');
@@ -603,18 +620,11 @@ const vue = 'vue_inscrits_par_jour_' + suffixe;
     async function chargerRecompenses() {
         const ok = await attendreFiddle();
         if (!ok) return;
-
         const container = document.getElementById('recompenses-list');
         const suffixe = { villa_saint_antoine:'villa', bistrot:'bistrot', le_cercle:'le_cercle' }[window.currentRestoConfig.id] || 'bistrot';
-const vue = 'vue_recompenses_' + suffixe;
-
+        const vue = 'vue_recompenses_' + suffixe;
         const { data, error } = await window._supabaseClient.from(vue).select('*');
-
-        if (error) {
-            container.innerHTML = `<div style="padding:40px;text-align:center;color:#EF4444;">Erreur : ${error.message}</div>`;
-            return;
-        }
-
+        if (error) { container.innerHTML = `<div style="padding:40px;text-align:center;color:#EF4444;">Erreur : ${error.message}</div>`; return; }
         if (!data || data.length === 0) {
             container.innerHTML = `<div style="padding:40px;text-align:center;color:#94A3B8;font-size:14px;">
                 <div style="font-size:32px;margin-bottom:8px;">🎁</div>
@@ -623,7 +633,6 @@ const vue = 'vue_recompenses_' + suffixe;
             </div>`;
             return;
         }
-
         container.innerHTML = data.map(c => `
             <div class="recompense-row">
                 <div class="recompense-badge">🎁</div>
@@ -638,23 +647,19 @@ const vue = 'vue_recompenses_' + suffixe;
             </div>`).join('');
     }
 
-    // ── IA Analytics ──
+    // ── Fydel'INTELLIGENCE ──
     async function lancerAnalyseIA() {
         const btn = document.getElementById('btnLancerIA');
         btn.disabled = true;
-        btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:white;"></div> Analyse…';
+        btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:#0F766E;"></div> Analyse…';
 
         document.getElementById('ia-placeholder').style.display = 'none';
         document.getElementById('ia-result').style.display      = 'none';
         document.getElementById('ia-error').style.display       = 'none';
-        document.getElementById('ia-loading').style.display     = 'flex';
+        document.getElementById('ia-loading').style.display     = 'block';
 
         const ok = await attendreFiddle();
-        if (!ok) {
-            afficherErreurIA('Dashboard non initialisé. Réessayez dans quelques secondes.');
-            resetBtnIA();
-            return;
-        }
+        if (!ok) { afficherErreurIA('Dashboard non initialisé. Réessayez dans quelques secondes.'); resetBtnIA(); return; }
 
         const clients   = window.dataClientsGlobal || [];
         const config    = window.currentRestoConfig;
@@ -665,72 +670,75 @@ const vue = 'vue_recompenses_' + suffixe;
         const totalRecompenses = clients.reduce((acc,c) => acc + (parseInt(c.recompenses_obtenues)||0), 0);
         const abonnes          = clients.filter(c => c.optin_email !== false).length;
         const desabonnes       = totalClients - abonnes;
-
-        // Nouveaux ce mois
-        const debutMois = new Date();
-        debutMois.setDate(1); debutMois.setHours(0,0,0,0);
+        const debutMois = new Date(); debutMois.setDate(1); debutMois.setHours(0,0,0,0);
         const nouveauxCeMois = clients.filter(c => new Date(c.created_at) >= debutMois).length;
 
         try {
-            // Récupère le token de session de l'utilisateur connecté
             const { data: { session } } = await window._supabaseClient.auth.getSession();
-
             const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/IA', {
-                method:  'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${session?.access_token || ''}`
-                },
-                body:    JSON.stringify({
+                method:'POST',
+                headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${session?.access_token || ''}` },
+                body: JSON.stringify({
                     restaurant: config.nom, totalClients, totalPoints, totalRecompenses,
                     abonnes, desabonnes, nouveauxCeMois,
-                    seuilPoints: config.id === 'villa_saint_antoine' ? 10 : 5
+                    seuilPoints: config.id === 'bistrot' ? 5 : 10
                 })
             });
-
             const result = await res.json();
-
             if (!result.ok) throw new Error(result.error || 'Erreur inconnue');
-
             afficherResultatIA(result.analyse);
-
         } catch (err) {
             afficherErreurIA(err.message);
         }
-
         resetBtnIA();
     }
 
     function afficherResultatIA(a) {
         document.getElementById('ia-loading').style.display = 'none';
+        const noteClass = a.note_globale?.startsWith('A') ? 'fydel-note--a'
+                        : a.note_globale?.startsWith('B') ? 'fydel-note--b' : 'fydel-note--c';
 
-        const noteClass = a.note_globale?.startsWith('A') ? 'ia-note--a'
-                        : a.note_globale?.startsWith('B') ? 'ia-note--b'
-                        : 'ia-note--c';
+        const result = document.getElementById('ia-result');
+        result.style.display = 'block';
+        result.innerHTML = `
+            <div class="fydel-result">
+                <span class="fydel-note ${noteClass}">
+                    <i data-lucide="award" style="width:15px;height:15px;"></i>
+                    Note globale : ${a.note_globale || '—'}
+                </span>
+                <p class="fydel-resume">${a.resume || ''}</p>
 
-        document.getElementById('ia-result').style.display = 'block';
-        document.getElementById('ia-result').innerHTML = `
-            <span class="ia-note ${noteClass}">
-                <i data-lucide="award" style="width:14px;height:14px;"></i>
-                Note globale : ${a.note_globale || '—'}
-            </span>
-            <p class="ia-resume">${a.resume || ''}</p>
+                <div class="fydel-cols">
+                    <div class="fydel-block">
+                        <div class="fydel-block-title forts"><i data-lucide="check-circle" style="width:14px;height:14px;"></i> Points forts</div>
+                        ${(a.points_forts||[]).map(p => `<div class="fydel-li"><div class="pt pt--green"></div>${p}</div>`).join('') || '<div class="fydel-li" style="color:#94A3B8;">—</div>'}
+                    </div>
+                    <div class="fydel-block">
+                        <div class="fydel-block-title faibles"><i data-lucide="wrench" style="width:14px;height:14px;"></i> À améliorer</div>
+                        ${(a.points_ameliorer||[]).map(p => `<div class="fydel-li"><div class="pt pt--orange"></div>${p}</div>`).join('') || '<div class="fydel-li" style="color:#94A3B8;">—</div>'}
+                    </div>
+                </div>
 
-            <div class="ia-section-title">✅ Points forts</div>
-            <ul class="ia-list">
-                ${(a.points_forts||[]).map(p => `<li><div class="dot dot--green"></div>${p}</li>`).join('')}
-            </ul>
+                <div class="fydel-conseil">
+                    <div class="fydel-conseil-label"><i data-lucide="lightbulb" style="width:14px;height:14px;"></i> Conseil prioritaire cette semaine</div>
+                    <div class="fydel-conseil-txt">${a.conseil_prioritaire || ''}</div>
+                </div>
 
-            <div class="ia-section-title">🔧 Points à améliorer</div>
-            <ul class="ia-list">
-                ${(a.points_ameliorer||[]).map(p => `<li><div class="dot dot--orange"></div>${p}</li>`).join('')}
-            </ul>
+                <div class="fydel-prediction">
+                    <i data-lucide="rocket" class="pred-ico" style="width:18px;height:18px;"></i>
+                    <span>${a.prediction || ''}</span>
+                </div>
 
-            <div class="ia-section-title">💡 Conseil prioritaire cette semaine</div>
-            <div class="ia-conseil">${a.conseil_prioritaire || ''}</div>
-
-            <div class="ia-section-title">🚀 Projection</div>
-            <div class="ia-prediction">${a.prediction || ''}</div>
+                <div class="fydel-cta-relance">
+                    <div class="fydel-cta-relance-txt">
+                        Prêt à agir ? <strong>Relancez vos clients</strong> directement depuis le dashboard.
+                    </div>
+                    <button class="btn-relance" onclick="document.getElementById('btnOpenEmail').click()">
+                        <i data-lucide="send" style="width:15px;height:15px;"></i>
+                        Relancer mes abonnés
+                    </button>
+                </div>
+            </div>
         `;
         lucide.createIcons();
     }
@@ -744,7 +752,7 @@ const vue = 'vue_recompenses_' + suffixe;
     function resetBtnIA() {
         const btn = document.getElementById('btnLancerIA');
         btn.disabled = false;
-        btn.innerHTML = '<i data-lucide="sparkles" style="width:16px;height:16px;"></i> Analyser mes KPIs';
+        btn.innerHTML = '<i data-lucide="sparkles" style="width:17px;height:17px;"></i> Analyser mes performances';
         lucide.createIcons();
     }
 
@@ -759,13 +767,9 @@ const vue = 'vue_recompenses_' + suffixe;
         const init = mots.length>=2 ? (mots[0][0]+mots[1][0]).toUpperCase() : (mots[0]||'C')[0].toUpperCase();
         const hash = [...nom].reduce((a,c) => a+c.charCodeAt(0), 0);
         const p    = palettes[hash % palettes.length];
-
         const avatar = document.getElementById('modalAvatar');
-        avatar.textContent     = init;
-        avatar.style.background = p.bg;
-        avatar.style.color      = p.color;
-
-        document.getElementById('modalNom').textContent         = nom;
+        avatar.textContent = init; avatar.style.background = p.bg; avatar.style.color = p.color;
+        document.getElementById('modalNom').textContent = nom;
         document.getElementById('modalEmailDisplay').textContent = client.email || '';
         document.getElementById('modalInfoGrid').innerHTML = `
             <div class="client-info-item"><div class="client-info-label">Points</div><div class="client-info-value">${client.points||0} pts</div></div>
@@ -784,10 +788,8 @@ const vue = 'vue_recompenses_' + suffixe;
         const container = document.getElementById('modalHistorique');
         if (!window._supabaseClient) return;
         const { data } = await window._supabaseClient
-            .from('historique_scans').select('*')
-            .eq('client_email', email)
+            .from('historique_scans').select('*').eq('client_email', email)
             .order('created_at', { ascending: false }).limit(10);
-
         if (!data || data.length === 0) {
             container.innerHTML = `<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px;">Aucun passage enregistré.</div>`;
             return;
@@ -823,67 +825,47 @@ const vue = 'vue_recompenses_' + suffixe;
         const contenu = document.getElementById('emailContenu').value.trim();
         const dest    = document.getElementById('emailDestinataires').value;
         const btn     = document.getElementById('btnSendEmail');
-
         if (!objet || !contenu) { alert('Veuillez remplir l\'objet et le message.'); return; }
-
         btn.disabled = true;
         btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:white;"></div> Envoi…';
-
         let clients = window.dataClientsGlobal || [];
         if (dest === 'tous')           clients = clients.filter(c => c.optin_email !== false);
         if (dest === 'points_faibles') clients = clients.filter(c => c.optin_email !== false && (c.points||0) < 3);
         if (dest === 'recompenses')    clients = clients.filter(c => c.optin_email !== false && (c.recompenses_obtenues||0) > 0);
-
         if (clients.length === 0) {
             alert('Aucun destinataire pour cette sélection.');
-            btn.disabled = false;
-            btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
-            lucide.createIcons();
+            btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons();
             return;
         }
-
         if (!confirm(`Envoyer cet email à ${clients.length} client${clients.length>1?'s':''} ?`)) {
-            btn.disabled = false;
-            btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
-            lucide.createIcons();
+            btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons();
             return;
         }
-
         try {
-            // Récupère le token de session de l'utilisateur connecté
             const { data: { session } } = await window._supabaseClient.auth.getSession();
-
             const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/send-email', {
-                method:  'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${session?.access_token || ''}`
-                },
-                body:    JSON.stringify({
+                method:'POST',
+                headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${session?.access_token || ''}` },
+                body: JSON.stringify({
                     destinataires: clients.map(c => ({ email: c.email, prenom: c.prenom||'' })),
-                    objet, contenu,
-                    restaurant: window.currentRestoConfig?.nom || 'FYDELIO'
+                    objet, contenu, restaurant: window.currentRestoConfig?.nom || 'FYDELIO'
                 })
             });
             const result = await res.json();
             if (result.ok) {
                 alert(`✅ Email envoyé à ${result.envoyes} client${result.envoyes>1?'s':''} !`);
                 fermerEmailModal();
-                document.getElementById('emailObjet').value  = '';
+                document.getElementById('emailObjet').value = '';
                 document.getElementById('emailContenu').value = '';
-            } else {
-                throw new Error(result.error || 'Erreur inconnue');
-            }
+            } else { throw new Error(result.error || 'Erreur inconnue'); }
         } catch (err) {
             alert('Erreur : ' + err.message + '\n\nVérifiez que l\'Edge Function "send-email" est déployée et que BREVO_API_KEY est configuré dans Supabase → Secrets.');
         }
-
         btn.disabled = false;
         btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
         lucide.createIcons();
     }
 
-    // ── Timeout loader secours ──
     setTimeout(() => {
         const l = document.getElementById('loader');
         if (l && l.style.display !== 'none') { l.style.opacity='0'; setTimeout(()=>{l.style.display='none';},400); }
