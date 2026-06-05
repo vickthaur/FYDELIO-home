@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-F359553M99');
 </script>
 <!-- Google Tag Manager -->
@@ -20,11 +19,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FYDELIO | Carte de fidélité digitale pour Restaurants (Vaucluse)</title>
-    <meta name="description" content="FYDELIO est la carte de fidélité digitale simple et automatisée pour les restaurateurs du Vaucluse. Transformez vos clients de passage en habitués sans application à télécharger.">
-    <meta name="keywords" content="carte de fidélité digitale, fidélisation restaurant, marketing restaurant vaucluse, fydelio, qr code fidélité">
-    <meta property="og:title" content="FYDELIO | Carte de fidélité digitale pour Restaurants">
-    <meta property="og:description" content="La solution la plus simple pour capturer les données de vos clients à table et les faire revenir. Sans engagement.">
+    <title>FYDELIO | Carte de fidélité digitale & IA pour Restaurants (Vaucluse)</title>
+    <meta name="description" content="FYDELIO est la carte de fidélité digitale pilotée par IA pour les restaurateurs du Vaucluse. Capturez vos clients à table, suivez vos KPIs en autonomie et relancez vos clients en un clic. Sans application à télécharger.">
+    <meta name="keywords" content="carte de fidélité digitale, fidélisation restaurant, marketing restaurant vaucluse, fydelio, qr code fidélité, ia restaurant, analyse kpi restaurant">
+    <meta property="og:title" content="FYDELIO | Carte de fidélité digitale & IA pour Restaurants">
+    <meta property="og:description" content="Capturez vos clients à table, analysez vos performances avec Fydel'INTELLIGENCE et relancez vos habitués en un clic. Sans engagement.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fydelio.fr">
     <meta property="og:image" content="https://fydelio.fr/flavicon.jpg">
@@ -43,6 +42,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="index-modern.css">
+    <style>
+        /* ── Section Fydel'INTELLIGENCE (IA) ── */
+        .ia-section{position:relative;overflow:hidden;}
+        .ia-hero-card{background:linear-gradient(135deg,#0F766E 0%,#0c5d56 60%,#0a4d47 100%);border-radius:32px;padding:56px 48px;color:white;position:relative;overflow:hidden;box-shadow:0 30px 60px -20px rgba(15,118,110,0.5);}
+        .ia-hero-card::before{content:"";position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(45,212,191,0.35) 0%,transparent 70%);border-radius:50%;}
+        .ia-hero-card::after{content:"";position:absolute;bottom:-100px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%);border-radius:50%;}
+        .ia-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;}
+        .ia-badge-glow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);backdrop-filter:blur(8px);padding:8px 16px;border-radius:100px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:22px;}
+        .ia-hero-card h2{font-size:38px;font-weight:800;line-height:1.1;margin-bottom:18px;color:white;letter-spacing:-1px;}
+        .ia-hero-card h2 .ia-name{background:linear-gradient(90deg,#2DD4BF,#a7f3d0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .ia-hero-card p.ia-lead{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:28px;font-weight:500;}
+        .ia-feature-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;}
+        .ia-feature-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:600;color:rgba(255,255,255,0.95);}
+        .ia-feature-list li .ia-check{flex-shrink:0;width:24px;height:24px;border-radius:8px;background:rgba(45,212,191,0.2);display:flex;align-items:center;justify-content:center;margin-top:1px;}
+        .ia-mock{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:24px;padding:24px;backdrop-filter:blur(10px);}
+        .ia-mock-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+        .ia-mock-avatar{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#2DD4BF,#0F766E);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+        .ia-mock-title{font-size:14px;font-weight:800;color:white;}
+        .ia-mock-sub{font-size:11px;color:rgba(255,255,255,0.6);}
+        .ia-mock-note{display:inline-block;background:rgba(45,212,191,0.2);color:#a7f3d0;font-size:12px;font-weight:800;padding:5px 12px;border-radius:100px;margin-bottom:14px;}
+        .ia-mock-text{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,0.88);margin-bottom:16px;}
+        .ia-mock-bar{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px;color:rgba(255,255,255,0.7);font-weight:600;}
+        .ia-mock-bar-track{flex:1;height:8px;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;}
+        .ia-mock-bar-fill{height:100%;background:linear-gradient(90deg,#2DD4BF,#a7f3d0);border-radius:10px;}
+        @media(max-width:860px){.ia-hero-inner{grid-template-columns:1fr;gap:32px;}.ia-hero-card{padding:38px 26px;}.ia-hero-card h2{font-size:30px;}}
+    </style>
 </head>
 <body>
  <!-- Google Tag Manager (noscript) -->
@@ -61,6 +86,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
             <nav class="nav-links">
                 <a href="#concept" class="link-text nav-link-active">Logiciel</a>
+                <a href="#intelligence" class="link-text">Fydel'INTELLIGENCE</a>
                 <a href="services.html" class="link-text">Agence Digitale</a>
                 <a href="#tarifs" class="link-text">Tarifs</a>
                 <button id="btnOpenModal" class="btn btn-outline btn-nav">Espace Restaurateur</button>
@@ -80,11 +106,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     Ancré dans le Vaucluse
                 </div>
                 <h1 class="animate-on-scroll">
-                    Vos clients repassent<br>
-                    <span class="text-gradient">la porte.</span>
+                    Transformez chaque repas<br>
+                    <span class="text-gradient">en client qui revient.</span>
                 </h1>
                 <p class="animate-on-scroll">
-                    Chaque soir, des dizaines de clients quittent votre salle sans laisser de trace. FYDELIO capture leurs données à table — discrètement, élégamment — et les fait revenir automatiquement.
+                    Chaque soir, des dizaines de clients quittent votre salle sans laisser de trace. FYDELIO capture leurs coordonnées à table — discrètement, élégamment — puis notre IA <strong>Fydel'INTELLIGENCE</strong> analyse vos performances et vous dit exactement quoi faire pour les faire revenir.
                 </p>
                 <div class="hero-actions animate-on-scroll">
                     <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
@@ -156,22 +182,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="card-icon-3d card-icon-3d--red">
                     <i data-lucide="user-x"></i>
                 </div>
-                <h3>Des clients invisibles</h3>
-                <p>Un client vient, apprécie, repart. Sans son contact, vous ne pouvez ni le remercier, ni l'inviter à votre prochaine soirée, ni le fidéliser. Il existe — vous ne le savez pas.</p>
+                <h3>Des clients fantômes</h3>
+                <p>Un client vient, savoure, repart enchanté. Mais sans ses coordonnées, il devient invisible : impossible de le remercier, de l'inviter à votre prochaine soirée ou de fêter son anniversaire. Il vous adore — et vous ne le saurez jamais.</p>
             </div>
             <div class="card card-modern animate-on-scroll">
                 <div class="card-icon-3d card-icon-3d--amber">
                     <i data-lucide="link-2-off"></i>
                 </div>
-                <h3>La dépendance aux plateformes</h3>
-                <p>TheFork, Tripadvisor, Google — vous payez pour que vos propres clients vous trouvent. Une base de données à vous libère de cette rente perpétuelle.</p>
+                <h3>L'esclavage des plateformes</h3>
+                <p>TheFork, Tripadvisor, Google — vous payez une commission pour que vos propres clients vous retrouvent. Une base de données qui vous appartient, c'est la fin de cette rente que vous versez chaque mois sans le vouloir.</p>
             </div>
             <div class="card card-modern animate-on-scroll">
                 <div class="card-icon-3d card-icon-3d--green">
                     <i data-lucide="zap-off"></i>
                 </div>
-                <h3>Les cartes papier ne tiennent pas</h3>
-                <p>Vos serveurs sont en plein rush. Demander un nom, un mail, tamponner — ça ne fonctionne jamais longtemps. Il faut un système qui tourne sans eux.</p>
+                <h3>Les cartes papier finissent à la poubelle</h3>
+                <p>En plein coup de feu, demander un nom, un email, tamponner une carte… ça ne tient jamais. Vos serveurs ont mieux à faire. Il vous faut un système qui tourne tout seul, sans alourdir le service.</p>
             </div>
         </div>
     </section>
@@ -195,7 +221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section id="fonctionnement" class="section container">
         <div class="section-header animate-on-scroll">
             <div class="section-eyebrow">La méthode</div>
-            <h2>Simple pour le client.<br>Puissant pour vous.</h2>
+            <h2>Simple pour le client.<br>Intelligent pour vous.</h2>
             <p>Trois étapes qui tournent seules — même un soir de coup de feu.</p>
         </div>
         <div class="method-split-layout">
@@ -206,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="step-badge">Étape 1</div>
                     <h3>Le client scanne, c'est tout.</h3>
-                    <p>Un QR Code élégant posé sur la table. Le client le flashe avec son téléphone, entre son prénom et email en 20 secondes. Pas d'app, pas de friction — juste un geste naturel.</p>
+                    <p>Un QR Code élégant posé sur la table. Le client le flashe, entre son prénom et son email en 20 secondes. Pas d'app, pas de friction — juste un geste naturel entre l'entrée et le plat.</p>
                     <div class="step-highlight">
                         <i data-lucide="shield-check" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
                         <span>Conforme RGPD — consentement explicite enregistré</span>
@@ -218,7 +244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="step-badge">Étape 2</div>
                     <h3>Votre équipe valide en un clic.</h3>
-                    <p>Le serveur ouvre l'outil sur son téléphone et appuie sur "Valider". Trois secondes. Le point est crédité, le client confirme — sans jamais quitter la salle des yeux.</p>
+                    <p>Le serveur ouvre l'outil sur son téléphone et appuie sur "Valider". Trois secondes chrono. Le point est crédité, le client le voit s'afficher — sans jamais quitter la salle des yeux.</p>
                     <div class="step-highlight">
                         <i data-lucide="lock" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
                         <span>Système anti-fraude intégré — impossible à tricher</span>
@@ -229,11 +255,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <img src="etape-3.png" alt="Espace Mobile" class="app-icon-image" loading="lazy">
                     </div>
                     <div class="step-badge">Étape 3</div>
-                    <h3>Votre base grandit. Vos relances partent seules.</h3>
-                    <p>Connectez-vous à votre Espace Pro quand vous voulez. Visualisez vos clients, exportez vos contacts, déclenchez une campagne. FYDELIO travaille pendant que vous cuisinez.</p>
+                    <h3>Votre IA analyse. Vos relances partent en un clic.</h3>
+                    <p>Connectez-vous à votre Espace Pro quand vous voulez. <strong>Fydel'INTELLIGENCE</strong> décortique vos chiffres et vous dit quoi faire ; et d'un seul clic, vous relancez vos clients abonnés directement depuis le dashboard. FYDELIO travaille pendant que vous cuisinez.</p>
                     <div class="step-highlight">
-                        <i data-lucide="send" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
-                        <span>Emails automatisés — anniversaires, événements, nouvelle carte</span>
+                        <i data-lucide="sparkles" style="width:15px;height:15px;color:#0F766E;flex-shrink:0;"></i>
+                        <span>Analyse IA des KPIs + relances email en autonomie</span>
                     </div>
                 </div>
             </div>
@@ -244,6 +270,73 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <img src="screen-1.png" alt="Interface Scan" class="phone-img active" id="phone-img-1" loading="lazy">
                         <img src="screen-2.png" alt="Interface Validation" class="phone-img" id="phone-img-2" loading="lazy">
                         <img src="screen-3.png" alt="Interface Espace Pro" class="phone-img" id="phone-img-3" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FYDEL'INTELLIGENCE (IA) ═══════════ -->
+    <section id="intelligence" class="section container ia-section">
+        <div class="section-header animate-on-scroll">
+            <div class="section-eyebrow">L'intelligence artificielle</div>
+            <h2>Votre analyste personnel,<br>disponible 24h/24.</h2>
+            <p>Vous savez cuisiner. Fydel'INTELLIGENCE sait lire vos chiffres — et vous dit quoi faire.</p>
+        </div>
+
+        <div class="ia-hero-card animate-on-scroll">
+            <div class="ia-hero-inner">
+                <div class="ia-hero-left">
+                    <div class="ia-badge-glow">
+                        <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+                        Propulsé par l'IA
+                    </div>
+                    <h2>Pilotez votre restaurant avec <span class="ia-name">Fydel'INTELLIGENCE</span></h2>
+                    <p class="ia-lead">
+                        Fini les tableaux Excel et les intuitions au doigt mouillé. Notre IA analyse en continu votre base clients, repère ce qui marche, alerte sur ce qui décroche, et vous livre des conseils concrets — en français clair, sans jargon.
+                    </p>
+                    <ul class="ia-feature-list">
+                        <li>
+                            <span class="ia-check"><i data-lucide="check" style="width:14px;height:14px;color:#a7f3d0;"></i></span>
+                            <span><strong>Suivi de vos KPIs en autonomie</strong> — nouveaux inscrits, taux de retour, points distribués, le tout analysé pour vous.</span>
+                        </li>
+                        <li>
+                            <span class="ia-check"><i data-lucide="check" style="width:14px;height:14px;color:#a7f3d0;"></i></span>
+                            <span><strong>Conseils prioritaires chaque semaine</strong> — l'IA vous dit exactement sur quoi agir pour faire revenir plus de monde.</span>
+                        </li>
+                        <li>
+                            <span class="ia-check"><i data-lucide="check" style="width:14px;height:14px;color:#a7f3d0;"></i></span>
+                            <span><strong>Relance de vos abonnés en un clic</strong> — directement depuis le dashboard, sans passer par un autre outil.</span>
+                        </li>
+                        <li>
+                            <span class="ia-check"><i data-lucide="check" style="width:14px;height:14px;color:#a7f3d0;"></i></span>
+                            <span><strong>Zéro compétence technique requise</strong> — un bouton, et l'analyse s'affiche en 10 secondes.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ia-hero-right">
+                    <div class="ia-mock">
+                        <div class="ia-mock-head">
+                            <div class="ia-mock-avatar">🤖</div>
+                            <div>
+                                <div class="ia-mock-title">Fydel'INTELLIGENCE</div>
+                                <div class="ia-mock-sub">Analyse de votre semaine</div>
+                            </div>
+                        </div>
+                        <span class="ia-mock-note">⚡ Note globale : A−</span>
+                        <p class="ia-mock-text">
+                            "Belle progression cette semaine : +12 inscrits. Mais 34% de vos clients n'ont qu'un seul point — relancez-les avec une offre découverte pour déclencher leur 2e visite."
+                        </p>
+                        <div class="ia-mock-bar">
+                            <span>Fidélisation</span>
+                            <div class="ia-mock-bar-track"><div class="ia-mock-bar-fill" style="width:72%"></div></div>
+                            <span>72%</span>
+                        </div>
+                        <div class="ia-mock-bar">
+                            <span>Croissance base</span>
+                            <div class="ia-mock-bar-track"><div class="ia-mock-bar-fill" style="width:88%"></div></div>
+                            <span>88%</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -323,11 +416,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="price-title">Abonnement Logiciel</div>
                 <div class="price-amount">149 € <span>/ mois</span></div>
-                <p class="price-desc">Le moteur silencieux qui travaille pour vous 24h/24, 7j/7. Votre base, vos données, votre croissance.</p>
+                <p class="price-desc">Le moteur intelligent qui travaille pour vous 24h/24, 7j/7. Votre base, vos données, votre croissance — pilotées par l'IA.</p>
                 <ul class="pricing-list">
                     <li><i data-lucide="check" style="width:13px;height:13px;"></i> Accès Espace Restaurateur 24/7</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> <strong>Fydel'INTELLIGENCE</strong> — analyse IA de vos KPIs</li>
+                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Relance de vos abonnés en un clic</li>
                     <li><i data-lucide="check" style="width:13px;height:13px;"></i> Export illimité de votre base (CSV)</li>
-                    <li><i data-lucide="check" style="width:13px;height:13px;"></i> Automatisations emails illimitées</li>
                     <li><i data-lucide="check" style="width:13px;height:13px;"></i> Hébergement Cloud sécurisé (RGPD)</li>
                     <li><i data-lucide="check" style="width:13px;height:13px;"></i> Support local & maintenance inclus</li>
                 </ul>
@@ -346,8 +440,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="badge-hero" style="background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.25);">
                 Audit gratuit · Sans engagement
             </div>
-            <h2>Prêt à transformer votre salle<br>en base de données vivante ?</h2>
-            <p>30 minutes avec Victor ou Mathys. On analyse votre situation, on vous montre ce que FYDELIO ferait pour vous — gratuitement, sans pression.</p>
+            <h2>Prêt à transformer votre salle<br>en machine à fidéliser ?</h2>
+            <p>30 minutes avec Victor ou Mathys. On analyse votre situation, on vous montre ce que FYDELIO et Fydel'INTELLIGENCE feraient pour vous — gratuitement, sans pression.</p>
             <a href="https://calendly.com/victordetroux2/30min" target="_blank" rel="noopener noreferrer" class="btn btn-large cta-photo-btn">
                 Réserver mon créneau gratuit
                 <i data-lucide="calendar" style="width:17px;height:17px;"></i>
@@ -363,7 +457,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <img src="flavicon.jpg" alt="Logo FYDELIO" loading="lazy">
                     <span>FYDELIO</span>
                 </div>
-                <p class="footer-bio">Le partenaire de fidélisation des restaurateurs du Vaucluse qui veulent construire une relation durable avec leurs clients.</p>
+                <p class="footer-bio">Le partenaire de fidélisation des restaurateurs du Vaucluse qui veulent construire une relation durable avec leurs clients — boosté par l'intelligence artificielle.</p>
                 <div class="footer-location">
                     <i data-lucide="map-pin" style="width:14px;height:14px;opacity:0.5;"></i>
                     <span>Vaucluse, Provence</span>
@@ -374,6 +468,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <ul>
                     <li><a href="#concept">Le Logiciel</a></li>
                     <li><a href="#fonctionnement">Notre Méthode</a></li>
+                    <li><a href="#intelligence">Fydel'INTELLIGENCE</a></li>
                     <li><a href="#tarifs">Tarifs</a></li>
                     <li><a href="services.html">L'Agence Marketing</a></li>
                 </ul>
