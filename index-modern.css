@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ✨ FYDELIO — INDEX-MODERN.CSS
+   ✨ FYDELIO — INDEX-MODERN.CSS (UPDATED)
    Nouveau layer visuel par-dessus style.css.
    Gère : hero 2 colonnes, icônes 3D, photos Vaucluse,
           preuve sociale, step-highlight, CTA photo, footer location.
@@ -541,7 +541,7 @@
 }
 
 /* ============================================================
-   11. FOOTER — location line
+   11. FOOTER — location line + liens pages légales
    ============================================================ */
 .footer-location {
     display: flex;
@@ -558,6 +558,34 @@
     gap: 10px;
 }
 .footer-contact li i { flex-shrink: 0; }
+
+/* ========== FOOTER BOTTOM — LIENS PAGES LÉGALES ========== */
+.footer-bottom {
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-weight: 500;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.footer-bottom a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding: 0 2px;
+}
+
+.footer-bottom a:hover {
+    color: #0a5d56;
+    border-bottom-color: var(--primary);
+}
 
 /* ============================================================
    12. RESPONSIVE
@@ -595,4 +623,8 @@
     .kpi-inline-val { font-size: 2.2rem; }
 
     .locality-band { display: none; }
+    
+    /* Footer mobile */
+    .footer-bottom p { font-size: 0.78rem; }
+    .footer-bottom a { padding: 0 1px; }
 }
