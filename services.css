@@ -1,5 +1,5 @@
 /* ==========================================================================
-   🎨 FYDELIO — SERVICES.CSS v2.0
+   🎨 FYDELIO — SERVICES.CSS v2.0 (UPDATED)
    DA unifiée avec index.html — tous les composants partagés sont ici.
    Ne touche JAMAIS : #main-header, .btn de base, .site-footer, .grid-3
    ========================================================================== */
@@ -613,10 +613,38 @@
 .cta-photo-btn:hover { transform: translateY(-5px) scale(1.02) !important; box-shadow: 0 24px 48px rgba(0,0,0,0.3) !important; }
 
 /* ============================================================
-   12. FOOTER — éléments additionnels
+   12. FOOTER — éléments additionnels + liens pages légales
    ============================================================ */
 .footer-location { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 0.88rem; color: var(--text-light); font-weight: 600; }
 .footer-contact li { display: flex; align-items: center; gap: 10px; }
+
+/* ========== FOOTER BOTTOM — LIENS PAGES LÉGALES ========== */
+.footer-bottom {
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-weight: 500;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.footer-bottom a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding: 0 2px;
+}
+
+.footer-bottom a:hover {
+    color: #0a5d56;
+    border-bottom-color: var(--primary);
+}
 
 /* ============================================================
    13. RESPONSIVE — TABLETTE (max 992px)
@@ -703,6 +731,9 @@
         transform: translateX(50%);
     }
     .roadmap-card { padding: 36px 28px; }
+    
+    /* Footer mobile */
+    .footer-bottom p { font-size: 0.78rem; }
 }
 
 /* ============================================================
@@ -817,6 +848,8 @@
     /* Footer */
     .footer-contact li { flex-wrap: wrap; }
     .footer-location { justify-content: center; }
+    .footer-bottom p { font-size: 0.75rem; }
+    .footer-bottom a { padding: 0 1px; }
 }
 
 /* ============================================================
