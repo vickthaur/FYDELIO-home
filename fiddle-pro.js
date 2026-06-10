@@ -7,6 +7,10 @@
 // ====================================================================
 // ⚙️ CONFIGURATION — Avec Le Cercle Restaurant intégré
 // ====================================================================
+// ✅ AJOUTER CECI — Réappliquer lucide.createIcons() régulièrement
+setInterval(() => {
+    lucide.createIcons();
+}, 1000);
 const FYDELIO_CONFIG = {
     supabase: {
         url: "https://qawfwbppnbnskxlkwstu.supabase.co",
