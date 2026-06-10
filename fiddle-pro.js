@@ -19,19 +19,19 @@ const FYDELIO_CONFIG = {
         "villa_saint_antoine": {
             id:        "villa_saint_antoine",
             nom:       "Villa Saint Antoine",
-            colPoints: "points_villa",
+            colPoints: "points",
             vueSql:    "vue_clients_villa"
         },
         "bistrot": {
             id:        "bistrot",
             nom:       "Le Bistrot Paris",
-            colPoints: "points_bistrot",
+            colPoints: "points",
             vueSql:    "vue_clients_bistrot"
         },
         "le_cercle": {
             id:        "le_cercle",
             nom:       "Le Cercle Restaurant",
-            colPoints: "points_le_cercle",
+            colPoints: "points",
             vueSql:    "vue_clients_le_cercle"
         }
     },
@@ -163,12 +163,11 @@ function initialiserPageAccueil() {
 
 // ====================================================================
 // 📊 DASHBOARD — INITIALISATION SÉCURISÉE
-// ✅ FIX : restoID déclaré AVANT le try pour être accessible partout
+// ✅ restoID déclaré AVANT le try pour être accessible partout
 // ====================================================================
 async function initialiserDashboard() {
     const loader = document.getElementById('loader');
 
-    // ✅ DÉCLARÉ ICI — accessible dans tout le scope de la fonction
     let restoID = null;
 
     const loaderTimeout = setTimeout(() => {
@@ -213,7 +212,6 @@ async function initialiserDashboard() {
             return;
         }
 
-        // ✅ Assigné à la variable déclarée avant le try
         restoID = proData.resto_id;
 
         // ✅ ÉTAPE 3 — Vérifier que le restoID existe dans la config
@@ -227,7 +225,7 @@ async function initialiserDashboard() {
 
         window.currentRestoConfig = currentRestoConfig;
 
-        // ✅ ÉTAPE 4 — Charger les données
+        // ✅ ÉTAPE 4 — Charger les données depuis la vue
         const { data, error } = await supabaseApp
             .from(currentRestoConfig.vueSql)
             .select('*')
@@ -256,7 +254,6 @@ async function initialiserDashboard() {
         if (loader) { loader.style.opacity='0'; setTimeout(()=>loader.style.display='none',300); }
     }
 
-    // ✅ restoID est accessible ici car déclaré avant le try
     if (restoID && currentRestoConfig) {
         initialiserQRCode(restoID, currentRestoConfig);
         initialiserRecherche();
@@ -423,7 +420,7 @@ function initialiserTriColonnes() {
 }
 
 // ====================================================================
-// 📱 QR CODE — ✅ CORRIGÉ : accepte (restoID string, restoConfig objet)
+// 📱 QR CODE
 // ====================================================================
 function initialiserQRCode(restoID, restoConfig) {
     const qrContainer = document.getElementById('qr-code-container');
@@ -471,7 +468,7 @@ function initialiserRaccourcisClavier() {
 function initialiserRealtime(restoConfig) {
     if (!supabaseApp) return;
     supabaseApp.channel('fydelio-realtime')
-        .on('postgres_changes', { event:'INSERT', schema:'public' }, async () => {
+        .on('postgres_changes', { event:'INSERT', schema:'public', table:'clients' }, async () => {
             const { data } = await supabaseApp
                 .from(restoConfig.vueSql).select('*')
                 .order('created_at', { ascending: false });
@@ -599,3 +596,371 @@ function animerCompteur(id, valeurFinale) {
     }
     requestAnimationFrame(step);
 }
+
+// ====================================================================
+// 📄 FICHE CLIENT (MODAL)
+// ====================================================================
+function ouvrirFicheClient(client) {
+    const palettes = [
+        {bg:'rgba(15,118,110,0.12)',color:'#0F766E'},{bg:'rgba(59,130,246,0.12)',color:'#1D4ED8'},
+        {bg:'rgba(124,58,237,0.12)',color:'#6D28D9'},{bg:'rgba(217,119,6,0.12)',color:'#B45309'},
+    ];
+    const nom  = `${client.prenom||''} ${client.nom||''}`.trim();
+    const mots = nom.split(' ').filter(Boolean);
+    const init = mots.length>=2 ? (mots[0][0]+mots[1][0]).toUpperCase() : (mots[0]||'C')[0].toUpperCase();
+    const hash = [...nom].reduce((a,c) => a+c.charCodeAt(0), 0);
+    const p    = palettes[hash % palettes.length];
+    const avatar = document.getElementById('modalAvatar');
+    avatar.textContent = init; avatar.style.background = p.bg; avatar.style.color = p.color;
+    document.getElementById('modalNom').textContent = nom;
+    document.getElementById('modalEmailDisplay').textContent = client.email || '';
+    
+    const colPoints = currentRestoConfig.colPoints;
+    document.getElementById('modalInfoGrid').innerHTML = `
+        <div class="client-info-item"><div class="client-info-label">Points</div><div class="client-info-value">${client[colPoints]||0} pts</div></div>
+        <div class="client-info-item"><div class="client-info-label">Récompenses</div><div class="client-info-value">${client.recompenses_obtenues||0}</div></div>
+        <div class="client-info-item"><div class="client-info-label">Statut email</div><div class="client-info-value">${client.optin_email!==false?'✅ Abonné':'🔕 Désabonné'}</div></div>
+        <div class="client-info-item"><div class="client-info-label">Anniversaire</div><div class="client-info-value">${client.date_anniversaire||'—'}</div></div>
+        <div class="client-info-item"><div class="client-info-label">Téléphone</div><div class="client-info-value">${client.telephone||'—'}</div></div>
+        <div class="client-info-item"><div class="client-info-label">Inscrit le</div><div class="client-info-value">${new Date(client.created_at).toLocaleDateString('fr-FR')}</div></div>
+    `;
+    chargerHistoriqueClient(client.email);
+    document.getElementById('clientModal').classList.add('active');
+    lucide.createIcons();
+}
+
+async function chargerHistoriqueClient(email) {
+    const container = document.getElementById('modalHistorique');
+    if (!window._supabaseClient) return;
+    const { data } = await window._supabaseClient
+        .from('historique_scans').select('*').eq('client_email', email)
+        .order('created_at', { ascending: false }).limit(10);
+    if (!data || data.length === 0) {
+        container.innerHTML = `<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px;">Aucun passage enregistré.</div>`;
+        return;
+    }
+    container.innerHTML = data.map(s => `
+        <div class="scan-item">
+            <div class="scan-dot ${s.est_cadeau?'scan-dot--cadeau':'scan-dot--normal'}"></div>
+            <div style="flex:1;">
+                <span style="font-weight:600;color:#0F172A;">${s.est_cadeau?'🎁 Récompense obtenue':'Passage validé'}</span>
+                <span style="font-size:12px;color:#94A3B8;margin-left:8px;">${s.points_avant} → ${s.points_apres} pts</span>
+            </div>
+            <div style="font-size:12px;color:#94A3B8;">${new Date(s.created_at).toLocaleDateString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</div>
+        </div>`).join('');
+}
+
+function fermerFicheClient() { document.getElementById('clientModal').classList.remove('active'); }
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('clientModal')?.addEventListener('click', e => {
+        if (e.target === document.getElementById('clientModal')) fermerFicheClient();
+    });
+});
+
+// ====================================================================
+// 📧 EMAIL MODAL
+// ====================================================================
+function fermerEmailModal() { document.getElementById('emailModal').classList.remove('active'); }
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btnOpenEmail')?.addEventListener('click', () => {
+        document.getElementById('emailModal').classList.add('active');
+        lucide.createIcons();
+    });
+    document.getElementById('emailModal')?.addEventListener('click', e => {
+        if (e.target === document.getElementById('emailModal')) fermerEmailModal();
+    });
+});
+
+async function envoyerEmail() {
+    const objet   = document.getElementById('emailObjet').value.trim();
+    const contenu = document.getElementById('emailContenu').value.trim();
+    const dest    = document.getElementById('emailDestinataires').value;
+    const btn     = document.getElementById('btnSendEmail');
+    if (!objet || !contenu) { alert('Veuillez remplir l\'objet et le message.'); return; }
+    btn.disabled = true;
+    btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:white;"></div> Envoi…';
+    let clients = window.dataClientsGlobal || [];
+    if (dest === 'tous')           clients = clients.filter(c => c.optin_email !== false);
+    if (dest === 'points_faibles') clients = clients.filter(c => c.optin_email !== false && (c.points||0) < 3);
+    if (dest === 'recompenses')    clients = clients.filter(c => c.optin_email !== false && (c.recompenses_obtenues||0) > 0);
+    if (clients.length === 0) {
+        alert('Aucun destinataire pour cette sélection.');
+        btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons();
+        return;
+    }
+    if (!confirm(`Envoyer cet email à ${clients.length} client${clients.length>1?'s':''} ?`)) {
+        btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons();
+        return;
+    }
+    try {
+        const { data: { session } } = await window._supabaseClient.auth.getSession();
+        const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/send-email', {
+            method:'POST',
+            headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${session?.access_token || ''}` },
+            body: JSON.stringify({
+                destinataires: clients.map(c => ({ email: c.email, prenom: c.prenom||'' })),
+                objet, contenu, restaurant: window.currentRestoConfig?.nom || 'FYDELIO'
+            })
+        });
+        const result = await res.json();
+        if (result.ok) {
+            alert(`✅ Email envoyé à ${result.envoyes} client${result.envoyes>1?'s':''} !`);
+            fermerEmailModal();
+            document.getElementById('emailObjet').value = '';
+            document.getElementById('emailContenu').value = '';
+        } else { throw new Error(result.error || 'Erreur inconnue'); }
+    } catch (err) {
+        alert('Erreur : ' + err.message + '\n\nVérifiez que l\'Edge Function "send-email" est déployée et que BREVO_API_KEY est configuré dans Supabase → Secrets.');
+    }
+    btn.disabled = false;
+    btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
+    lucide.createIcons();
+}
+
+// ====================================================================
+// 🤖 FYDEL'INTELLIGENCE
+// ====================================================================
+async function lancerAnalyseIA() {
+    const btn = document.getElementById('btnLancerIA');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:#0F766E;"></div> Analyse…';
+
+    document.getElementById('ia-placeholder').style.display = 'none';
+    document.getElementById('ia-result').style.display      = 'none';
+    document.getElementById('ia-error').style.display       = 'none';
+    document.getElementById('ia-loading').style.display     = 'block';
+
+    const ok = await attendreFiddle();
+    if (!ok) { afficherErreurIA('Dashboard non initialisé. Réessayez dans quelques secondes.'); resetBtnIA(); return; }
+
+    const clients   = window.dataClientsGlobal || [];
+    const config    = window.currentRestoConfig;
+    const colPoints = config.colPoints;
+
+    const totalClients     = clients.length;
+    const totalPoints      = clients.reduce((acc,c) => acc + (parseInt(c[colPoints])||0), 0);
+    const totalRecompenses = clients.reduce((acc,c) => acc + (parseInt(c.recompenses_obtenues)||0), 0);
+    const abonnes          = clients.filter(c => c.optin_email !== false).length;
+    const desabonnes       = totalClients - abonnes;
+    const debutMois = new Date(); debutMois.setDate(1); debutMois.setHours(0,0,0,0);
+    const nouveauxCeMois = clients.filter(c => new Date(c.created_at) >= debutMois).length;
+
+    try {
+        const { data: { session } } = await window._supabaseClient.auth.getSession();
+        const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/IA', {
+            method:'POST',
+            headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${session?.access_token || ''}` },
+            body: JSON.stringify({
+                restaurant: config.nom, totalClients, totalPoints, totalRecompenses,
+                abonnes, desabonnes, nouveauxCeMois,
+                seuilPoints: config.id === 'bistrot' ? 5 : 10
+            })
+        });
+        const result = await res.json();
+        if (!result.ok) throw new Error(result.error || 'Erreur inconnue');
+        afficherResultatIA(result.analyse);
+    } catch (err) {
+        afficherErreurIA(err.message);
+    }
+    resetBtnIA();
+}
+
+async function attendreFiddle() {
+    let n = 0;
+    while ((!window._supabaseClient || !window.currentRestoConfig) && n < 30) {
+        await new Promise(r => setTimeout(r, 200)); n++;
+    }
+    return !!(window._supabaseClient && window.currentRestoConfig);
+}
+
+function afficherResultatIA(a) {
+    document.getElementById('ia-loading').style.display = 'none';
+    const noteClass = a.note_globale?.startsWith('A') ? 'fydel-note--a'
+                    : a.note_globale?.startsWith('B') ? 'fydel-note--b' : 'fydel-note--c';
+
+    const result = document.getElementById('ia-result');
+    result.style.display = 'block';
+    result.innerHTML = `
+        <div class="fydel-result">
+            <span class="fydel-note ${noteClass}">
+                <i data-lucide="award" style="width:15px;height:15px;"></i>
+                Note globale : ${a.note_globale || '—'}
+            </span>
+            <p class="fydel-resume">${a.resume || ''}</p>
+
+            <div class="fydel-cols">
+                <div class="fydel-block">
+                    <div class="fydel-block-title forts"><i data-lucide="check-circle" style="width:14px;height:14px;"></i> Points forts</div>
+                    ${(a.points_forts||[]).map(p => `<div class="fydel-li"><div class="pt pt--green"></div>${p}</div>`).join('') || '<div class="fydel-li" style="color:#94A3B8;">—</div>'}
+                </div>
+                <div class="fydel-block">
+                    <div class="fydel-block-title faibles"><i data-lucide="wrench" style="width:14px;height:14px;"></i> À améliorer</div>
+                    ${(a.points_ameliorer||[]).map(p => `<div class="fydel-li"><div class="pt pt--orange"></div>${p}</div>`).join('') || '<div class="fydel-li" style="color:#94A3B8;">—</div>'}
+                </div>
+            </div>
+
+            <div class="fydel-conseil">
+                <div class="fydel-conseil-label"><i data-lucide="lightbulb" style="width:14px;height:14px;"></i> Conseil prioritaire cette semaine</div>
+                <div class="fydel-conseil-txt">${a.conseil_prioritaire || ''}</div>
+            </div>
+
+            <div class="fydel-prediction">
+                <i data-lucide="rocket" class="pred-ico" style="width:18px;height:18px;"></i>
+                <span>${a.prediction || ''}</span>
+            </div>
+
+            <div class="fydel-cta-relance">
+                <div class="fydel-cta-relance-txt">
+                    Prêt à agir ? <strong>Relancez vos clients</strong> directement depuis le dashboard.
+                </div>
+                <button class="btn-relance" onclick="document.getElementById('btnOpenEmail').click()">
+                    <i data-lucide="send" style="width:15px;height:15px;"></i>
+                    Relancer mes abonnés
+                </button>
+            </div>
+        </div>
+    `;
+    lucide.createIcons();
+}
+
+function afficherErreurIA(msg) {
+    document.getElementById('ia-loading').style.display = 'none';
+    document.getElementById('ia-error').style.display   = 'block';
+    document.getElementById('ia-error-msg').innerHTML   = `<strong>Erreur :</strong> ${msg}<br><small>Vérifiez que l'Edge Function "IA" est déployée et que ANTHROPIC_API_KEY est configuré dans Supabase → Secrets.</small>`;
+}
+
+function resetBtnIA() {
+    const btn = document.getElementById('btnLancerIA');
+    btn.disabled = false;
+    btn.innerHTML = '<i data-lucide="sparkles" style="width:17px;height:17px;"></i> Analyser mes performances';
+    lucide.createIcons();
+}
+
+// ====================================================================
+// 📊 ANALYTICS
+// ====================================================================
+let chartInscrits = null, chartCumule = null, donneesGraph = [];
+
+async function chargerGraphiques() {
+    const ok = await attendreFiddle();
+    if (!ok) return;
+    const suffixe = { villa_saint_antoine:'villa', bistrot:'bistrot', le_cercle:'le_cercle' }[window.currentRestoConfig.id] || 'bistrot';
+    const vue = 'vue_inscrits_par_jour_' + suffixe;
+    const { data, error } = await window._supabaseClient.from(vue).select('*');
+    if (error) {
+        console.error('Erreur graphique:', error);
+        document.getElementById('chart1-wrap').innerHTML = '<div class="chart-empty">Erreur : ' + error.message + '</div>';
+        return;
+    }
+    donneesGraph = data || [];
+    if (donneesGraph.length === 0) {
+        document.getElementById('chart1-wrap').innerHTML = '<div class="chart-empty">Aucune donnée disponible</div>';
+        document.getElementById('chart2-wrap').innerHTML = '<div class="chart-empty">Aucune donnée disponible</div>';
+        return;
+    }
+    renderGraphiques(donneesGraph);
+}
+
+function renderGraphiques(data) {
+    const labels  = data.map(d => new Date(d.jour + 'T00:00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' }));
+    const newData = data.map(d => parseInt(d.nouveaux_inscrits) || 0);
+    const cumData = data.map(d => parseInt(d.total_cumule) || 0);
+    const opts = {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{ display:false } },
+        scales:{
+            x:{ grid:{ display:false }, ticks:{ font:{ family:'Plus Jakarta Sans', size:11 }, color:'#94A3B8' } },
+            y:{ beginAtZero:true, grid:{ color:'#F1F5F9' }, ticks:{ font:{ family:'Plus Jakarta Sans', size:11 }, color:'#94A3B8', stepSize:1, precision:0 } }
+        }
+    };
+    const wrap1 = document.getElementById('chart1-wrap');
+    wrap1.innerHTML = '<canvas id="chartInscrits"></canvas>';
+    const ctx1 = document.getElementById('chartInscrits').getContext('2d');
+    if (chartInscrits) chartInscrits.destroy();
+    chartInscrits = new Chart(ctx1, {
+        type:'bar',
+        data:{ labels, datasets:[{ data:newData, backgroundColor:'rgba(15,118,110,0.15)', borderColor:'#0F766E', borderWidth:2, borderRadius:6 }] },
+        options:opts
+    });
+    const wrap2 = document.getElementById('chart2-wrap');
+    wrap2.innerHTML = '<canvas id="chartCumule"></canvas>';
+    const ctx2 = document.getElementById('chartCumule').getContext('2d');
+    if (chartCumule) chartCumule.destroy();
+    chartCumule = new Chart(ctx2, {
+        type:'line',
+        data:{ labels, datasets:[{ data:cumData, borderColor:'#0F766E', backgroundColor:'rgba(15,118,110,0.06)', fill:true, tension:0.4, pointBackgroundColor:'#0F766E', pointRadius:3 }] },
+        options:opts
+    });
+}
+
+function changerPeriode(jours, btn) {
+    document.querySelectorAll('.chart-period button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGraphiques(donneesGraph.slice(-jours));
+}
+
+// ====================================================================
+// 🎁 RÉCOMPENSES
+// ====================================================================
+async function chargerRecompenses() {
+    const ok = await attendreFiddle();
+    if (!ok) return;
+    const container = document.getElementById('recompenses-list');
+    const suffixe = { villa_saint_antoine:'villa', bistrot:'bistrot', le_cercle:'le_cercle' }[window.currentRestoConfig.id] || 'bistrot';
+    const vue = 'vue_recompenses_' + suffixe;
+    const { data, error } = await window._supabaseClient.from(vue).select('*');
+    if (error) { container.innerHTML = `<div style="padding:40px;text-align:center;color:#EF4444;">Erreur : ${error.message}</div>`; return; }
+    if (!data || data.length === 0) {
+        container.innerHTML = `<div style="padding:40px;text-align:center;color:#94A3B8;font-size:14px;">
+            <div style="font-size:32px;margin-bottom:8px;">🎁</div>
+            <div style="font-weight:700;">Aucune récompense débloquée pour l'instant</div>
+            <div style="font-size:12px;margin-top:8px;">Les récompenses apparaissent après le premier scan validé avec cadeau.</div>
+        </div>`;
+        return;
+    }
+    container.innerHTML = data.map(c => `
+        <div class="recompense-row">
+            <div class="recompense-badge">🎁</div>
+            <div>
+                <div style="font-size:14px;font-weight:700;color:#0F172A;">${c.prenom||''} ${c.nom||''}</div>
+                <div style="font-size:12px;color:#64748B;">${c.email}</div>
+            </div>
+            <div style="margin-left:auto;text-align:right;">
+                <div class="recompense-count">${c.recompenses_obtenues} récompense${c.recompenses_obtenues>1?'s':''}</div>
+                <div style="font-size:11px;color:#94A3B8;margin-top:4px;">${c.points_actuels} pts actuels</div>
+            </div>
+        </div>`).join('');
+}
+
+// ====================================================================
+// Routes des vues
+// ====================================================================
+function activerVue(navId) {
+    document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+    const navEl = document.getElementById(navId);
+    if (navEl) navEl.classList.add('active');
+    
+    const VUES = {
+        'nav-clients':'view-clients','nav-analytics':'view-analytics',
+        'nav-recompenses':'view-recompenses','nav-ia':'view-ia','nav-qrcodes':'view-qrcodes',
+    };
+    
+    Object.values(VUES).forEach(v => { const el = document.getElementById(v); if (el) el.style.display = 'none'; });
+    const target = document.getElementById(VUES[navId]);
+    if (target) target.style.display = 'block';
+    if (navId === 'nav-analytics')   chargerGraphiques();
+    if (navId === 'nav-recompenses') chargerRecompenses();
+    if (window.innerWidth <= 768) {
+        document.querySelector('.sidebar')?.classList.remove('mobile-open');
+        document.getElementById('dashBackdrop')?.classList.remove('active');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.sidebar-nav-item:not(.sidebar-nav-item--soon)').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (item.id) activerVue(item.id);
+        });
+    });
+});
