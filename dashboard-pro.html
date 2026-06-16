@@ -715,6 +715,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="fiddle-pro.js"></script>
     <script src="animations.js"></script>
     <script src="email-campagne.js"></script>
+    <script src="fydel-intelligence.js"></script>
     <script>
     lucide.createIcons();
 
@@ -857,115 +858,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <div style="font-size:11px;color:#94A3B8;margin-top:4px;">${c.points_actuels} pts actuels</div>
                 </div>
             </div>`).join('');
-    }
-
-    // ── Fydel'INTELLIGENCE ──
-    async function lancerAnalyseIA() {
-        const btn = document.getElementById('btnLancerIA');
-        btn.disabled = true;
-        btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:#0F766E;"></div> Analyse…';
-
-        document.getElementById('ia-placeholder').style.display = 'none';
-        document.getElementById('ia-result').style.display      = 'none';
-        document.getElementById('ia-error').style.display       = 'none';
-        document.getElementById('ia-loading').style.display     = 'block';
-
-        const ok = await attendreFiddle();
-        if (!ok) { afficherErreurIA('Dashboard non initialisé. Réessayez dans quelques secondes.'); resetBtnIA(); return; }
-
-        const clients   = window.dataClientsGlobal || [];
-        const config    = window.currentRestoConfig;
-        const colPoints = config.colPoints;
-
-        const totalClients     = clients.length;
-        const totalPoints      = clients.reduce((acc,c) => acc + (parseInt(c[colPoints])||0), 0);
-        const totalRecompenses = clients.reduce((acc,c) => acc + (parseInt(c.recompenses_obtenues)||0), 0);
-        const abonnes          = clients.filter(c => c.optin_email !== false).length;
-        const desabonnes       = totalClients - abonnes;
-        const debutMois = new Date(); debutMois.setDate(1); debutMois.setHours(0,0,0,0);
-        const nouveauxCeMois = clients.filter(c => new Date(c.created_at) >= debutMois).length;
-
-        try {
-            const { data: { session } } = await window._supabaseClient.auth.getSession();
-            const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/IA', {
-                method:'POST',
-                headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${session?.access_token || ''}` },
-                body: JSON.stringify({
-                    restaurant: config.nom, totalClients, totalPoints, totalRecompenses,
-                    abonnes, desabonnes, nouveauxCeMois,
-                    seuilPoints: config.id === 'bistrot' ? 5 : 10
-                })
-            });
-            const result = await res.json();
-            if (!result.ok) throw new Error(result.error || 'Erreur inconnue');
-            afficherResultatIA(result.analyse);
-        } catch (err) {
-            afficherErreurIA(err.message);
-        }
-        resetBtnIA();
-    }
-
-    function afficherResultatIA(a) {
-        document.getElementById('ia-loading').style.display = 'none';
-        const noteClass = a.note_globale?.startsWith('A') ? 'fydel-note--a'
-                        : a.note_globale?.startsWith('B') ? 'fydel-note--b' : 'fydel-note--c';
-
-        const result = document.getElementById('ia-result');
-        result.style.display = 'block';
-        result.innerHTML = `
-            <div class="fydel-result">
-                <span class="fydel-note ${noteClass}">
-                    <i data-lucide="award" style="width:15px;height:15px;"></i>
-                    Note globale : ${a.note_globale || '—'}
-                </span>
-                <p class="fydel-resume">${a.resume || ''}</p>
-
-                <div class="fydel-cols">
-                    <div class="fydel-block">
-                        <div class="fydel-block-title forts"><i data-lucide="check-circle" style="width:14px;height:14px;"></i> Points forts</div>
-                        ${(a.points_forts||[]).map(p => `<div class="fydel-li"><div class="pt pt--green"></div>${p}</div>`).join('') || '<div class="fydel-li" style="color:#94A3B8;">—</div>'}
-                    </div>
-                    <div class="fydel-block">
-                        <div class="fydel-block-title faibles"><i data-lucide="wrench" style="width:14px;height:14px;"></i> À améliorer</div>
-                        ${(a.points_ameliorer||[]).map(p => `<div class="fydel-li"><div class="pt pt--orange"></div>${p}</div>`).join('') || '<div class="fydel-li" style="color:#94A3B8;">—</div>'}
-                    </div>
-                </div>
-
-                <div class="fydel-conseil">
-                    <div class="fydel-conseil-label"><i data-lucide="lightbulb" style="width:14px;height:14px;"></i> Conseil prioritaire cette semaine</div>
-                    <div class="fydel-conseil-txt">${a.conseil_prioritaire || ''}</div>
-                </div>
-
-                <div class="fydel-prediction">
-                    <i data-lucide="rocket" class="pred-ico" style="width:18px;height:18px;"></i>
-                    <span>${a.prediction || ''}</span>
-                </div>
-
-                <div class="fydel-cta-relance">
-                    <div class="fydel-cta-relance-txt">
-                        Prêt à agir ? <strong>Relancez vos clients</strong> directement depuis le dashboard.
-                    </div>
-                    <button class="btn-relance" onclick="document.getElementById('btnOpenEmail').click()">
-                        <i data-lucide="send" style="width:15px;height:15px;"></i>
-                        Relancer mes abonnés
-                    </button>
-                </div>
-            </div>
-        `;
-        lucide.createIcons();
-    }
-
-    function afficherErreurIA(msg) {
-        document.getElementById('ia-loading').style.display = 'none';
-        document.getElementById('ia-error').style.display   = 'block';
-        document.getElementById('ia-error-msg').innerHTML   = `<strong>Erreur :</strong> ${msg}<br><small>Vérifiez que l'Edge Function "IA" est déployée et que ANTHROPIC_API_KEY est configuré dans Supabase → Secrets.</small>`;
-    }
-
-    function resetBtnIA() {
-        const btn = document.getElementById('btnLancerIA');
-        btn.disabled = false;
-        btn.innerHTML = '<i data-lucide="sparkles" style="width:17px;height:17px;"></i> Analyser mes performances';
-        lucide.createIcons();
     }
 
     // ── Fiche client ──
