@@ -145,6 +145,89 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .btn-email-top:hover{border-color:#0F766E;color:#0F766E;}
         .dash-table tbody tr{cursor:pointer;}
     </style>
+    <style id="email-campagne-style">
+    /* Modale large pour la mise en page ciblage + éditeur côte à côte */
+    .email-modal--campagne { max-width: 920px; width: 100%; max-height: 90vh; display: flex; flex-direction: column; }
+    .ec-body { padding: 0; overflow: hidden; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+ 
+    /* Étapes (onglets) */
+    .ec-steps { display: flex; gap: 4px; padding: 16px 28px 0; border-bottom: 1px solid #F1F5F9; flex-shrink: 0; }
+    .ec-step-tab { padding: 11px 18px; font-size: 13px; font-weight: 800; color: #94A3B8; border: none; background: none; cursor: pointer; font-family: inherit; border-bottom: 2px solid transparent; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .ec-step-tab.active { color: #0F766E; border-bottom-color: #0F766E; }
+    .ec-step-tab .ec-step-num { width: 20px; height: 20px; border-radius: 50%; background: #F1F5F9; color: #94A3B8; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+    .ec-step-tab.active .ec-step-num { background: #0F766E; color: white; }
+ 
+    .ec-panels { flex: 1; overflow-y: auto; padding: 24px 28px; }
+    .ec-panel { display: none; }
+    .ec-panel.active { display: block; animation: ecFade 0.25s ease; }
+    @keyframes ecFade { from { opacity: 0; transform: translateY(6px); } }
+ 
+    /* ── Ciblage ── */
+    .ec-target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .ec-group { background: #F8FAFC; border: 1px solid #EEF2F6; border-radius: 14px; padding: 16px 18px; }
+    .ec-group--full { grid-column: span 2; }
+    .ec-group-title { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .ec-group-title i { width: 14px; height: 14px; color: #0F766E; }
+ 
+    .ec-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ec-chip { padding: 8px 14px; border-radius: 100px; border: 1.5px solid #E2E8F0; background: white; font-size: 13px; font-weight: 700; color: #475569; cursor: pointer; font-family: inherit; transition: all 0.18s; user-select: none; }
+    .ec-chip:hover { border-color: #CBD5E1; }
+    .ec-chip.active { background: #0F766E; border-color: #0F766E; color: white; box-shadow: 0 4px 12px rgba(15,118,110,0.22); }
+ 
+    .ec-radio-row { display: flex; flex-direction: column; gap: 9px; }
+    .ec-radio { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; color: #334155; cursor: pointer; }
+    .ec-radio input { accent-color: #0F766E; width: 16px; height: 16px; cursor: pointer; }
+ 
+    /* Curseur d'âge */
+    .ec-age-fine { margin-top: 14px; padding-top: 14px; border-top: 1px dashed #E2E8F0; }
+    .ec-age-inputs { display: flex; align-items: center; gap: 10px; }
+    .ec-age-inputs input { width: 64px; padding: 8px 10px; border: 1.5px solid #E2E8F0; border-radius: 10px; font-size: 14px; font-weight: 700; text-align: center; font-family: inherit; color: #0F172A; }
+    .ec-age-inputs input:focus { outline: none; border-color: #0F766E; }
+    .ec-age-inputs span { font-size: 13px; color: #64748B; font-weight: 600; }
+ 
+    /* Compteur cible — toujours visible en bas du panneau ciblage */
+    .ec-counter { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding: 16px 20px; background: linear-gradient(135deg, #0F766E, #0c5d56); border-radius: 16px; color: white; }
+    .ec-counter-big { font-size: 30px; font-weight: 800; line-height: 1; }
+    .ec-counter-label { font-size: 12.5px; font-weight: 600; opacity: 0.9; margin-top: 3px; }
+    .ec-counter-note { font-size: 11.5px; opacity: 0.8; text-align: right; max-width: 240px; line-height: 1.4; }
+ 
+    /* ── Design / éditeur ── */
+    .ec-design-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .ec-templates { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+    .ec-tpl { flex: 1; min-width: 90px; padding: 12px 10px; border: 1.5px solid #E2E8F0; border-radius: 12px; background: white; cursor: pointer; text-align: center; font-family: inherit; transition: all 0.18s; }
+    .ec-tpl:hover { border-color: #0F766E; }
+    .ec-tpl.active { border-color: #0F766E; background: rgba(15,118,110,0.04); }
+    .ec-tpl-emoji { font-size: 22px; display: block; margin-bottom: 5px; }
+    .ec-tpl-name { font-size: 11px; font-weight: 800; color: #475569; }
+ 
+    .ec-field { margin-bottom: 14px; }
+    .ec-field label { display: block; font-size: 11px; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .ec-field input, .ec-field textarea { width: 100%; padding: 11px 13px; border: 1.5px solid #E2E8F0; border-radius: 11px; font-size: 14px; font-family: inherit; color: #0F172A; background: #F8FAFC; transition: 0.2s; }
+    .ec-field input:focus, .ec-field textarea:focus { outline: none; border-color: #0F766E; background: white; }
+    .ec-field textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+    .ec-field-row { display: flex; gap: 12px; }
+    .ec-field-row .ec-field { flex: 1; }
+    .ec-color-wrap { display: flex; align-items: center; gap: 10px; }
+    .ec-color-wrap input[type="color"] { width: 44px; height: 38px; padding: 2px; border: 1.5px solid #E2E8F0; border-radius: 10px; cursor: pointer; background: white; }
+    .ec-color-wrap input[type="text"] { flex: 1; }
+ 
+    /* Aperçu live */
+    .ec-preview-wrap { background: #F1F5F9; border-radius: 16px; padding: 16px; }
+    .ec-preview-label { font-size: 11px; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+    .ec-preview-frame { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+ 
+    .ec-footer { padding: 16px 28px; border-top: 1px solid #F1F5F9; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-shrink: 0; }
+    .ec-footer-info { font-size: 12.5px; color: #64748B; font-weight: 600; }
+    .ec-footer-info strong { color: #0F766E; }
+    .ec-footer-actions { display: flex; gap: 10px; }
+ 
+    @media (max-width: 760px) {
+        .ec-target-grid, .ec-design-layout { grid-template-columns: 1fr; }
+        .ec-group--full { grid-column: span 1; }
+        .ec-counter { flex-direction: column; align-items: flex-start; }
+        .ec-counter-note { text-align: left; }
+    }
+</style>
 </head>
 <body class="dash-body">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRNCHJCN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -462,43 +545,171 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 
     <!-- MODAL EMAIL -->
-    <div class="email-modal-overlay" id="emailModal">
-        <div class="email-modal">
-            <div class="email-modal-header">
-                <h3>Envoyer un email</h3>
-                <button class="client-modal-close" onclick="fermerEmailModal()"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
-            </div>
-            <div class="email-modal-body">
-                <div class="email-field">
-                    <label>Destinataires</label>
-                    <select id="emailDestinataires">
-                        <option value="tous">Tous les clients abonnés</option>
-                        <option value="points_faibles">Clients avec moins de 3 points</option>
-                        <option value="recompenses">Clients ayant eu une récompense</option>
-                    </select>
-                </div>
-                <div class="email-field">
-                    <label>Objet *</label>
-                    <input type="text" id="emailObjet" placeholder="Ex: Une surprise vous attend…">
-                </div>
-                <div class="email-field">
-                    <label>Message *</label>
-                    <textarea id="emailContenu" placeholder="Rédigez votre message…"></textarea>
-                </div>
-                <div style="font-size:11px;color:#94A3B8;margin-top:8px;">
-                    Envoi via Brevo. Lien de désabonnement ajouté automatiquement.<br>
-                    <strong style="color:#D97706;">⚠ Requiert : Edge Function "send-email" + secret BREVO_API_KEY dans Supabase.</strong>
-                </div>
-            </div>
-            <div class="email-modal-footer">
-                <button class="btn-cancel-modal" onclick="fermerEmailModal()">Annuler</button>
-                <button class="btn-send-email" id="btnSendEmail" onclick="envoyerEmail()">
-                    <i data-lucide="send" style="width:14px;height:14px;"></i>Envoyer
+   <div class="email-modal-overlay" id="emailModal">
+    <div class="email-modal email-modal--campagne">
+        <div class="email-modal-header">
+            <h3>Nouvelle campagne email</h3>
+            <button class="client-modal-close" onclick="fermerEmailModal()"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
+        </div>
+ 
+        <div class="ec-body">
+            <!-- Onglets -->
+            <div class="ec-steps">
+                <button class="ec-step-tab active" data-ecstep="cible">
+                    <span class="ec-step-num">1</span> Qui ?
                 </button>
+                <button class="ec-step-tab" data-ecstep="design">
+                    <span class="ec-step-num">2</span> Le message
+                </button>
+            </div>
+ 
+            <div class="ec-panels">
+                <!-- ÉTAPE 1 — CIBLAGE -->
+                <div class="ec-panel active" id="ec-panel-cible">
+                    <div class="ec-target-grid">
+                        <!-- Abonnement -->
+                        <div class="ec-group">
+                            <div class="ec-group-title"><i data-lucide="mail-check"></i> Abonnement</div>
+                            <div class="ec-radio-row">
+                                <label class="ec-radio"><input type="radio" name="ec-optin" value="abonnes" checked> Abonnés email uniquement</label>
+                                <label class="ec-radio"><input type="radio" name="ec-optin" value="tous"> Tous (y compris non-abonnés)</label>
+                            </div>
+                        </div>
+ 
+                        <!-- Anniversaire -->
+                        <div class="ec-group">
+                            <div class="ec-group-title"><i data-lucide="cake"></i> Anniversaire</div>
+                            <div class="ec-chip-row">
+                                <button class="ec-chip" data-ecfilter="anniv" data-ecval="off">Peu importe</button>
+                                <button class="ec-chip" data-ecfilter="anniv" data-ecval="mois">Ce mois-ci</button>
+                                <button class="ec-chip" data-ecfilter="anniv" data-ecval="semaine">Cette semaine</button>
+                            </div>
+                        </div>
+ 
+                        <!-- Âge -->
+                        <div class="ec-group ec-group--full">
+                            <div class="ec-group-title"><i data-lucide="users"></i> Tranche d'âge</div>
+                            <div class="ec-chip-row">
+                                <button class="ec-chip active" data-ecfilter="age" data-ecmin="" data-ecmax="">Tous</button>
+                                <button class="ec-chip" data-ecfilter="age" data-ecmin="0"  data-ecmax="24">Étudiants (−25)</button>
+                                <button class="ec-chip" data-ecfilter="age" data-ecmin="25" data-ecmax="40">25–40 ans</button>
+                                <button class="ec-chip" data-ecfilter="age" data-ecmin="40" data-ecmax="60">40–60 ans</button>
+                                <button class="ec-chip" data-ecfilter="age" data-ecmin="60" data-ecmax="120">Seniors (60+)</button>
+                            </div>
+                            <div class="ec-age-fine">
+                                <div class="ec-age-inputs">
+                                    <span>Ajustement fin :</span>
+                                    <span>de</span>
+                                    <input type="number" id="ec-age-min" min="0" max="120" placeholder="—">
+                                    <span>à</span>
+                                    <input type="number" id="ec-age-max" min="0" max="120" placeholder="—">
+                                    <span>ans</span>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Fidélité -->
+                        <div class="ec-group ec-group--full">
+                            <div class="ec-group-title"><i data-lucide="award"></i> Fidélité</div>
+                            <div class="ec-chip-row">
+                                <button class="ec-chip active" data-ecfilter="fid" data-ecval="off">Tous</button>
+                                <button class="ec-chip" data-ecfilter="fid" data-ecval="proche">Proches du cadeau (−2 pts)</button>
+                                <button class="ec-chip" data-ecfilter="fid" data-ecval="recompense">A déjà eu une récompense</button>
+                                <button class="ec-chip" data-ecfilter="fid" data-ecval="actifs">Au moins 1 point</button>
+                                <button class="ec-chip" data-ecfilter="fid" data-ecval="inactifs">Inactifs (+60 jours)</button>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <!-- Compteur -->
+                    <div class="ec-counter">
+                        <div>
+                            <div class="ec-counter-big" id="ec-count">—</div>
+                            <div class="ec-counter-label">clients recevront cette campagne</div>
+                        </div>
+                        <div class="ec-counter-note" id="ec-count-note"></div>
+                    </div>
+                </div>
+ 
+                <!-- ÉTAPE 2 — DESIGN -->
+                <div class="ec-panel" id="ec-panel-design">
+                    <div class="ec-templates">
+                        <button class="ec-tpl active" data-ectpl="vierge"><span class="ec-tpl-emoji">📄</span><span class="ec-tpl-name">Vierge</span></button>
+                        <button class="ec-tpl" data-ectpl="promo"><span class="ec-tpl-emoji">🎉</span><span class="ec-tpl-name">Promo</span></button>
+                        <button class="ec-tpl" data-ectpl="anniv"><span class="ec-tpl-emoji">🎂</span><span class="ec-tpl-name">Anniversaire</span></button>
+                        <button class="ec-tpl" data-ectpl="relance"><span class="ec-tpl-emoji">👋</span><span class="ec-tpl-name">Relance</span></button>
+                    </div>
+ 
+                    <div class="ec-design-layout">
+                        <!-- Colonne édition -->
+                        <div>
+                            <div class="ec-field">
+                                <label>Objet de l'email *</label>
+                                <input type="text" id="ec-objet" placeholder="Ex : Une surprise vous attend chez nous…">
+                            </div>
+                            <div class="ec-field">
+                                <label>Titre dans l'email</label>
+                                <input type="text" id="ec-titre" placeholder="Ex : Merci d'être fidèle !">
+                            </div>
+                            <div class="ec-field">
+                                <label>Message * (une ligne vide = nouveau paragraphe)</label>
+                                <textarea id="ec-message" placeholder="Bonjour {prenom},&#10;&#10;Votre message ici…"></textarea>
+                            </div>
+                            <div class="ec-field-row">
+                                <div class="ec-field">
+                                    <label>Texte du bouton</label>
+                                    <input type="text" id="ec-cta-texte" placeholder="Ex : J'en profite">
+                                </div>
+                                <div class="ec-field">
+                                    <label>Lien du bouton</label>
+                                    <input type="text" id="ec-cta-lien" placeholder="https://…">
+                                </div>
+                            </div>
+                            <div class="ec-field">
+                                <label>Couleur d'accent</label>
+                                <div class="ec-color-wrap">
+                                    <input type="color" id="ec-couleur" value="#0F766E">
+                                    <input type="text" id="ec-couleur-hex" value="#0F766E">
+                                </div>
+                            </div>
+                            <div class="ec-field">
+                                <label>Image en haut (URL, optionnel)</label>
+                                <input type="text" id="ec-image" placeholder="https://…/banniere.jpg">
+                            </div>
+                        </div>
+ 
+                        <!-- Colonne aperçu -->
+                        <div>
+                            <div class="ec-preview-wrap">
+                                <div class="ec-preview-label"><i data-lucide="eye" style="width:13px;height:13px;"></i> Aperçu en direct</div>
+                                <div class="ec-preview-frame">
+                                    <iframe id="ec-preview" style="width:100%;height:420px;border:none;display:block;"></iframe>
+                                </div>
+                            </div>
+                            <p style="font-size:11.5px;color:#94A3B8;margin-top:10px;line-height:1.5;">
+                                <strong>{prenom}</strong> sera remplacé par le prénom de chaque client.
+                                Un lien de désabonnement est ajouté automatiquement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- Pied -->
+            <div class="ec-footer">
+                <div class="ec-footer-info">
+                    Cible : <strong id="ec-footer-count">—</strong> &nbsp;·&nbsp; <span id="ec-footer-resto"></span>
+                </div>
+                <div class="ec-footer-actions">
+                    <button class="btn-cancel-modal" onclick="fermerEmailModal()">Annuler</button>
+                    <button class="btn-send-email" id="ec-btn-send" onclick="ecEnvoyer()">
+                        <i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer la campagne
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-
+</div>
     <div id="dashBackdrop" class="dash-backdrop"></div>
 
     <script src="fiddle-pro.js"></script>
