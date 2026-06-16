@@ -1151,7 +1151,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
  
     // ── Branchement des contrôles de ciblage ──
-    document.addEventListener('DOMContentLoaded', () => {
+    function ecInit() {
         // Onglets
         document.querySelectorAll('.ec-step-tab').forEach(tab => {
             tab.addEventListener('click', () => {
@@ -1218,8 +1218,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 ecAppliquerTemplate(tpl.dataset.ectpl);
             });
         });
-    });
- 
+   }
+    ecInit();
     function ecBindChips(filtre, onPick) {
         document.querySelectorAll(`.ec-chip[data-ecfilter="${filtre}"]`).forEach(chip => {
             chip.addEventListener('click', () => {
