@@ -662,66 +662,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ====================================================================
-// 📧 EMAIL MODAL
-// ====================================================================
-function fermerEmailModal() { document.getElementById('emailModal').classList.remove('active'); }
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btnOpenEmail')?.addEventListener('click', () => {
-        document.getElementById('emailModal').classList.add('active');
-        lucide.createIcons();
-    });
-    document.getElementById('emailModal')?.addEventListener('click', e => {
-        if (e.target === document.getElementById('emailModal')) fermerEmailModal();
-    });
-});
-
-async function envoyerEmail() {
-    const objet   = document.getElementById('emailObjet').value.trim();
-    const contenu = document.getElementById('emailContenu').value.trim();
-    const dest    = document.getElementById('emailDestinataires').value;
-    const btn     = document.getElementById('btnSendEmail');
-    if (!objet || !contenu) { alert('Veuillez remplir l\'objet et le message.'); return; }
-    btn.disabled = true;
-    btn.innerHTML = '<div class="dash-spinner" style="width:16px;height:16px;border-width:2px;border-top-color:white;"></div> Envoi…';
-    let clients = window.dataClientsGlobal || [];
-    if (dest === 'tous')           clients = clients.filter(c => c.optin_email !== false);
-    if (dest === 'points_faibles') clients = clients.filter(c => c.optin_email !== false && (c.points||0) < 3);
-    if (dest === 'recompenses')    clients = clients.filter(c => c.optin_email !== false && (c.recompenses_obtenues||0) > 0);
-    if (clients.length === 0) {
-        alert('Aucun destinataire pour cette sélection.');
-        btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons();
-        return;
-    }
-    if (!confirm(`Envoyer cet email à ${clients.length} client${clients.length>1?'s':''} ?`)) {
-        btn.disabled = false; btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer'; lucide.createIcons();
-        return;
-    }
-    try {
-        const { data: { session } } = await window._supabaseClient.auth.getSession();
-        const res = await fetch('https://qawfwbppnbnskxlkwstu.supabase.co/functions/v1/send-email', {
-            method:'POST',
-            headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${session?.access_token || ''}` },
-            body: JSON.stringify({
-                destinataires: clients.map(c => ({ email: c.email, prenom: c.prenom||'' })),
-                objet, contenu, restaurant: window.currentRestoConfig?.nom || 'FYDELIO'
-            })
-        });
-        const result = await res.json();
-        if (result.ok) {
-            alert(`✅ Email envoyé à ${result.envoyes} client${result.envoyes>1?'s':''} !`);
-            fermerEmailModal();
-            document.getElementById('emailObjet').value = '';
-            document.getElementById('emailContenu').value = '';
-        } else { throw new Error(result.error || 'Erreur inconnue'); }
-    } catch (err) {
-        alert('Erreur : ' + err.message + '\n\nVérifiez que l\'Edge Function "send-email" est déployée et que BREVO_API_KEY est configuré dans Supabase → Secrets.');
-    }
-    btn.disabled = false;
-    btn.innerHTML = '<i data-lucide="send" style="width:14px;height:14px;"></i> Envoyer';
-    lucide.createIcons();
-}
-
-// ====================================================================
 // 🤖 FYDEL'INTELLIGENCE
 // ====================================================================
 async function lancerAnalyseIA() {
